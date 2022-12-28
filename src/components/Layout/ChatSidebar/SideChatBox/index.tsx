@@ -1,12 +1,10 @@
-import React from "react";
+import React, { useState, Suspense } from "react";
+import { RootStateOrAny, useSelector } from "react-redux";
 import { DownArrow, UpArrow } from "components/icons";
-import { useState } from "react";
-import ChattingThreadBox from "../../../Experience/RoomInterior/ChattingBox/ChattingThreadBox";
+const SideChattingBox = React.lazy(() => import("./SideChattingBox"));
 import Input from "../../../Experience/RoomInterior/ChattingBox/Input";
 import UploadDropZoneImg from "../../../Experience/RoomInterior/ChattingBox/UploadDropZoneImg";
-import { RootStateOrAny, useSelector } from "react-redux";
 import SidebarInput from "./SidebarInput";
-import SideChattingBox from './SideChattingBox';
 
 type ChattingBoxType = {
   setLeftSideActive: any;
@@ -63,8 +61,9 @@ const ChattingBox = (props: ChattingBoxType) => {
           {/* <UpArrow /> */}
         </div>
       </div>
-
-      <SideChattingBox isSocial={true} />
+      <Suspense fallback={<div>Loading...</div>}>
+        <SideChattingBox isSocial={true} />
+      </Suspense>
       <SidebarInput
         focusState={focusState}
         setFocusState={setFocusState}

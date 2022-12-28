@@ -11,6 +11,8 @@ import { apiCaller } from "utils/fetcher";
 import { time_ago } from "utils";
 import { setChatKind, setMembers, setSelectedChat } from "redux/slices/chatSlice";
 import CONSTANT from "config/constant";
+import { clearUserMsg } from "redux/slices/chatSlice";
+import { setMsg } from "redux/slices/chatSlice";
 
 const ToggleShowBtn = (props) => {
   return (
@@ -40,11 +42,12 @@ export const ToggleChatBtn = (props) => {
 
 const Sidebar = (props) => {
   const dispatch = useDispatch();
-  const { profile, dms, selectedChat, chatLogs } = useSelector((state: RootStateOrAny) => ({
+  const { profile, dms, selectedChat, chatLogs, chatKind } = useSelector((state: RootStateOrAny) => ({
     profile: state.profile.data,
     dms: state.chat.dms,
     selectedChat: state.chat.selectedChat,
     chatLogs: state.chat.chatLogs,
+    chatKind: state.chat.chatKind,
   }))
 
   const [serverChats, setServerChats] = useState([]);
@@ -95,6 +98,15 @@ const Sidebar = (props) => {
     }))
   }
 
+  const setGlobalChat = () => {
+    dispatch(setMembers([profile._id, "GroupChatId"]));
+    dispatch(setChatKind(CONSTANT.GLOBAL_CHAT))
+    dispatch(setSelectedChat({
+      id: "",
+      name: "Global Chat",
+    }))
+  }
+
   return (
     <div className="fixed top-[92px] right-0 bottom-0 overflow-y-auto z-[100]">
       <div className="sm:flex xs:hidden flex-row border-l-[1px] border-semiSplitter bg-globalBgColor">
@@ -115,6 +127,18 @@ const Sidebar = (props) => {
               className={`text-[14px] font-[500] text-[#474749] text-center pb-[16px]`}
             >
               {Your_Daos.title}
+            </div>
+            <div 
+              key={0} 
+              onClick={setGlobalChat}
+            >
+              <SideAvatar
+                key={0}
+                img_url={"/images/community/img/avatar.png"}
+                name={'global'}
+                expanded={true}
+                selected={chatKind == CONSTANT.GLOBAL_CHAT}
+              />
             </div>
             {/* {Your_Daos.avatars.map(function (i) {
               return (
@@ -154,9 +178,11 @@ const Sidebar = (props) => {
             </div>
             {serverChats.map(function (dm, index) {
               return (
-                <div onClick={() => setActiveDM(dm)}>
+                <div 
+                  key={index + 1} 
+                  onClick={() => setActiveDM(dm)}
+                >
                   <SideAvatar
-                    key={index}
                     img_url={dm.url}
                     name={dm.name}
                     expanded={true}
