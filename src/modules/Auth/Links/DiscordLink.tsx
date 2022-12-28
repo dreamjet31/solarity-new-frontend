@@ -1,4 +1,3 @@
-import { WalletButton } from "components/Common/Buttons";
 import { DiscordImg } from "components/Common/Images";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -9,7 +8,7 @@ import {
   useDispatch,
   useSelector,
 } from "react-redux";
-import { changeInfo, linkAccounts, setUserInfo, unlinkAccounts } from "redux/slices/authSlice";
+import { unlinkAccounts } from "redux/slices/authSlice";
 
 const discordLinkGenerator = (currentUrl: string) => {
   const baseUrl = "https://discord.com/api/oauth2/authorize";

@@ -11,12 +11,11 @@ import {
 import {
   AddressImg,
   EthereumImg,
-  GithubImg,
   PolygonImg,
 } from "components/Common/Images";
 import { DomainInput, SharedInput } from "components/Common/Forms";
 import { DiscordLink, GithubLink, TwitterLink } from "../Links";
-import { checkBrowser, minifyAddress, showErrorToast } from "utils";
+import { showErrorToast } from "utils";
 import { apiCaller, getErrorMessage } from "utils/fetcher";
 
 import { useDispatch, RootStateOrAny, useSelector } from "react-redux";

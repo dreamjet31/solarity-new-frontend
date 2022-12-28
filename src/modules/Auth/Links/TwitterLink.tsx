@@ -1,4 +1,3 @@
-import { WalletButton } from "components/Common/Buttons";
 import { TwitterImg } from "components/Common/Images";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
@@ -9,7 +8,7 @@ import {
   useSelector,
 } from "react-redux";
 import Image from "next/image";
-import { linkAccounts, setUserInfo, unlinkAccounts } from "redux/slices/authSlice";
+import { unlinkAccounts } from "redux/slices/authSlice";
 
 const twitterLinkGenerator = (currentUrl: string) => {
   const baseUrl = "https://twitter.com/i/oauth2/authorize";

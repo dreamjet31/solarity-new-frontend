@@ -1,5 +1,4 @@
-import { WalletButton } from "components/Common/Buttons";
-import { DiscordImg, GithubImg } from "components/Common/Images";
+import { GithubImg } from "components/Common/Images";
 import { useRouter } from "next/router";
 import { useEffect, useState } from "react";
 import Image from "next/image";
@@ -9,7 +8,7 @@ import {
   useDispatch,
   useSelector,
 } from "react-redux";
-import { linkAccounts, setUserInfo, unlinkAccounts } from "redux/slices/authSlice";
+import { unlinkAccounts } from "redux/slices/authSlice";
 
 const githubLinkGenerator = (currentUrl: string) => {
   const baseUrl = "https://github.com/login/oauth/authorize";
