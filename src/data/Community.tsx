@@ -92,14 +92,14 @@ export const communities: ItemProps[] = [
 export const games: ItemProps[] = [
     {
         avatarUrl: '/images/community/avatars/Halo.png',
-        backUrl: '/images/community/backs/Halo.jpeg',
-        itemUrl: '/images/community/posters/evio.png',
+        backUrl: '/images/community/backs/Halo.png',
+        itemUrl: '/images/community/posters/Halo.jpeg',
         communityName: 'Halo',
         collectionName: 'Halo',
         memberNumber: 2400,
         totalSupply: 1100,
         icon: <MemberIcon />,
-        description: "Heroes & Empires has exquisitely digital collectibles created using blockchain technology. Each collectible is matchless, genuine and varies in rarity.",
+        description: "Halo is set in the twenty-sixth century, with the player assuming the role of the Master Chief, a cybernetically enhanced supersoldier. The Chief is accompanied by Cortana, an artificial intelligence. Players battle aliens as they attempt to uncover the secrets of the eponymous Halo, a ring-shaped artificial world.",
         walletAddress: '9jKipb3AbeNNZWtaJ6vgYPPBGZg2mX8Gqp1bU1SjeRDc',
         iframeUrl: "https://www.xbox.com/en-US/play/games/halo-infinite-campaign/9NP1P1WFS0LB",
         websiteUrl: "https://ev.io",
