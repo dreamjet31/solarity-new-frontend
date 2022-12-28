@@ -6,6 +6,7 @@ import { clearUserMsg, setMsg, setUserMsg } from "redux/slices/chatSlice";
 import { apiCaller } from "utils/fetcher";
 import ChattingThread from "../../../../Experience/RoomInterior/ChattingBox/ChattingThread";
 import TypingNotification from "../../../../Experience/RoomInterior/ChattingBox/TypingNotification";
+import CONSTANT from 'config/constant';
 
 const appendMyNewChattingThread = (msgs, setMsgs, props) => {
   setMsgs([
@@ -43,34 +44,58 @@ type SideChattingBoxType = {
 
 const SideChattingBox = (props: SideChattingBoxType) => {
   const dispatch = useDispatch();
-  const { msgs, chatLogs, members } = useSelector((state: RootStateOrAny) => ({
+  const { msgs, chatLogs, members, chatKind } = useSelector((state: RootStateOrAny) => ({
     msgs: state.chat.msgs,
     chatLogs: state.chat.chatLogs,
     members: state.chat.members,
+    chatKind: state.chat.chatKind,
   }));
 
   useEffect(() => {
     const fetchMessages = async () => {
       try {
-        dispatch(clearUserMsg({}))
-        const { data } = await apiCaller.post("/chats/fetchMessages", { members });
-        for (var i = 0; i < data.chat.msgs.length; i++) {
-          dispatch(setUserMsg({
-            groupType: data.chat.type,
-            daoId: null,
-            members: data.chat.users,
-            sender: {
-              name: data.chat.msgs[i].sender.username,
-              profileImage: data.chat.msgs[i].sender.profileImage ? data.chat.msgs[i].sender.profileImage.link : "/images/experience/psuedo_avatars/avatar.png",
-            },
-            content: data.chat.msgs[i].content,
-            reply: data.chat.msgs[i].reply,
-            attachments: data.chat.msgs[i].attachments,
-            date: data.chat.msgs[i].createdAt,
-            editState: data.chat.msgs[i].editState,
-            deleteState: data.chat.msgs[i].deleteState,
-            msgId: data.chat.msgs[i]._id,
-          }));
+        dispatch(clearUserMsg({}));
+        const { data } = await apiCaller.post("/chats/fetchMessages", { members, chatKind });
+        if(chatKind == CONSTANT.GLOBAL_CHAT) {
+          for (var i = 0; i < data.chat.length; i ++) {
+            dispatch(setUserMsg({
+              groupType: data.chat[i].groupType,
+              daoId: null,
+              members: data.chat[i].members,
+              sender: {
+                name: data.chat[i].sender.name,
+                profileImage: data.chat[i].sender.profileImage ? data.chat[i].sender.profileImage : "/images/experience/psuedo_avatars/avatar.png",
+              },
+              content: data.chat[i].content,
+              reply: data.chat[i].reply,
+              attachments: data.chat[i].attachments,
+              date: data.chat[i].createdAt,
+              editState: data.chat[i].editState,
+              deleteState: data.chat[i].deleteState,
+              msgId: data.chat[i].msgId,
+            }));
+          }
+        } else if (chatKind == CONSTANT.GROUP_CHAT) {
+
+        } else {
+          for (var i = 0; i < data.chat.msgs.length; i++) {
+            dispatch(setUserMsg({
+              groupType: data.chat.type,
+              daoId: null,
+              members: data.chat.users,
+              sender: {
+                name: data.chat.msgs[i].sender.username,
+                profileImage: data.chat.msgs[i].sender.profileImage ? data.chat.msgs[i].sender.profileImage.link : "/images/experience/psuedo_avatars/avatar.png",
+              },
+              content: data.chat.msgs[i].content,
+              reply: data.chat.msgs[i].reply,
+              attachments: data.chat.msgs[i].attachments,
+              date: data.chat.msgs[i].createdAt,
+              editState: data.chat.msgs[i].editState,
+              deleteState: data.chat.msgs[i].deleteState,
+              msgId: data.chat.msgs[i]._id,
+            }));
+          }
         }
       } catch (error) {
         console.error('Something went wrong.')
@@ -91,14 +116,14 @@ const SideChattingBox = (props: SideChattingBoxType) => {
 
   return (
     <div
-      className={`flex xs:h-[500px] sm:h-[700px] gap-[24px] relative mb-[24px] rounded-2xl`}
+      className={`flex xs:h-[calc(100vh-280px)] sm:h-[calc(100vh-280px)] gap-[24px] relative mb-[24px] rounded-2xl`}
       id="chatting_thread_box"
     >
       <div
         className="flex flex-col px-[26px] w-full h-full overflow-y-scroll overflow-x-visible gap-[4px] relative pb-[30px]"
         id="chatting_thread_box_1"
       >
-        {props.isSocial && (members.length == 0 ? [] : chatLogs).map((chatLog, index) => (
+        {props.isSocial && (chatLogs).map((chatLog, index) => (
           <ChattingThread
             imgUrl={!!chatLog.sender.profileImage ? chatLog.sender.profileImage : "/images/experience/psuedo_avatars/avatar.png"}
             uName={chatLog.sender.name}
@@ -127,7 +152,6 @@ const SideChattingBox = (props: SideChattingBoxType) => {
           />
         ))}
       </div>
-      {/* <TypingNotification who={["Eugene", "Alex1440", "Eugene", "Alex1440"]} /> */}
     </div>
   );
 };

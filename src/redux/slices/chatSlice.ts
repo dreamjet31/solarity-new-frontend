@@ -1,5 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import ACTIONS from "config/actions";
+import CONSTANT from "config/constant";
 
 export interface CounterState {
   chatSidebarVisibility: boolean;
@@ -71,10 +72,10 @@ const initialState: CounterState = {
   typingState: false,
   typingMembers: [],
   selectedChatUserName: "",
-  chatKind: 0,
+  chatKind: CONSTANT.GLOBAL_CHAT,
   selectedChat: {
-    id: null,
-    name: '',
+    id: "",
+    name: 'Global Chat',
   },
   dms: [],
   groups: [],

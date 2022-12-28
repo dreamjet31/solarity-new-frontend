@@ -15,6 +15,7 @@ import { RootStateOrAny, useDispatch, useSelector } from 'react-redux'
 import { setGameModalVisibility } from 'redux/slices/commonSlice'
 import { setFriends, setName, setOnline, setTypingState, setUserMsg } from 'redux/slices/chatSlice'
 import ACTIONS from 'config/actions'
+import CONSTANT from 'config/constant'
 
 const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSearchString }: {
     children: any,
@@ -79,11 +80,13 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
 
         (window as any).socket.on(ACTIONS.SEND_MSG_EXTENSION, (msg) => {
             if (!!msg) {
-            if (msg.groupType == 2) {
-                dispatch(setUserMsg(msg));
-            }
-            if (msg.members[0] != localStorage.getItem('name')) {
-            }
+                if (msg.groupType == CONSTANT.GLOBAL_CHAT) {
+                    dispatch(setUserMsg(msg));
+                } else if (msg.groupType == CONSTANT.GROUP_CHAT) {
+
+                } else if (msg.groupType == CONSTANT.DM_CHAT) {
+                    dispatch(setUserMsg(msg));
+                }
             }
         });
         (window as any).socialListen = true;
