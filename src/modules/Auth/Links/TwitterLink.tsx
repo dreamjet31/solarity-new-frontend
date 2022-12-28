@@ -9,7 +9,7 @@ import {
   useSelector,
 } from "react-redux";
 import Image from "next/image";
-import { linkAccounts, unlinkAccounts } from "redux/slices/authSlice";
+import { linkAccounts, setUserInfo, unlinkAccounts } from "redux/slices/authSlice";
 
 const twitterLinkGenerator = (currentUrl: string) => {
   const baseUrl = "https://twitter.com/i/oauth2/authorize";
@@ -26,7 +26,8 @@ const twitterLinkGenerator = (currentUrl: string) => {
   return baseUrl + "?" + urlParams.toString();
 };
 
-export const TwitterLink = () => {
+export const TwitterLink = (props) => {
+  const { onLink } = props;
   const router = useRouter();
   const dispatch = useDispatch();
   const { userInfo, isMobile } = useSelector((state: RootStateOrAny) => ({
@@ -44,29 +45,14 @@ export const TwitterLink = () => {
     let params = new URLSearchParams(url.search);
     params.delete("state");
     params.delete("code");
-    params.delete("domain");
-    params.delete("title");
     params.set("link", "twitter");
-    if (userInfo.domain && userInfo.title) {
-      params.set("domain", userInfo.domain);
-      params.set("title", userInfo.title);
-    }
     let appUrl = url.origin + url.pathname + "?" + params.toString();
     setAppUrl(appUrl);
   }, []);
 
   useEffect(() => {
-    if (link === "twitter" && appUrl) {
-      dispatch(
-        linkAccounts({
-          data: {
-            link: "twitter",
-            code,
-            url: appUrl,
-          },
-          finalFunction: () => { },
-        })
-      );
+    if (link == "twitter") {
+      onLink(link, code, appUrl);
     }
   }, [code, link]);
 
@@ -104,7 +90,7 @@ export const TwitterLink = () => {
         <a
           className={`font-medium p-[16px] sm:p-[22px] rounded-[14px] text-white/70 text-[18px] sm:text-[22px] text-center tracking-wider border-none outline outline-primary hover:bg-focusbackground hover:outline-1 hover:outline-primary items-center bg-[#1d1e20] ${isMobile ? 'justify-center h-[48px]' : 'justify-between h-[56px]'} !w-[100%] flex`}
           href={twitterLinkGenerator(appUrl)}
-          target="_blank"
+          // target="_blank"
         >
           {!isMobile ? (
             <>

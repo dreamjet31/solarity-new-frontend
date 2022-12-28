@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 
 const DomainInput = (props) => {
   const { changeValue, caption } = props;
-  const { query: { title } } = useRouter();
+  // const { query: { title } } = useRouter();
 
   const [classFocus, setClassFocus] = useState('text-white/60');
   const [classBorder, setClassBorder] = useState('border-white/10');
@@ -25,14 +25,14 @@ const DomainInput = (props) => {
     if (titleValue) {
       setClassFocus('top-[-15%] !text-[12px] text-primary');
       setClassBorder('border-primary');
+      localStorage.setItem('title', titleValue);
     }
   }, [titleValue])
 
   useEffect(() => {
-    if (title) {
-      setTitleValue(title);
-    }
-  }, [title])
+    const title = localStorage.getItem("title") ? localStorage.getItem("title") : '';
+    setTitleValue(title);
+  }, [])
 
   return (
     <div className="w-full">

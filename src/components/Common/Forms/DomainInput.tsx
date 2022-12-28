@@ -12,7 +12,7 @@ const infoFormSchema = yup.object({
 
 const DomainInput = (props) => {
   const { changeValue, initValue, isError, setError } = props;
-  const { query: { domain } } = useRouter();
+  // const { query: { domain } } = useRouter();
 
   const [classFocus, setClassFocus] = useState('text-white/60');
   const [classBorder, setClassBorder] = useState('border-white/10');
@@ -41,15 +41,16 @@ const DomainInput = (props) => {
       if (domainValue) {
         setClassFocus('top-[-15%] !text-[12px] text-primary');
         setClassBorder('border-primary');
+        console.log(domainValue)
+        localStorage.setItem('domain', domainValue);
       }
     }
   }, [domainValue, isError])
 
-  useEffect(()  => {
-    if (domain) {
-      setDomainValue(domain);
-    }
-  }, [domain])
+  useEffect(() => {
+    const domain = localStorage.getItem("domain") ? localStorage.getItem("domain") : '';
+    setDomainValue(domain);
+  }, [])
 
   return (
     <div className="w-full">

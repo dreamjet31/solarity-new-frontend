@@ -9,7 +9,7 @@ import {
   useDispatch,
   useSelector,
 } from "react-redux";
-import { linkAccounts, unlinkAccounts } from "redux/slices/authSlice";
+import { changeInfo, linkAccounts, setUserInfo, unlinkAccounts } from "redux/slices/authSlice";
 
 const discordLinkGenerator = (currentUrl: string) => {
   const baseUrl = "https://discord.com/api/oauth2/authorize";
@@ -23,7 +23,8 @@ const discordLinkGenerator = (currentUrl: string) => {
   return baseUrl + "?" + urlParams.toString();
 };
 
-export const DiscordLink = () => {
+export const DiscordLink = (props) => {
+  const { onLink } = props;
   const router = useRouter();
   const {
     query: { link, code },
@@ -42,29 +43,14 @@ export const DiscordLink = () => {
     let params = new URLSearchParams(url.search);
     params.delete("state");
     params.delete("code");
-    params.delete("domain");
-    params.delete("title");
     params.set("link", "discord");
-    if (userInfo.domain && userInfo.title) {
-      params.set("domain", userInfo.domain);
-      params.set("title", userInfo.title);
-    }
     let appUrl = url.origin + url.pathname + "?" + params.toString();
     setAppUrl(appUrl);
-  }, [userInfo.domain, userInfo.title]);
+  }, []);
 
   useEffect(() => {
-    if (link === "discord" && appUrl) {
-      dispatch(
-        linkAccounts({
-          data: {
-            link: "discord",
-            code,
-            url: appUrl,
-          },
-          finalFunction: () => { },
-        })
-      );
+    if (link == "discord") {
+      onLink(link, code, appUrl);
     }
   }, [code, link]);
 
@@ -102,7 +88,7 @@ export const DiscordLink = () => {
         <a
           className={`font-medium p-[16px] sm:p-[22px] rounded-[14px] text-white/70 text-[18px] sm:text-[22px] text-center tracking-wider border-none outline outline-primary hover:bg-focusbackground hover:outline-1 hover:outline-primary inline-flex items-center bg-[#1d1e20] ${isMobile ? 'justify-center h-[48px]' : 'justify-between h-[56px]'} !w-[100%]`}
           href={discordLinkGenerator(appUrl)}
-          target="_blank"
+          // target="_blank"
         >
           {!isMobile ? (
             <>
