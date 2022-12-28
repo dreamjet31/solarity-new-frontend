@@ -1,9 +1,12 @@
 import React from "react";
 import { DownArrow, UpArrow } from "components/icons";
 import { useState } from "react";
-import ChattingThreadBox from "./ChattingThreadBox";
-import Input from "./Input";
-import UploadDropZoneImg from "./UploadDropZoneImg";
+import ChattingThreadBox from "../../../Experience/RoomInterior/ChattingBox/ChattingThreadBox";
+import Input from "../../../Experience/RoomInterior/ChattingBox/Input";
+import UploadDropZoneImg from "../../../Experience/RoomInterior/ChattingBox/UploadDropZoneImg";
+import { RootStateOrAny, useSelector } from "react-redux";
+import SidebarInput from "./SidebarInput";
+import SideChattingBox from './SideChattingBox';
 
 type ChattingBoxType = {
   setLeftSideActive: any;
@@ -11,6 +14,10 @@ type ChattingBoxType = {
 };
 
 const ChattingBox = (props: ChattingBoxType) => {
+  const { selectedChat } = useSelector((state: RootStateOrAny) => ({
+    selectedChat: state.chat.selectedChat,
+  }))
+
   const [focusState, setFocusState] = useState(false);
   const [toggleDropZone, setToggleDropZone] = useState("none");
   const [newMsgSendingState, setNewMsgSendingState] = useState(false);
@@ -31,7 +38,7 @@ const ChattingBox = (props: ChattingBoxType) => {
 
   return (
     <div
-      className={`w-full h-full border-[#1d1f1f] border-[1px] bg-[#141414] md:rounded-[24px] xs:rounded-[0px]
+      className={`w-full h-full border-[#1d1f1f] border-[1px] bg-[#141414]
         ${props.leftSideActive === "chatting"
           ? "flex flex-col"
           : "hidden"
@@ -41,9 +48,9 @@ const ChattingBox = (props: ChattingBoxType) => {
         setToggleDropZone("flex");
       }}
     >
-      <div className=" flex flex-row items-center justify-between h-[30px] mt-[26px] mx-[26px] mb-[32px] ">
+      <div className=" flex flex-row items-center justify-between h-[30px] mt-[12px] mx-[26px] mb-[24px] ">
         <div className=" title font-['Outfit'] font-[500] text-[24px] text-[#f3f3f3] select-none ">
-          Chat
+          {selectedChat.name}
         </div>
         <div
           className=" md:flex xs:hidden cursor-pointer "
@@ -53,22 +60,12 @@ const ChattingBox = (props: ChattingBoxType) => {
               : ""
           }
         >
-          <UpArrow />
-        </div>
-        <div
-          className=" md:hidden xs:flex cursor-pointer "
-          onClick={() =>
-            props.leftSideActive === "chatting"
-              ? props.setLeftSideActive("")
-              : ""
-          }
-        >
-          <DownArrow />
+          {/* <UpArrow /> */}
         </div>
       </div>
 
-      <ChattingThreadBox isSocial={false} />
-      <Input
+      <SideChattingBox isSocial={true} />
+      <SidebarInput
         focusState={focusState}
         setFocusState={setFocusState}
         newMsgDataState={newMsgDataState}
@@ -78,8 +75,8 @@ const ChattingBox = (props: ChattingBoxType) => {
       <UploadDropZoneImg toggleDropZone={toggleDropZone} />
       {/* Following is a tranparent layer for drag and drop operation - with this flickering issue can be avoid */}
       <div
-        className={`absolute top-[-3px] bottom-[-3px] left-[-3                                   px] right-[-3px] bg-transparent
-                            rounded-[24px] ${toggleDropZone === "none"
+        className={`absolute top-[-3px] bottom-[-3px] left-[-3px] right-[-3px] bg-transparent
+            rounded-[24px] ${toggleDropZone === "none"
             ? "hidden"
             : "flex flex-col"
           }`}

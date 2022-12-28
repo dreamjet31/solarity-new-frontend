@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Image from "next/image";
 
 import { LogoSVGImg } from "../Common/Images";
@@ -6,6 +6,11 @@ import { Your_Daos, Top_Daos, MagnifyIcon } from "../../data/Sidebar";
 import SideAvatar, { SidebarAvatarName } from "../Common/Layout/SidebarAvatar";
 import { RightArrow } from "components/icons";
 import { LeftArrow } from "components/icons";
+import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
+import { apiCaller } from "utils/fetcher";
+import { time_ago } from "utils";
+import { setChatKind, setMembers, setSelectedChat } from "redux/slices/chatSlice";
+import CONSTANT from "config/constant";
 
 const ToggleShowBtn = (props) => {
   return (
@@ -34,6 +39,62 @@ export const ToggleChatBtn = (props) => {
 };
 
 const Sidebar = (props) => {
+  const dispatch = useDispatch();
+  const { profile, dms, selectedChat, chatLogs } = useSelector((state: RootStateOrAny) => ({
+    profile: state.profile.data,
+    dms: state.chat.dms,
+    selectedChat: state.chat.selectedChat,
+    chatLogs: state.chat.chatLogs,
+  }))
+
+  const [serverChats, setServerChats] = useState([]);
+
+  useEffect(() => {
+    const fetchChats = async () => {
+      try {
+        if (profile.username == undefined) {
+          return;
+        }
+        const { data } = await apiCaller.get("/chats/fetchChats");
+        var tmpChats = [];
+        for (var i = 0; i < data.chats.length; i++) {
+          const person = data.chats[i].users[0].username == profile.username ? data.chats[i].users[1] : data.chats[i].users[0];
+          tmpChats.push({
+            _id: data.chats[i]._id,
+            users: data.chats[i].users,
+            url: person.profileImage ? person.profileImage.link : "/images/experience/psuedo_avatars/avatar.png",
+            name: person.username,
+            detail: data.chats[i].lastMsg.content,
+            time: time_ago(data.chats[i].lastMsg.createdAt),
+            gap: 3,
+            badge: data.chats[i].unreadCount
+          });
+        }
+        setServerChats(tmpChats);
+      } catch (error) {
+        console.error('Something went wrong.')
+      }
+    }
+    fetchChats();
+  }, [profile, chatLogs])
+
+  const setActiveDM = (dm) => {
+    props.setIsChatPanel(true);
+    var otherUserId = '';
+    console.log(profile._id, dm.users);
+    if(dm.users[0].id == profile._id) {
+      otherUserId = dm.users[1].id;
+    } else {
+      otherUserId = dm.users[0].id;
+    }
+    dispatch(setMembers([profile._id, otherUserId]));
+    dispatch(setChatKind(CONSTANT.DM_CHAT));
+    dispatch(setSelectedChat({
+      id: otherUserId,
+      name: dm.name,
+    }))
+  }
+
   return (
     <div className="fixed top-[92px] right-0 bottom-0 overflow-y-auto z-[100]">
       <div className="sm:flex xs:hidden flex-row border-l-[1px] border-semiSplitter bg-globalBgColor">
@@ -55,7 +116,7 @@ const Sidebar = (props) => {
             >
               {Your_Daos.title}
             </div>
-            {Your_Daos.avatars.map(function (i) {
+            {/* {Your_Daos.avatars.map(function (i) {
               return (
                 <SideAvatar
                   key={i.name}
@@ -64,7 +125,7 @@ const Sidebar = (props) => {
                   expanded={!props.sidebarToggler}
                 />
               );
-            })}
+            })} */}
           </div>
           <div
             className={`w-full pt-[18px] pb-[26px] border-semiSplitter flex flex-col items-center`}
@@ -76,7 +137,8 @@ const Sidebar = (props) => {
             </div>
             <div
               className="relative group border-[1px] border-[#272829] hover:border-[#29B080] hover:shadow-[0_0_5px_4px_rgba(41,176,128,0.1)] duration-300 
-                              rounded-[20px] w-[48px] h-[48px] mb-[16px] flex items-center justify-center cursor-pointer"
+                              rounded-[10px] w-[48px] h-[48px] mb-[16px] flex items-center justify-center cursor-pointer"
+              onClick={() => props.setIsChatPanel(false)}
             >
               {MagnifyIcon}
               <div
@@ -87,22 +149,24 @@ const Sidebar = (props) => {
                     : "group-hover:opacity-100 group-hover:w-max group-hover:px-[12px]"
                   }`}
               >
-                Browse
+                New DM
               </div>
             </div>
-            {Top_Daos.avatars.map(function (i) {
+            {serverChats.map(function (dm, index) {
               return (
-                <SideAvatar
-                  key={i.name}
-                  img_url={i.url}
-                  name={i.name}
-                  expanded={!props.sidebarToggler}
-                />
+                <div onClick={() => setActiveDM(dm)}>
+                  <SideAvatar
+                    key={index}
+                    img_url={dm.url}
+                    name={dm.name}
+                    expanded={true}
+                    selected={selectedChat.id == dm.users[1].id || selectedChat.id == dm.users[0].id}
+                  />
+                </div>
               );
             })}
           </div>
         </div>
-
         <div
           className={`flex flex-col ${props.sidebarToggler ? "w-[140px]" : "w-[0px]"
             } h-full items-start`}
