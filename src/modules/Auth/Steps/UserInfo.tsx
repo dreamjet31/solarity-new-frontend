@@ -20,7 +20,7 @@ import { checkBrowser, minifyAddress, showErrorToast } from "utils";
 import { apiCaller, getErrorMessage } from "utils/fetcher";
 
 import { useDispatch, RootStateOrAny, useSelector } from "react-redux";
-import { changeInfo, goStep } from "../../../redux/slices/authSlice";
+import { changeInfo, goStep, linkAccounts } from "../../../redux/slices/authSlice";
 import {
   startLoadingApp,
   stopLoadingApp,
@@ -122,6 +122,33 @@ const UserInfo = (props) => {
     dispatch(goStep(payload));
   }
 
+  const onLinkAccounts = (link, code, url) => {
+    if (link && url) {
+      dispatch(changeInfo({
+        payload: {
+          type: "title",
+          value: localStorage.getItem('title')
+        }
+      }));
+      dispatch(changeInfo({
+        payload: {
+          type: "domain",
+          value: localStorage.getItem('domain')
+        }
+      }));
+      dispatch(
+        linkAccounts({
+          data: {
+            link,
+            code,
+            url,
+          },
+          finalFunction: () => { },
+        })
+      );
+    }
+  }
+
   return (
     <>
       <div className="flex items-center justify-between pt-8 pl-5 pr-5 lg:px-5 lg:pt-8 lg:pb-0 rounded-t">
@@ -156,13 +183,13 @@ const UserInfo = (props) => {
         </div>
         <div className={`grid ${isMobile ? 'grid-cols-3' : 'grid-cols-1'} custom-2xl:grid-cols-3 gap-3 my-5`}>
           <div className="custom-2xl:text-left">
-            <TwitterLink />
+            <TwitterLink onLink={onLinkAccounts} />
           </div>
           <div className="custom-2xl:text-center">
-            <DiscordLink />
+            <DiscordLink onLink={onLinkAccounts} />
           </div>
           <div className="custom-2xl:text-right">
-            <GithubLink />
+            <GithubLink onLink={onLinkAccounts} />
           </div>
         </div>
         <div className="grid grid-cols-1 mt-[20px] lg:mt-[30px]">

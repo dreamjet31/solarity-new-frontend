@@ -9,7 +9,7 @@ import {
   useDispatch,
   useSelector,
 } from "react-redux";
-import { linkAccounts, unlinkAccounts } from "redux/slices/authSlice";
+import { linkAccounts, setUserInfo, unlinkAccounts } from "redux/slices/authSlice";
 
 const githubLinkGenerator = (currentUrl: string) => {
   const baseUrl = "https://github.com/login/oauth/authorize";
@@ -24,7 +24,8 @@ const githubLinkGenerator = (currentUrl: string) => {
   return baseUrl + "?" + urlParams.toString();
 };
 
-export const GithubLink = () => {
+export const GithubLink = (props) => {
+  const { onLink } = props;
   const router = useRouter();
   const {
     query: { link, code },
@@ -43,29 +44,14 @@ export const GithubLink = () => {
     let params = new URLSearchParams(url.search);
     params.delete("state");
     params.delete("code");
-    params.delete("domain");
-    params.delete("title");
     params.set("link", "github");
-    if (userInfo.domain && userInfo.title) {
-      params.set("domain", userInfo.domain);
-      params.set("title", userInfo.title);
-    }
     let appUrl = url.origin + url.pathname + "?" + params.toString();
     setAppUrl(appUrl);
-  }, [userInfo.domain, userInfo.title]);
+  }, []);
 
   useEffect(() => {
-    if (link === "github" && appUrl) {
-      dispatch(
-        linkAccounts({
-          data: {
-            link: "github",
-            code,
-            url: appUrl,
-          },
-          finalFunction: () => { },
-        })
-      );
+    if (link == "github") {
+      onLink(link, code, appUrl);
     }
   }, [code, link]);
 
@@ -103,7 +89,7 @@ export const GithubLink = () => {
         <a
           className={`font-medium p-[16px] sm:p-[22px] rounded-[14px] text-white/70 text-[18px] sm:text-[22px] text-center tracking-wider border-none outline outline-primary hover:bg-focusbackground hover:outline-1 hover:outline-primary inline-flex items-center bg-[#1d1e20] ${isMobile ? 'justify-center h-[48px]' : 'justify-between h-[56px]'} !w-[100%]`}
           href={githubLinkGenerator(appUrl)}
-          target="_blank"
+        // target="_blank"
         >
           {!isMobile ? (
             <>
