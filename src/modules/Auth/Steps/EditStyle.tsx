@@ -1,11 +1,8 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useRouter } from "next/router";
 import { HexColorPicker } from "react-colorful";
-
-import {
-  PrimaryButton,
-  BackButton,
-} from "components/Common/Buttons";
+import RoomTypeDropdown from "components/Library/RoomTypeDropdown";
+import { PrimaryButton, BackButton } from "components/Common/Buttons";
 import { useDispatch, RootStateOrAny, useSelector } from "react-redux";
 import {
   startLoadingApp,
@@ -13,17 +10,23 @@ import {
 } from "../../../redux/slices/commonSlice";
 import { changeInfo, goStep } from "redux/slices/authSlice";
 import { StepTitle, WalletAddress } from "./Components";
+import { DownArrow, UpArrow } from "components/icons";
+import { PassportThemes } from "data/Register";
 
 const EditStyle = (props) => {
   const { onMint } = props;
   const dispatch = useDispatch();
   const router = useRouter();
 
-  const { userInfo, loading, isMobile } = useSelector((state: RootStateOrAny) => ({
-    userInfo: state.auth.userInfo,
-    loading: state.common.appLoading,
-    isMobile: state.common.isMobile
-  }));
+  const { userInfo, loading, isMobile } = useSelector(
+    (state: RootStateOrAny) => ({
+      userInfo: state.auth.userInfo,
+      loading: state.common.appLoading,
+      isMobile: state.common.isMobile,
+    })
+  );
+  const [toggleStatus, setToggleStatus] = useState(false);
+  const [selectedImage, setSelectedImage] = useState(PassportThemes[0]);
 
   const onSetColor = (value, target) => {
     let tempStyle = {};
@@ -38,6 +41,15 @@ const EditStyle = (props) => {
     dispatch(changeInfo({ payload: payload }));
   };
 
+  const selectImage = (item) => {
+    setSelectedImage(item);
+    const payload = {
+      value: item,
+      type: "backgroundImage",
+    };
+    dispatch(changeInfo({ payload: payload }));
+  };
+
   const onContinue = () => {
     const data = {
       passportStyle: userInfo.passportStyle,
@@ -45,7 +57,7 @@ const EditStyle = (props) => {
     const payload = {
       stepNum: 6,
       data,
-      next: router.push({ pathname: '/auth/buyroom' }),
+      next: router.push({ pathname: "/auth/buyroom" }),
     };
     dispatch(goStep(payload));
   };
@@ -68,7 +80,7 @@ const EditStyle = (props) => {
             Edit Style
           </h3>
         ) : (
-          <StepTitle caption={'Style'} />
+          <StepTitle caption={"Style"} />
         )}
         <WalletAddress />
       </div>
@@ -124,7 +136,7 @@ const EditStyle = (props) => {
             />
           </div>
         </div>
-        <div className="flex flex-row justify-between items-center relative">
+        <div className="mb-5 flex flex-row justify-between items-center relative">
           <span className="text-white">Text Color: </span>
           <div className="border-[1px] border-white rounded-[12px] p-[2px] cursor-pointer peer">
             <div
@@ -138,6 +150,41 @@ const EditStyle = (props) => {
               color={"#ffffff"}
               onChange={(value) => onSetColor(value, "text")}
             />
+          </div>
+        </div>
+        <div className="flex flex-row justify-between items-center relative">
+          <span className="text-white">Background Image: </span>
+
+          <div className="w-fit h-[46px] border-[1px] border-white rounded-[12px] px-[10px] cursor-pointer flex justify-center items-center">
+            {/* <RoomTypeDropdown items={["Hi", "Hello"]} /> */}
+            <div
+              className="relative flex justify-around w-full items-center cursor-pointer gap-2"
+              onClick={() => setToggleStatus(!toggleStatus)}
+            >
+              <div className="font-extralight text-[14px] text-[#f3f3f3]">
+                {selectedImage.title}
+              </div>
+              <div className={``}>
+                {toggleStatus ? <UpArrow /> : <DownArrow />}
+              </div>
+              {toggleStatus && (
+                <div
+                  className={`flex flex-col absolute w-[210px] h-[290px] overflow-y-scroll top-[40px] right-[-10px] text-center font-400 text-[16px] text-[#f3f3f3] z-[1000] p-[8px] bg-globalBgColor border-[1.5px] border-[#272829] rounded-[12px] cursor-pointer`}
+                >
+                  {PassportThemes.map((item, index) => (
+                    <div
+                      className={`hover:bg-[#272829] rounded-[6px] py-[2px] ${
+                        item == selectedImage ? "text-primary" : ""
+                      }`}
+                      onClick={() => selectImage(item)}
+                      key={index}
+                    >
+                      {item.title}
+                    </div>
+                  ))}
+                </div>
+              )}
+            </div>
           </div>
         </div>
       </div>
