@@ -50,17 +50,17 @@ const EditStyle = (props) => {
     dispatch(changeInfo({ payload: payload }));
   };
 
-  const onContinue = () => {
-    const data = {
-      passportStyle: userInfo.passportStyle,
-    };
-    const payload = {
-      stepNum: 6,
-      data,
-      next: router.push({ pathname: "/auth/buyroom" }),
-    };
-    dispatch(goStep(payload));
-  };
+  // const onContinue = () => {
+  //   const data = {
+  //     passportStyle: userInfo.passportStyle,
+  //   };
+  //   const payload = {
+  //     stepNum: 6,
+  //     data,
+  //     next: router.push({ pathname: "/auth/buyroom" }),
+  //   };
+  //   dispatch(goStep(payload));
+  // };
 
   const onUndo = () => {
     const payload = {
