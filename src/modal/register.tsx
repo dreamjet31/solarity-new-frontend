@@ -3,3 +3,8 @@ export type BadgeDataType = {
     name : string,
     active : boolean,
 }
+
+export type PassportThemeType = {
+    title: string,
+    image: string
+}
