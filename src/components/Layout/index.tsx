@@ -26,10 +26,11 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
     setSearchString?: Function;
 }) => {
     const dispatch = useDispatch();
-    const { chatSidebarVisibility, members, typingMembers } = useSelector((state: RootStateOrAny) => ({
+    const { chatSidebarVisibility, members, typingMembers, chatKind } = useSelector((state: RootStateOrAny) => ({
         chatSidebarVisibility: state.chat.chatSidebarVisibility,
         members: state.chat.members,
         typingMembers: state.chat.typingMembers,
+        chatKind: state.chat.chatKind,
     }))
 
     const [mobileMenuToggler, setMobileMenuToggler] = useState(false)
@@ -72,21 +73,20 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
         });
 
         (window as any).socket.on(ACTIONS.TYPING_STATE, (data) => {
-            console.log(data);
-            if (eqArraySets((window as any).members, data.members)) {
-            dispatch(setTypingState({ state: data.state, name: data.name, typingMembers: (window as any).typingMembers }));
-            }
+            dispatch(
+                setTypingState({ 
+                    state: data.state, 
+                    name: data.name,
+                    chatKind: data.chatKind,
+                    members: data.members, 
+                    typingMembers: (window as any).typingMembers 
+                })
+            );
         });
 
         (window as any).socket.on(ACTIONS.SEND_MSG_EXTENSION, (msg) => {
             if (!!msg) {
-                if (msg.groupType == CONSTANT.GLOBAL_CHAT) {
-                    dispatch(setUserMsg(msg));
-                } else if (msg.groupType == CONSTANT.GROUP_CHAT) {
-
-                } else if (msg.groupType == CONSTANT.DM_CHAT) {
-                    dispatch(setUserMsg(msg));
-                }
+                dispatch(setUserMsg(msg));
             }
         });
         (window as any).socialListen = true;
@@ -110,10 +110,10 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
                         <div>
                             {isChatPanel && (
                                 <ChatSidebar />
-                                )}
+                            )}
                             {!isChatPanel && (
                                 <InviteFriend setIsChatPanel={setIsChatPanel}/>
-                                )}
+                            )}
                             <Sidebar onClick={onClick} sidebarToggler={sidebarToggler} setIsChatPanel={setIsChatPanel}/>
                         </div>
                     )}

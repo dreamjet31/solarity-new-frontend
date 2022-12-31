@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import ACTIONS from "config/actions";
 import CONSTANT from "config/constant";
+import { eqArraySets } from "utils";
 
 export interface CounterState {
   chatSidebarVisibility: boolean;
@@ -174,7 +175,9 @@ export const chatSlice = createSlice({
       state.newMsg = action.payload;
     },
     setUserMsg: (state, action) => {
-      state.chatLogs.push(action.payload);
+      if(action.payload.groupType == state.chatKind) {
+        state.chatLogs.push(action.payload);
+      }
     },
     clearUserMsg: (state, action) => {
       state.chatLogs = [];
@@ -192,21 +195,27 @@ export const chatSlice = createSlice({
       })
     },
     setTypingState: (state, action) => {
-      if (action.payload.state == "false") {
-        const memberIndex = state.typingMembers.findIndex(s => s == action.payload.name);
-        if (memberIndex != -1) {
-          state.typingMembers.splice(memberIndex, 1);
-          if (state.typingMembers.length == 0) {
-            state.typingState = false;
+      if(action.payload.chatKind == state.chatKind) {
+        if (action.payload.chatKind == CONSTANT.DM_CHAT && !eqArraySets((window as any).members, action.payload.members)) {
+          return;
+        }
+        if (action.payload.state == "false") {
+          const memberIndex = state.typingMembers.findIndex(s => s == action.payload.name);
+          if (memberIndex != -1) {
+            state.typingMembers.splice(memberIndex, 1);
+            if (state.typingMembers.length == 0) {
+              state.typingState = false;
+            }
+          }
+        } else {
+          state.typingState = true;
+          const memberIndex = state.typingMembers.findIndex(s => s == action.payload.name);
+          if (memberIndex == -1) {
+            state.typingMembers.push(action.payload.name);
           }
         }
-      } else {
-        state.typingState = true;
-        const memberIndex = state.typingMembers.findIndex(s => s == action.payload.name);
-        if (memberIndex == -1) {
-          state.typingMembers.push(action.payload.name);
-        }
       }
+
     },
     setReply: (state, action) => {
       state.newMsg.reply = {
