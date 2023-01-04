@@ -92,6 +92,7 @@ const Sidebar = (props) => {
     }
     dispatch(setMembers([profile._id, otherUserId]));
     dispatch(setChatKind(CONSTANT.DM_CHAT));
+    console.log(2);
     dispatch(setSelectedChat({
       id: otherUserId,
       name: dm.name,

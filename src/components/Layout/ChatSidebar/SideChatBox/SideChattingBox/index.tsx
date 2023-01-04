@@ -69,7 +69,7 @@ const SideChattingBox = (props: SideChattingBoxType) => {
               content: data.chat[i].content,
               reply: data.chat[i].reply,
               attachments: data.chat[i].attachments,
-              date: data.chat[i].createdAt,
+              date: data.chat[i].date,
               editState: data.chat[i].editState,
               deleteState: data.chat[i].deleteState,
               msgId: data.chat[i].msgId,

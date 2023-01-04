@@ -99,13 +99,13 @@ const SidebarInput = (props: SidebarInputType) => {
 
   const enterKeyCapture = (e) => {
     if ((window as any).typingCounts == 0) {
-      (window as any).socket.emit(ACTIONS.TYPING_STATE, { members, name: profileData.username, state: "true" });
+      (window as any).socket.emit(ACTIONS.TYPING_STATE, { members, name: profileData.username, state: "true", chatKind });
     }
     (window as any).typingCounts++;
     setTimeout(() => {
       (window as any).typingCounts--;
       if ((window as any).typingCounts == 0) {
-        (window as any).socket.emit(ACTIONS.TYPING_STATE, { members, name: profileData.username, state: "false" })
+        (window as any).socket.emit(ACTIONS.TYPING_STATE, { members, name: profileData.username, state: "false", chatKind })
       }
     }, 1000);
     if (e.key === "Enter") {
