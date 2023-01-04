@@ -48,6 +48,12 @@ const nextConfig = {
   },
   images: {
     domains: ["i.pravatar.cc", "arweave.net", "api.jsonbin.it", "www.updatephantom.com", "www.arweave.net", "res.cloudinary.com", "solarity.club", "solarity.mypinata.cloud", "solrarity.club"],
+    remotePatterns: [
+      {
+        protocol: "https",
+        hostname: "**",
+      },
+    ],
   },
   webpack: (config, { isServer }) => {
     if (!isServer) {
