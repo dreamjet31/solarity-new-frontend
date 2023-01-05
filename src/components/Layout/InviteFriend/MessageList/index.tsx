@@ -20,11 +20,6 @@ const MessageList = (props) => {
       id: selectedFriend._id,
       name: selectedFriend.username,
     }))
-    dispatch(addDMs({
-      name: selectedFriend.username,
-      url: selectedFriend.profileImage ? selectedFriend.profileImage : '/images/experience/psuedo_avatars/avatar.png',
-      id: selectedFriend._id
-    }))
   }
 
   return (
@@ -49,7 +44,7 @@ const MessageList = (props) => {
           />
         ))}
       </div>
-      <div className="py-6 grid gap-5">
+      <div className="p-6 grid gap-5">
         <PrimaryButton disabled={selectedFriend ? false : true} caption="Create a chat" styles="py-3 w-full rounded-[15px]" onClick={startChat} />
       </div>
     </div>

@@ -1,4 +1,5 @@
 const ACTIONS = {
+    CHANGE_READ_STATE: 'change-read-state',
     DUPLICATION_INVITATION: 'duplication-invitation',
     GET_INVITATIONS: 'get-invitations',
     DENY_INVITATION: 'deny-invitation',
