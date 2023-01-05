@@ -13,6 +13,7 @@ import { setChatKind, setMembers, setSelectedChat } from "redux/slices/chatSlice
 import CONSTANT from "config/constant";
 import { clearUserMsg } from "redux/slices/chatSlice";
 import { setMsg } from "redux/slices/chatSlice";
+import { setDMChats } from "../../redux/slices/chatSlice";
 
 const ToggleShowBtn = (props) => {
   return (
@@ -42,12 +43,13 @@ export const ToggleChatBtn = (props) => {
 
 const Sidebar = (props) => {
   const dispatch = useDispatch();
-  const { profile, dms, selectedChat, chatLogs, chatKind } = useSelector((state: RootStateOrAny) => ({
+  const { profile, dms, selectedChat, chatLogs, chatKind, DMChats } = useSelector((state: RootStateOrAny) => ({
     profile: state.profile.data,
     dms: state.chat.dms,
     selectedChat: state.chat.selectedChat,
     chatLogs: state.chat.chatLogs,
     chatKind: state.chat.chatKind,
+    DMChats: state.chat.DMChats,
   }))
 
   const [serverChats, setServerChats] = useState([]);
@@ -73,13 +75,20 @@ const Sidebar = (props) => {
             badge: data.chats[i].unreadCount
           });
         }
-        setServerChats(tmpChats);
+        dispatch(setDMChats({
+          type: true,
+          data: tmpChats
+        }));
       } catch (error) {
         console.error('Something went wrong.')
       }
     }
     fetchChats();
-  }, [profile, chatLogs])
+  }, [profile, chatLogs, chatLogs.length])
+
+  useEffect(() => {
+    console.log(DMChats);
+  }, [DMChats])
 
   const setActiveDM = (dm) => {
     props.setIsChatPanel(true);
@@ -92,7 +101,6 @@ const Sidebar = (props) => {
     }
     dispatch(setMembers([profile._id, otherUserId]));
     dispatch(setChatKind(CONSTANT.DM_CHAT));
-    console.log(2);
     dispatch(setSelectedChat({
       id: otherUserId,
       name: dm.name,
@@ -100,6 +108,7 @@ const Sidebar = (props) => {
   }
 
   const setGlobalChat = () => {
+    props.setIsChatPanel(true);
     dispatch(setMembers([profile._id, "GroupChatId"]));
     dispatch(setChatKind(CONSTANT.GLOBAL_CHAT))
     dispatch(setSelectedChat({
@@ -177,7 +186,7 @@ const Sidebar = (props) => {
                 New DM
               </div>
             </div>
-            {serverChats.map(function (dm, index) {
+            {DMChats.map(function (dm, index) {
               return (
                 <div 
                   key={index + 1} 
@@ -186,6 +195,7 @@ const Sidebar = (props) => {
                   <SideAvatar
                     img_url={dm.url}
                     name={dm.name}
+                    badge={dm.badge}
                     expanded={true}
                     selected={selectedChat.id == dm.users[1].id || selectedChat.id == dm.users[0].id}
                   />

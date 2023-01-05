@@ -49,7 +49,7 @@ const MessageList = (props) => {
           />
         ))}
       </div>
-      <div className="py-6 grid gap-5">
+      <div className="p-6 grid gap-5">
         <PrimaryButton disabled={selectedFriend ? false : true} caption="Create a chat" styles="py-3 w-full rounded-[15px]" onClick={startChat} />
       </div>
     </div>

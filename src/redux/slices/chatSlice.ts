@@ -1,4 +1,4 @@
-import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction, current } from "@reduxjs/toolkit";
 import ACTIONS from "config/actions";
 import CONSTANT from "config/constant";
 import { eqArraySets } from "utils";
@@ -33,6 +33,7 @@ export interface CounterState {
   selectedChat: any;           // Id of user who are selected for chat.
   dms: any[];
   groups: any[];
+  DMChats: any[];
 }
 
 const initialState: CounterState = {
@@ -80,6 +81,7 @@ const initialState: CounterState = {
   },
   dms: [],
   groups: [],
+  DMChats: [],
 };
 
 export const chatSlice = createSlice({
@@ -174,9 +176,24 @@ export const chatSlice = createSlice({
     setNewMsg: (state, action) => {
       state.newMsg = action.payload;
     },
-    setUserMsg: (state, action) => {
-      if(action.payload.groupType == state.chatKind) {
+    setUserMsg: (state, action) => {console.log(action.payload)
+      if(action.payload.groupType == CONSTANT.GLOBAL_CHAT && state.chatKind == CONSTANT.GLOBAL_CHAT) {
         state.chatLogs.push(action.payload);
+      } else if (action.payload.groupType == CONSTANT.DM_CHAT && state.chatKind == CONSTANT.DM_CHAT) {
+        if(action.payload.members[0] == state.selectedChat.id) {
+          state.chatLogs.push(action.payload);
+        } else {
+          const DMChatsIndex = current(state.DMChats).findIndex(s => s.users.findIndex(s1 => s1.id == action.payload.members[0]) != -1);
+          state.DMChats[DMChatsIndex].badge = current(state.DMChats)[DMChatsIndex].badge + 1;
+        }
+      }
+    },
+    setDMChats: (state, action) => {
+      if(action.payload.type) {
+        state.DMChats = action.payload.data;
+      } else {
+        console.log("ban");
+        // state.DMChats.push(action.payload.data);
       }
     },
     clearUserMsg: (state, action) => {
@@ -282,6 +299,7 @@ export const {
   setRoom,
   addDMs,
   setDMs,
+  setDMChats,
 } = chatSlice.actions;
 
 export default chatSlice.reducer;

@@ -15,6 +15,9 @@ const SidebarAvatar = (props) => {
     return (
         <div className={`${props.selected ? 'border-[#29B080]': 'border-[#272829]'} z-[100000] group relative border-[1px] duration-800 rounded-[10px] w-[48px] h-[48px] mb-[16px] flex items-center justify-center cursor-pointer`}>
             <Image src={props.img_url} className="rounded-[6px]" width={36} height={36} alt={props.img_url} />
+            {!!props.badge && props.badge != 0 && (
+                <div className='absolute top-[-2px] right-[-2px] rounded-full py-[2px] px-[4px] bg-[#29B080] text-[11px] leading-[11px]'>{props.badge}</div>
+            )}
             {props.expanded ? <ToolTip>{props.name}</ToolTip> : ''}
         </div>
     )
