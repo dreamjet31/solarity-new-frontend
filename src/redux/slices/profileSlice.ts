@@ -483,6 +483,7 @@ export const profileSlice = createSlice({
         address.substring(address.length - 4, address.length);
       state.data = action.payload;
       localStorage.setItem("name", action.payload.username);
+      localStorage.setItem("userId", action.payload._id);
       if (!(window as any).socket) {
         (window as any).socket = socket();
       }

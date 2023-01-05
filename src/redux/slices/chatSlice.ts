@@ -34,6 +34,7 @@ export interface CounterState {
   dms: any[];
   groups: any[];
   DMChats: any[];
+  sidebarState: boolean;
 }
 
 const initialState: CounterState = {
@@ -82,6 +83,7 @@ const initialState: CounterState = {
   dms: [],
   groups: [],
   DMChats: [],
+  sidebarState: false,
 };
 
 export const chatSlice = createSlice({
@@ -176,16 +178,19 @@ export const chatSlice = createSlice({
     setNewMsg: (state, action) => {
       state.newMsg = action.payload;
     },
-    setUserMsg: (state, action) => {console.log(action.payload)
+    setUserMsg: (state, action) => {
       if(action.payload.groupType == CONSTANT.GLOBAL_CHAT && state.chatKind == CONSTANT.GLOBAL_CHAT) {
         state.chatLogs.push(action.payload);
-      } else if (action.payload.groupType == CONSTANT.DM_CHAT && state.chatKind == CONSTANT.DM_CHAT) {
-        if(action.payload.members[0] == state.selectedChat.id) {
-          state.chatLogs.push(action.payload);
-        } else {
-          const DMChatsIndex = current(state.DMChats).findIndex(s => s.users.findIndex(s1 => s1.id == action.payload.members[0]) != -1);
-          state.DMChats[DMChatsIndex].badge = current(state.DMChats)[DMChatsIndex].badge + 1;
-        }
+      } else {
+        if (action.payload.groupType == CONSTANT.DM_CHAT) {
+          if(state.chatKind == CONSTANT.DM_CHAT && action.payload.members[0] == state.selectedChat.id || action.payload.members[0] == localStorage.getItem('userId')) {
+            state.chatLogs.push(action.payload);
+            return;
+          }
+          console.log(action.payload);
+          (window as any).socket.emit(ACTIONS.CHANGE_READ_STATE, {msgId: action.payload.msgId});
+          state.sidebarState = !current(state).sidebarState; 
+        } 
       }
     },
     setDMChats: (state, action) => {

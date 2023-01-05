@@ -43,13 +43,14 @@ export const ToggleChatBtn = (props) => {
 
 const Sidebar = (props) => {
   const dispatch = useDispatch();
-  const { profile, dms, selectedChat, chatLogs, chatKind, DMChats } = useSelector((state: RootStateOrAny) => ({
+  const { profile, dms, selectedChat, chatLogs, chatKind, DMChats, sidebarState } = useSelector((state: RootStateOrAny) => ({
     profile: state.profile.data,
     dms: state.chat.dms,
     selectedChat: state.chat.selectedChat,
     chatLogs: state.chat.chatLogs,
     chatKind: state.chat.chatKind,
     DMChats: state.chat.DMChats,
+    sidebarState: state.chat.sidebarState,
   }))
 
   const [serverChats, setServerChats] = useState([]);
@@ -84,11 +85,7 @@ const Sidebar = (props) => {
       }
     }
     fetchChats();
-  }, [profile, chatLogs, chatLogs.length])
-
-  useEffect(() => {
-    console.log(DMChats);
-  }, [DMChats])
+  }, [profile, chatLogs, chatLogs.length, sidebarState])
 
   const setActiveDM = (dm) => {
     props.setIsChatPanel(true);

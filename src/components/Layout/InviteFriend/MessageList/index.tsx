@@ -20,11 +20,6 @@ const MessageList = (props) => {
       id: selectedFriend._id,
       name: selectedFriend.username,
     }))
-    dispatch(addDMs({
-      name: selectedFriend.username,
-      url: selectedFriend.profileImage ? selectedFriend.profileImage : '/images/experience/psuedo_avatars/avatar.png',
-      id: selectedFriend._id
-    }))
   }
 
   return (
