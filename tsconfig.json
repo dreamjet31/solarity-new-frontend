@@ -1,8 +1,8 @@
 {
   "compilerOptions": {
-    "baseUrl": "./src/",
+    "baseUrl": ".",
     "paths": {
-      "*": ["src/*"]
+      "*": ["./src/*"]
     },
     "target": "es5",
     "lib": [
@@ -29,7 +29,8 @@
     "**/*.tsx",
     "**/*.js"  ],
   "exclude": [
-    "node_modules"
+    "node_modules",
+    "build",
   ],
   "types": [
     "babylonjs",
