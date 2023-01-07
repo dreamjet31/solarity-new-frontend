@@ -4,11 +4,10 @@ import { BannerText } from "./BannerText";
 import { BannerImage } from "./BannerImage";
 import { BannerLeftImg, BannerRightImg } from "components/Common/Images";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
-import { ConnectWallet } from "./ConnectWallet";
 import { useWallet } from "@solana/wallet-adapter-react";
 import { apiCaller } from "utils/fetcher";
 import { useDispatch } from "react-redux";
-import { goStep, login } from "redux/slices/authSlice";
+import { login } from "redux/slices/authSlice";
 import { useRouter } from "next/router";
 import { startLoadingApp, stopLoadingApp } from "redux/slices/commonSlice";
 
@@ -25,7 +24,6 @@ export const HomePage = () => {
     if (wallet.connected) {
       let publicKey = wallet.publicKey.toBase58();
       let type = 'solana';
-      // let provider = (window as any).phantom.solana
       loginUser(publicKey, type, wallet);
     }
   }, [connected]);
@@ -40,13 +38,12 @@ export const HomePage = () => {
       publicKey: address,
       walletType: type,
     });
-
     let url;
     if (!exist) {
       url = '/auth/register';
-    } else if (user.registerStep <= 5) {
+    } else if (user.registerStep <= 4) {
       url = '/auth/register';
-    } else if (user.registerStep > 5) {
+    } else if (user.registerStep > 4) {
       url = `/${user.username}/profile`
     }
 
@@ -58,8 +55,9 @@ export const HomePage = () => {
         walletType: type,
         provider,
         next: () => {
-          dispatch(stopLoadingApp());
-          router.push({ pathname: url })
+          router.push({ pathname: url }).then((res) => {
+            dispatch(stopLoadingApp());
+          })
         },
       })
     );

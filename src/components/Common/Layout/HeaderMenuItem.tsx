@@ -1,5 +1,8 @@
 import Link from "next/link";
+import { useRouter } from "next/router";
 import React from "react";
+import { useDispatch } from "react-redux";
+import { startLoadingApp, stopLoadingApp } from "redux/slices/commonSlice";
 
 type HeaderMenuItemProps = {
     title: string,
@@ -8,6 +11,15 @@ type HeaderMenuItemProps = {
 }
 
 const HeaderMenuItem = (props: HeaderMenuItemProps) => {
+    const router = useRouter();
+    const dispatch = useDispatch();
+    const gotoLocation = (link) => {
+        dispatch(startLoadingApp());
+        router.push(link).then((res) => {
+            dispatch(stopLoadingApp());
+        })
+    }
+
     return (
         <div className={`flex flex-col 
                         custom-2xl:mr-10 xl:mr-5 lg:mr-10 font-500 text-[16px] justify-center items-center ${props.active ? 'text-[#29B080]' : 'text-[#929298]'} h-full cursor-pointer hover:text-[#29B080] select-none`}>
@@ -18,12 +30,9 @@ const HeaderMenuItem = (props: HeaderMenuItemProps) => {
             </div>
 
             {
-                props.title === "Popup" ?
-                    <a>{props.title}</a>
-                    :
-                    <Link href={`/${props.link}`}>
-                        <a><nobr>{props.title}</nobr></a>
-                    </Link>
+                <div className="whitespace-nowrap" onClick={() => gotoLocation(props.link)}>
+                    {props.title}
+                </div>
             }
         </div>
     )

@@ -56,7 +56,6 @@ export const login = createAsyncThunk(
     { dispatch }
   ) => {
     let response = false;
-    // dispatch(startLoadingApp());
     try {
       const {
         data: { nonce },
@@ -83,7 +82,6 @@ export const login = createAsyncThunk(
       dispatch(setProfile(profile));
       response = true;
       if (next) next();
-      // dispatch(stopLoadingApp());
     } catch (err) {
       console.log(err);
       dispatch(stopLoadingApp());
