@@ -53,29 +53,28 @@ const Sidebar = (props) => {
     sidebarState: state.chat.sidebarState,
   }))
 
-  const [serverChats, setServerChats] = useState([]);
-
   useEffect(() => {
     const fetchChats = async () => {
       try {
         if (profile.username == undefined) {
           return;
         }
-        const { data } = await apiCaller.get("/chats/fetchChats");
-        var tmpChats = [];
-        for (var i = 0; i < data.chats.length; i++) {
-          const person = data.chats[i].users[0].username == profile.username ? data.chats[i].users[1] : data.chats[i].users[0];
+        var { data } = await apiCaller.get("/chats/fetchChats");
+        let tmpChats = [];
+        data.chats.map((chat, index) => {
+          let person = chat.users[0].username == profile.username ? chat.users[1] : chat.users[0];
           tmpChats.push({
-            _id: data.chats[i]._id,
-            users: data.chats[i].users,
+            _id: chat._id,
+            users: chat.users,
             url: person.profileImage ? person.profileImage.link : "/images/experience/psuedo_avatars/avatar.png",
             name: person.username,
-            detail: data.chats[i].lastMsg.content,
-            time: time_ago(data.chats[i].lastMsg.createdAt),
+            detail: person.bio,
+            time: time_ago(chat.lastMsg.createdAt),
             gap: 3,
-            badge: data.chats[i].unreadCount
+            badge: chat.unreadCount
           });
-        }
+        });
+          
         dispatch(setDMChats({
           type: true,
           data: tmpChats
@@ -90,7 +89,6 @@ const Sidebar = (props) => {
   const setActiveDM = (dm) => {
     props.setIsChatPanel(true);
     var otherUserId = '';
-    console.log(profile._id, dm.users);
     if(dm.users[0].id == profile._id) {
       otherUserId = dm.users[1].id;
     } else {

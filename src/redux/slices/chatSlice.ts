@@ -185,9 +185,9 @@ export const chatSlice = createSlice({
         if (action.payload.groupType == CONSTANT.DM_CHAT) {
           if(state.chatKind == CONSTANT.DM_CHAT && action.payload.members[0] == state.selectedChat.id || action.payload.members[0] == localStorage.getItem('userId')) {
             state.chatLogs.push(action.payload);
+            state.sidebarState = !current(state).sidebarState; 
             return;
           }
-          console.log(action.payload);
           (window as any).socket.emit(ACTIONS.CHANGE_READ_STATE, {msgId: action.payload.msgId});
           state.sidebarState = !current(state).sidebarState; 
         } 
