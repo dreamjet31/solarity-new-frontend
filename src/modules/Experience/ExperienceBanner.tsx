@@ -37,11 +37,11 @@ const ExperienceBanner = () => {
           alt="Experience Banner Image"
         />
       ) : (
-        <div className='flex border border-[#1A1A1C]'>
+        <div className='flex border border-[#1A1A1C] rounded-[25px]'>
           <div className='relative w-[50%] h-[496px] bg-[#131314]'>
-            <Image src="/images/intro/slides/hubs.png" layout="fill" />
+            <Image src="/images/intro/slides/hubs.png" layout="fill" className="rounded-[25px]" />
           </div>
-          <div className='w-[50%] bg-[#131314] flex items-center justify-center text-center'>
+          <div className='w-[50%] bg-[#131314] flex items-center justify-center text-center rounded-[25px]'>
             <div>
               <h2 className='text-[30px] font-[700] title-color'>HUBS</h2>
               <p className='center text-[19px] font-[500] content-color'> Socialize, play, bet and trade in the <br />most immersive way possible.<br />Poker, WL hunting, presentations and more.<br /></p>
