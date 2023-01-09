@@ -1,4 +1,3 @@
-import Link from "next/link";
 import { useRouter } from "next/router";
 import React from "react";
 import { useDispatch } from "react-redux";
@@ -13,9 +12,10 @@ type HeaderMenuItemProps = {
 const HeaderMenuItem = (props: HeaderMenuItemProps) => {
     const router = useRouter();
     const dispatch = useDispatch();
+
     const gotoLocation = (link) => {
         dispatch(startLoadingApp());
-        router.push(link).then((res) => {
+        router.push('/' + link).then((res) => {
             dispatch(stopLoadingApp());
         })
     }
@@ -28,7 +28,6 @@ const HeaderMenuItem = (props: HeaderMenuItemProps) => {
                     <path d="M56 0L41.1003 4.1967C36.8523 5.39322 32.4599 6 28.0466 6C23.6593 6 19.2927 5.40037 15.0679 4.21776L0 -2.44784e-06L56 0Z" fill="#29B080" />
                 </svg>
             </div>
-
             {
                 <div className="whitespace-nowrap" onClick={() => gotoLocation(props.link)}>
                     {props.title}

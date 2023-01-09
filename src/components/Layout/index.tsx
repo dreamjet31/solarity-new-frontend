@@ -101,7 +101,7 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
                 <Header searchString={searchString} setSearchString={setSearchString} />
                 <div className='flex w-full'>
                     <div className={`fixed left-[0px] top-[112px] bottom-0 overflow-y-auto ${chatSidebarVisibility ? 'right-[435px]' : 'right-0'}`}>
-                        <div className={`w-full custom-2xl:px-[${chatSidebarVisibility ? 30 : 100}px] xl:px-[25px] lg:px-[32px] md:px-[25px] sm:px-[20px] xs:px-[24px]`}>
+                        <div className={`w-full px-[${chatSidebarVisibility ? 30 : 100}px]`}>
                             {banner}
                             {children}
                         </div>
