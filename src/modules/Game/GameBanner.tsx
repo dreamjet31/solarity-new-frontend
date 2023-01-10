@@ -5,14 +5,14 @@ const GameBanner = () => {
   return (
     <div className="relative">
       <img src={"/images/community/backs/BG (1).png"} className="" width={"100%"} height={322} alt="background" />
-      <div className={` absolute top-6 left-25 px-[52px] w-[513px] pt-[66px] pb-7 text-left`}>
+      <div className={` absolute top-6 left-25 px-[52px] w-[513px] pt-[20px] pb-7 text-left`}>
         <h2 className="text-[30px] font-[700] text-white pb-4">{"Aurory SZN is here!"}</h2>
         <p className={`text-[15px] font-[500] text-[#A29999] pb-4`}>
           {"Damage with Legendary Weapons, Play now to earn infinite rewards, and claim you airdrop!"}
         </p>
         <SmallButton caption={"Launch Now"} onClick={() => {}} />
       </div>
-      <div className={` absolute bottom-6 left-25 px-[52px] w-[513px] pt-[66px] pb-7 text-left`}>
+      <div className={` absolute bottom-4 left-25 px-[52px] w-[513px] pt-[66px] pb-7 text-left`}>
         <h2 className="text-[20px] font-[700] text-white pb-4">{"Games of the week:"}</h2>
         <div className="flex gap-2">
           <img 
