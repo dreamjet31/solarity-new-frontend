@@ -35,10 +35,10 @@ const GameHome = () => {
         </div>
       </div>
       <div>
-      <Header name={'Recommended'} count={games.length} onRightArrowClick={gameRightArrowClick} onLeftArrowClick={gameLeftArrowClick} />
-            <div className=' col-span-1'>
-                <GameItems items={games} />
-            </div>
+        <Header name={'Recommended'} count={games.length} onRightArrowClick={gameRightArrowClick} onLeftArrowClick={gameLeftArrowClick} />
+        <div className=' col-span-1'>
+            <GameItems items={games} />
+        </div>
       </div>
     </div>
   );
