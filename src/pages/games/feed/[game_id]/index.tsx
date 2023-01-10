@@ -15,7 +15,7 @@ import Header from 'components/Community/Feed/Header'
 import { games } from 'data/Community'
 import GameContent from 'components/Game/GameContent'
 
-function CommunityFeed() {
+function GameFeed() {
   const [sidebarToggler, setSidebarToggler] = useState(false)
   const router = useRouter();
   const { game_id, type } = router.query;
@@ -82,4 +82,4 @@ function CommunityFeed() {
   )
 }
 
-export default CommunityFeed
+export default GameFeed
