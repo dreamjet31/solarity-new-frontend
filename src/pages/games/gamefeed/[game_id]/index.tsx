@@ -19,6 +19,7 @@ function GameFeed() {
   const [sidebarToggler, setSidebarToggler] = useState(false)
   const router = useRouter();
   const { game_id, type } = router.query;
+  var gameId = parseInt(game_id as string) ? parseInt(game_id as string): 0;
 
   const [isMarketplace, setIsMarketplace] = useState(false)
   const [previewImg, setPreviewImg] = useState(rooms[0].imgUrl)
@@ -64,15 +65,15 @@ function GameFeed() {
           <Header
             id={game_id}
             isPreview={!isMarketplace}
-            type={type}
-            avatarUrl={games[game_id].avatarUrl}
-            websiteUrl={games[game_id].websiteUrl}
-            iframeUrl={games[game_id].iframeUrl ? games[game_id].iframeUrl: ""}
-            backUrl={games[game_id].backUrl}
-            title={games[game_id].communityName}
-            description={games[game_id].description}
-            walletAddress={games[game_id].walletAddress}
-            icon={games[game_id].walletIcon}
+            type={type as string}
+            avatarUrl={games[gameId].avatarUrl}
+            websiteUrl={games[gameId].websiteUrl}
+            iframeUrl={games[gameId].iframeUrl ? games[gameId].iframeUrl: ""}
+            backUrl={games[gameId].backUrl}
+            title={games[gameId].communityName}
+            description={games[gameId].description}
+            walletAddress={games[gameId].walletAddress}
+            icon={games[gameId].walletIcon}
           />
         }
         onClick={() => setSidebarToggler(!sidebarToggler)}
