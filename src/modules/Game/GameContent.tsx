@@ -14,7 +14,7 @@ const GameContent = () => {
   }
 
   const gotoDetailPage = (id, type) => {
-    router.push('/games/feed/' + id + '?type=' + type);
+    router.push('/games/gamefeed/' + id + '?type=' + type);
   }
 
   return (
