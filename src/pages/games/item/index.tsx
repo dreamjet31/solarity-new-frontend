@@ -1,20 +1,19 @@
 import React, { useState } from "react";
+import Layout from "components/Layout";
+import GameBanner from 'modules/Game/GameBanner';
+import GameContent from 'modules/Game/GameContent';
 
-import GamesBanner from 'modules/Game/GamesBanner';
-import Game from 'modules/Game';
-import Layout from "components/Layout"
-
-const GamePage = () => {
+const Games = () => {
   const [sidebarToggler, setSidebarToggler] = useState(false)
   return (
     <Layout
       sidebarToggler={sidebarToggler}
-      banner={<GamesBanner />}
+      banner={<GameBanner />}
       onClick={() => setSidebarToggler(!sidebarToggler)}
     >
-      <Game />
+      <GameContent />
     </Layout>
   );
 }
 
-export default GamePage;
+export default Games;

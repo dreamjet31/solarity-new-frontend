@@ -33,12 +33,12 @@ const GameItem = (props) => {
             {props.communityName}
           </div>
         </div>
-        <div className='flex text-white px-3'>
+        {/* <div className='flex text-white px-3'>
           <div className='text-[#29B080] pr-1'>
             <Users />
           </div>
           {Math.floor(Math.random() * 20)}
-        </div>
+        </div> */}
       </div>
     </div>
   )
