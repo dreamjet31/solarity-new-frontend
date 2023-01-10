@@ -9,7 +9,7 @@ const GamePage = () => {
   return (
     <Layout
       sidebarToggler={sidebarToggler}
-      banner={<GameBanner />}
+      banner={<div></div>}
       onClick={() => setSidebarToggler(!sidebarToggler)}
     >
       <GameContent />
