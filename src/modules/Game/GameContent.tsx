@@ -2,10 +2,10 @@ import GameItems from "components/Marketplace/NFTItems/GameItems";
 import Header from "components/Marketplace/NFTItems/Header";
 import React from "react";
 import { games } from 'data/Community';
-import GameItem from "components/Marketplace/NFTItems/GameItem";
-import Image from "next/image";
+import { useRouter } from "next/router";
 
 const GameContent = () => {
+  const router = useRouter();
   const gameRightArrowClick = () => {
     (document as any).querySelector('.game-items').scrollLeft += 200;
   }
@@ -13,8 +13,8 @@ const GameContent = () => {
       (document as any).querySelector('.game-items').scrollLeft -= 200;
   }
 
-  const gotoDetailPage = () => {
-    
+  const gotoDetailPage = (id, type) => {
+    router.push('/games/feed/' + id + '?type=' + type);
   }
 
   return (
@@ -25,7 +25,7 @@ const GameContent = () => {
       <div className="grid gap-6 grid-cols-6">
         {games.map((game, index) => (
             <div className=" col-span-1 flex flex-col border-[1.2px] border-[#272829] rounded-[20px] p-[2px]
-            relative cursor-pointer hover:border-primary" key={index} onClick={gotoDetailPage}>
+            relative cursor-pointer hover:border-primary" key={index} onClick={() => gotoDetailPage(index, 'game')}>
               <div className=" rounded-[15px] overflow-hidden w-full">
                 <img src={game.itemUrl} className='rounded-2xl' width="100%" height={232} alt="room_image" />
               </div>
@@ -45,10 +45,10 @@ const GameContent = () => {
             </div>
         ))}
       </div>
-      <Header name={'What yoru friends play'} onRightArrowClick={gameRightArrowClick} onLeftArrowClick={gameLeftArrowClick} />
-      <div className=' col-span-1 mb-8'>
-          <GameItems items={games.slice(2, 8)} state={1}/>
-      </div>
+      {/* <Header name={'What yoru friends play'} onRightArrowClick={gameRightArrowClick} onLeftArrowClick={gameLeftArrowClick} /> */}
+      {/* <div className=' col-span-1 mb-8'>
+          <GameItems items={games.slice(2, 8)}/>
+      </div> */}
     </div>
   );
 }

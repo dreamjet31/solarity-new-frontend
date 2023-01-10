@@ -12,7 +12,7 @@ export interface HeaderProps {
   avatarUrl: string;
   backUrl: string;
   title: string;
-  type: string;
+  type?: string;
   description: string;
   websiteUrl: string;
   iframeUrl: string;
