@@ -9,8 +9,8 @@ const GameDivision = () => {
           TYPE
         </div>
         <div className='flex items-center gap-2'>
-          <RoundButton caption="Sports" />
-          <RoundButton caption="Sports" />
+          <RoundButton caption="P2P" />
+          <RoundButton caption="ACTION" />
         </div>
       </div>
       <div className='flex items-center mb-4'>
