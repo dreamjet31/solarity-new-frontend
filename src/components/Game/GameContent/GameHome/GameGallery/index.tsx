@@ -6,7 +6,7 @@ const GameGallery = () => {
     <div className=''>
       <div className='flex gap-2 mb-8'>
         <div>
-          <img src="/images/games/desc1.png" className='rounded-[4px]' width="718" height="391" />
+          <img src="/images/games/desc.png" className='rounded-[4px]' width="718" height="391" />
         </div>
         <div className='flex flex-col gap-3'>
           <img src="/images/games/desc2.png" className='rounded-[4px]' width="491" height="190" />
