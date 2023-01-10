@@ -17,7 +17,7 @@ export type SliderType = {
 const BannerSlide = (props: SliderType) => {
   const router = useRouter();
   const gotoPath = () => {
-    router.push(`/community/feed/${props.index}?type=${props.type}`);
+    router.push(props.path);
   }
 
   return (
