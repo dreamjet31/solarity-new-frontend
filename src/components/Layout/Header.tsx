@@ -86,7 +86,7 @@ const Header = (props: HeaderProps) => {
         let url;
         if (!exist) {
             url = '/auth/register';
-        } else if (user.registerStep <= 5) {
+        } else if (user.registerStep <= 4) {
             url = '/auth/register';
         }
         await dispatch(

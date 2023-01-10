@@ -44,7 +44,7 @@ export const HomePage = () => {
     } else if (user.registerStep <= 4) {
       url = '/auth/register';
     } else if (user.registerStep > 4) {
-      url = `/${user.username}/profile`
+      url = `/explore`
     }
 
     dispatch(startLoadingApp());
