@@ -22,7 +22,7 @@ const GameContent = () => {
       <div className='text-white text-[25px] font-medium mt-20 mb-2'>
         Libraries
       </div>
-      <div className="grid gap-6 grid-cols-6">
+      <div className="grid gap-6 grid-cols-6 mb-6">
         {games.map((game, index) => (
             <div className=" col-span-1 flex flex-col border-[1.2px] border-[#272829] rounded-[20px] p-[2px]
             relative cursor-pointer hover:border-primary" key={index} onClick={() => gotoDetailPage(index, 'game')}>
