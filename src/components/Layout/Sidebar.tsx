@@ -112,6 +112,16 @@ const Sidebar = (props) => {
     }))
   }
 
+  const setYGGChat = () => {
+    props.setIsChatPanel(true);
+    dispatch(setMembers([profile._id, "YGGChatId"]));
+    dispatch(setChatKind(CONSTANT.YGG_CHAT))
+    dispatch(setSelectedChat({
+      id: "",
+      name: "YGG Chat",
+    }))
+  }
+
   return (
     <div className="fixed top-[92px] right-0 bottom-0 overflow-y-auto z-[100]">
       <div className="sm:flex xs:hidden flex-row border-l-[1px] border-semiSplitter bg-globalBgColor">
@@ -143,6 +153,18 @@ const Sidebar = (props) => {
                 name={'global'}
                 expanded={true}
                 selected={chatKind == CONSTANT.GLOBAL_CHAT}
+              />
+            </div>
+            <div 
+              key={1} 
+              onClick={setYGGChat}
+            >
+              <SideAvatar
+                key={1}
+                img_url={"/images/community/img/YGG.PNG"}
+                name={'YGG'}
+                expanded={true}
+                selected={chatKind == CONSTANT.YGG_CHAT}
               />
             </div>
             {/* {Your_Daos.avatars.map(function (i) {
@@ -184,7 +206,7 @@ const Sidebar = (props) => {
             {DMChats.map(function (dm, index) {
               return (
                 <div 
-                  key={index + 1} 
+                  key={index + 2} 
                   onClick={() => setActiveDM(dm)}
                 >
                   <SideAvatar

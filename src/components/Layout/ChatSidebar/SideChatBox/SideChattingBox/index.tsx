@@ -56,7 +56,7 @@ const SideChattingBox = (props: SideChattingBoxType) => {
       try {
         dispatch(clearUserMsg({}));
         const { data } = await apiCaller.post("/chats/fetchMessages", { members, chatKind });
-        if(chatKind == CONSTANT.GLOBAL_CHAT) {
+        if(chatKind == CONSTANT.GLOBAL_CHAT || chatKind == CONSTANT.YGG_CHAT) {
           for (var i = 0; i < data.chat.length; i ++) {
             await dispatch(setUserMsg({
               groupType: data.chat[i].groupType,

@@ -181,6 +181,8 @@ export const chatSlice = createSlice({
     setUserMsg: (state, action) => {
       if(action.payload.groupType == CONSTANT.GLOBAL_CHAT && state.chatKind == CONSTANT.GLOBAL_CHAT) {
         state.chatLogs.push(action.payload);
+      } else if(action.payload.groupType == CONSTANT.YGG_CHAT && state.chatKind == CONSTANT.YGG_CHAT) {
+        state.chatLogs.push(action.payload);
       } else {
         if (action.payload.groupType == CONSTANT.DM_CHAT) {
           if(state.chatKind == CONSTANT.DM_CHAT && action.payload.members[0] == state.selectedChat.id || action.payload.members[0] == localStorage.getItem('userId')) {
