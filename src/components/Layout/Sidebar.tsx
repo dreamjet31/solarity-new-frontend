@@ -161,7 +161,7 @@ const Sidebar = (props) => {
             >
               <SideAvatar
                 key={1}
-                img_url={"/images/community/img/YGG.PNG"}
+                img_url={"/images/community/img/YGG.png"}
                 name={'YGG'}
                 expanded={true}
                 selected={chatKind == CONSTANT.YGG_CHAT}
