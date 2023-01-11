@@ -125,9 +125,9 @@ export const games: ItemProps[] = [
         walletIcon: <SolanaLinkIcon />
     },
     {
-        avatarUrl: '/images/community/avatars/Picture (8).png',
+        avatarUrl: '/images/community/avatars/ave.png',
         backUrl: '/images/community/backs/Aave.gif',
-        itemUrl: '/images/community/posters/Aave.png',
+        itemUrl: '/images/community/posters/aavegotchi.png',
         communityName: 'Aavegotchi',
         collectionName: 'Aavegotchi',
         memberNumber: 5000,
@@ -178,7 +178,7 @@ export const games: ItemProps[] = [
     {
         avatarUrl: '/images/community/avatars/Halo.png',
         backUrl: '/images/community/backs/Halo.png',
-        itemUrl: '/images/community/posters/Halo.jpeg',
+        itemUrl: '/images/community/posters/Haloo.png',
         communityName: 'Halo',
         collectionName: 'Halo',
         memberNumber: 2400,
@@ -229,7 +229,7 @@ export const games: ItemProps[] = [
     {
         avatarUrl: '/images/community/avatars/PanzerDogs.png',
         backUrl: '/images/community/backs/PanzerDogs.jpeg',
-        itemUrl: '/images/community/posters/PanzerDogss.png',
+        itemUrl: '/images/community/posters/Panzer.png',
         communityName: 'PanzerDogs',
         collectionName: 'Solana',
         memberNumber: 2400,
@@ -246,7 +246,7 @@ export const games: ItemProps[] = [
     {
         avatarUrl: '/images/community/avatars/RuggedReverants.gif',
         backUrl: '/images/community/backs/RuggedReverants.png',
-        itemUrl: '/images/community/posters/RuggedRevenants.jpg',
+        itemUrl: '/images/community/posters/Rugged.png',
         communityName: 'Rugged Revenants',
         collectionName: 'Solana',
         memberNumber: 2400,
