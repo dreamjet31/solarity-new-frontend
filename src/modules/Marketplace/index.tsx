@@ -15,7 +15,7 @@ const Marketplace = (props: MarketPlaceProps) => {
     const [activeCollection, setActiveCollection] = useState('All collections');
 
     return (
-        <div className="mt-[36px]">
+        <div className="mt-[36px] mb-8">
             <Filter
                 categories={categoriesData}
                 activeCategory={activeCategory}

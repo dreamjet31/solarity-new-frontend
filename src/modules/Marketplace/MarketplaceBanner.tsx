@@ -51,10 +51,10 @@ const MarketplaceBanner = (props: MarketPlaceBannerType) => {
                     <div>
                         {selectedRoom.imgUrl == undefined ? (
                             <div className='flex border border-[#1A1A1C]'>
-                                <div className='relative w-[50%] h-[496px] bg-[#131314]'>
+                                <div className='relative w-[50%] h-[496px] bg-[#131314] xl:block hidden'>
                                     <Image src="/images/intro/slides/rooms.png" layout="fill" />
                                 </div>
-                                <div className='w-[50%] bg-[#131314] flex items-center justify-center text-center'>
+                                <div className='xl:w-[50%] w-full h-[496px] bg-[#131314] flex items-center justify-center text-center'>
                                     <div>
                                         <h2 className='text-[30px] font-[700] title-color'>ROOMS</h2>
                                         <p className='center text-[19px] font-[500] content-color'>Virtual Experiences for your friends and <br />communities.</p>

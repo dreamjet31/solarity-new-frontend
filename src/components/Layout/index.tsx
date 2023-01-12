@@ -100,7 +100,7 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
             <div className="bg-globalBgColor w-full pb-7">
                 <Header searchString={searchString} setSearchString={setSearchString} />
                 <div className='flex w-full'>
-                    <div className={`fixed left-[0px] top-[164px] xl:top-[124px] bottom-0 overflow-y-auto ${chatSidebarVisibility ? 'right-[435px]' : 'right-0'}`}>
+                    <div className={`fixed left-[0px] xs:top-[80px] sm:top-[164px] xl:top-[124px] bottom-0 overflow-y-auto ${chatSidebarVisibility ? 'right-[435px]' : 'right-0'}`}>
                         <div className={`w-full ${chatSidebarVisibility == true ? "lg:px-8" : "lg:px-32"} px-6`}>
                             {banner}
                             {children}
