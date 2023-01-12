@@ -34,7 +34,7 @@ const Explore = () => {
 
     return (
         <div className='grid grid-cols-1 pb-10'>
-            <Header name={'Explore Live rooms right now'} count={rooms.length} onRightArrowClick={roomRightArrowClick} onLeftArrowClick={roomLeftArrowClick} />
+            <Header name={'Explore live rooms right now'} count={rooms.length} onRightArrowClick={roomRightArrowClick} onLeftArrowClick={roomLeftArrowClick} />
             <div className=' col-span-1'>
                 <LiveRoomItems items={rooms} />
             </div>

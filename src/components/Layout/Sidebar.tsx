@@ -123,18 +123,9 @@ const Sidebar = (props) => {
   }
 
   return (
-    <div className="fixed top-[92px] right-0 bottom-0 overflow-y-auto z-[100]">
+    <div className="fixed xl:top-[92px] sm:top-[144px] xl:top-[92px] right-0 bottom-0 overflow-y-auto z-[100]">
       <div className="sm:flex xs:hidden flex-row border-l-[1px] border-semiSplitter bg-globalBgColor">
         <div className={`relative flex flex-col w-[70px] items-center`}>
-          {/* <div className="px-[25px] py-[21px] border-b-[1px] border-semiSplitter relative">
-            <div className="w-[50px] h-[50px] cursor-pointer">
-              <Image src="/favicon.png" width={40} height={40}></Image>
-            </div>
-            <ToggleShowBtn
-              toggle={props.sidebarToggler}
-              onClick={props.onClick}
-            />
-          </div> */}
           <div
             className={`w-full pt-[18px] pb-[26px] border-b-[1px] border-semiSplitter flex flex-col items-center`}
           >

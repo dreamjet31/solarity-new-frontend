@@ -34,7 +34,7 @@ const LiveRoomListItem = (props: LiveRoomListItemType) => {
 
   return (
     <div
-      className={` flex flex-row p-[8px] w-full md:h-[91px] xs:h-[72px] border-[1.2px] rounded-[15px] relative cursor-pointer hover:border-[#29b080] ${selectedIndex == props.roomId ? "border-primary" : "border-[#272829]"} `}
+      className={` flex flex-row p-[8px] w-full md:h-[91px] xs:h-[91px] border-[1.2px] rounded-[15px] relative cursor-pointer hover:border-[#29b080] ${selectedIndex == props.roomId ? "border-primary" : "border-[#272829]"} `}
       onClick={() => {
         width < 768 ? showJoinRoomDlg(props.roomId) : onItemClick(props.roomId);
       }}

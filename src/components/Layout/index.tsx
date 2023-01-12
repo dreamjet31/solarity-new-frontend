@@ -64,32 +64,32 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
         }
 
         if (!(window as any).socialListen) {
-        (window as any).socket.on(ACTIONS.USER_INFO_EXTENSION, (friends) => {
-            dispatch(setFriends(friends));
-        });
+            (window as any).socket.on(ACTIONS.USER_INFO_EXTENSION, (friends) => {
+                dispatch(setFriends(friends));
+            });
 
-        (window as any).socket.on(ACTIONS.ADD_USER_EXTENSION, (data) => {
-            dispatch(setOnline(data));
-        });
+            (window as any).socket.on(ACTIONS.ADD_USER_EXTENSION, (data) => {
+                dispatch(setOnline(data));
+            });
 
-        (window as any).socket.on(ACTIONS.TYPING_STATE, (data) => {
-            dispatch(
-                setTypingState({ 
-                    state: data.state, 
-                    name: data.name,
-                    chatKind: data.chatKind,
-                    members: data.members, 
-                    typingMembers: (window as any).typingMembers 
-                })
-            );
-        });
+            (window as any).socket.on(ACTIONS.TYPING_STATE, (data) => {
+                dispatch(
+                    setTypingState({ 
+                        state: data.state, 
+                        name: data.name,
+                        chatKind: data.chatKind,
+                        members: data.members, 
+                        typingMembers: (window as any).typingMembers 
+                    })
+                );
+            });
 
-        (window as any).socket.on(ACTIONS.SEND_MSG_EXTENSION, (msg) => {
-            if (!!msg) {
-                dispatch(setUserMsg(msg));
-            }
-        });
-        (window as any).socialListen = true;
+            (window as any).socket.on(ACTIONS.SEND_MSG_EXTENSION, (msg) => {
+                if (!!msg) {
+                    dispatch(setUserMsg(msg));
+                }
+            });
+            (window as any).socialListen = true;
         }
     }
 
@@ -100,8 +100,8 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
             <div className="bg-globalBgColor w-full pb-7">
                 <Header searchString={searchString} setSearchString={setSearchString} />
                 <div className='flex w-full'>
-                    <div className={`fixed left-[0px] top-[112px] bottom-0 overflow-y-auto ${chatSidebarVisibility ? 'right-[435px]' : 'right-0'}`}>
-                        <div className={`w-full px-${chatSidebarVisibility == true ? "8" : "32"}`}>
+                    <div className={`fixed left-[0px] top-[164px] xl:top-[124px] bottom-0 overflow-y-auto ${chatSidebarVisibility ? 'right-[435px]' : 'right-0'}`}>
+                        <div className={`w-full ${chatSidebarVisibility == true ? "lg:px-8" : "lg:px-32"} px-6`}>
                             {banner}
                             {children}
                         </div>

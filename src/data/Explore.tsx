@@ -3,7 +3,7 @@ export const EXPLORE_BANNER_SLIDES: SliderType[] = [
   {
     title: 'Webaverse',
     backgroundImage: '/images/community/backs/BG (1).png',
-    content: <div>The Webaverse Genesis Pass is your toolkit for the open metaverse. The pass allows you to participate in The Upstreet, a collaborative MMO being built by Webaverse. Each pass will allow the holder to claim a parcel of land in The Upstreet in the near future.</div>,
+    content: <div>The Webaverse Genesis Pass is your toolkit for the open metaverse. The pass allows you to participate in The Upstreet, a collaborative MMO being built by Webaverse.</div>,
     button: 'Launch Now',
     path: 'https://webaverse.com/'
   },
@@ -17,7 +17,7 @@ export const EXPLORE_BANNER_SLIDES: SliderType[] = [
   {
     title: 'ev.io',
     backgroundImage: '/images/community/backs/BG (11).png',
-    content: <div>Ev.io is a play to earn blockchain FPS - equip a character skin, weapon and sword to start earning e (which converts to SOL) for every kill. Equip all 3 to unlock maximum earning potential. Play at https://ev.io!</div>,
+    content: <div>Ev.io is a play to earn blockchain FPS - equip a character skin, weapon and sword to start earning e (which converts to SOL) for every kill. Equip all 3 to unlock maximum earning potential.</div>,
     button: 'Launch Now',
     path: 'https://ev.io'
   },

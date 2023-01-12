@@ -3,7 +3,7 @@ import Image from 'next/image';
 
 const LogoComp = () => {
   return (
-    <div className="flex w-full h-full items-center px-10 pr-20">
+    <div className="flex w-full h-full items-center sm:px-7 md:px-10  sm:pr-5 md:pr-20">
       <div className="w-16 h-16">
         <Image src={'/logos/simple-logo.png'} layout="responsive" width={60} height={60} />
       </div>

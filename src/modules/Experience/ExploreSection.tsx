@@ -12,7 +12,8 @@ import BaseUrl from "config";
 
 const ExploreSection = () => {
 
-  var { rooms, liveRooms } = useAppSelector((state: RootStateOrAny) => ({
+  var { rooms, liveRooms, chatSidebarVisibility } = useAppSelector((state: RootStateOrAny) => ({
+    chatSidebarVisibility: state.chat.chatSidebarVisibility,
     rooms: state.profile.data.rooms,
     liveRooms: state.chat.rooms,
   }));
@@ -44,7 +45,14 @@ const ExploreSection = () => {
         <LiveRoomItems items={liveRooms} />
       </div>
       <ExploreRoomTitle number={3} />
-      <div className="grid grid-cols-12 lg:gap-[32px] xs:gap-[16px] w-full">
+      <div className={
+        `grid 
+        ${chatSidebarVisibility ? 
+          '2xl:grid-cols-10 xl:grid-cols-8 lg:grid-cols-6 md:grid-cols-4 grid-cols-2': 
+          '2xl:grid-cols-12 xl:grid-cols-10 lg:grid-cols-8 md:grid-cols-6 grid-cols-4'
+        } 
+        lg:gap-[32px] xs:gap-[16px] w-full`
+      }>
         <TopRoomItem
           title="SolGods Room owned by TMETA"
           imageUrl="/images/rooms/room1.png"
