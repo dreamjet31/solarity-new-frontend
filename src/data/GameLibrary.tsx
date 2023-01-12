@@ -79,13 +79,13 @@ export const LiveEventsData: LiveEventsDataType[] = [
 
 export const GameLibraryData: GameLibraryDataType[] = [
     {
-        image: "/images/library/temp/miniroyale.png",
-        title: "Mini Royale",
+        image: "/images/community/posters/Subway.png",
+        title: "Subway Surfers",
         likes: 97,
         members: 231,
         owner: "@MiniRoyale",
         category: "P2E",
-        iframe: "https://miniroyale.io/",
+        iframe: "http://localhost:3000/games/gamefeed/17?type=game",
         description: "Description",
         twitter: "https://twitter.com",
         discord: "https://discord.com",

@@ -27,7 +27,7 @@ console.log(onPlay)
                             <span className="ml-[20px]">Play</span>
                         </button>
                     ) : (
-                        <a className={`solarity-button font-medium py-[10px] rounded-[12px] mb-[15px] text-white w-[100%] text-[21px] sm:text-[18px] text-center tracking-wider  inline-flex items-center justify-center bg-primary hover:bg-lightprimary`} href={data.iframe} target="_blank">
+                        <a className={`solarity-button font-medium py-[10px] rounded-[12px] mb-[15px] text-white w-[100%] text-[21px] sm:text-[18px] text-center tracking-wider  inline-flex items-center justify-center bg-primary hover:bg-lightprimary`} href={data.iframe}>
                             <PlayIcon />
                             <span className="ml-[20px]">Play</span>
                         </a>

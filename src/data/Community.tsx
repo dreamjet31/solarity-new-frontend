@@ -125,9 +125,9 @@ export const games: ItemProps[] = [
         walletIcon: <SolanaLinkIcon />
     },
     {
-        avatarUrl: '/images/community/avatars/Picture (8).png',
+        avatarUrl: '/images/community/avatars/ave.png',
         backUrl: '/images/community/backs/Aave.gif',
-        itemUrl: '/images/community/posters/Aave.png',
+        itemUrl: '/images/community/posters/aavegotchi.png',
         communityName: 'Aavegotchi',
         collectionName: 'Aavegotchi',
         memberNumber: 5000,
@@ -178,7 +178,7 @@ export const games: ItemProps[] = [
     {
         avatarUrl: '/images/community/avatars/Halo.png',
         backUrl: '/images/community/backs/Halo.png',
-        itemUrl: '/images/community/posters/Halo.jpeg',
+        itemUrl: '/images/community/posters/Haloo.png',
         communityName: 'Halo',
         collectionName: 'Halo',
         memberNumber: 2400,
@@ -229,7 +229,7 @@ export const games: ItemProps[] = [
     {
         avatarUrl: '/images/community/avatars/PanzerDogs.png',
         backUrl: '/images/community/backs/PanzerDogs.jpeg',
-        itemUrl: '/images/community/posters/PanzerDogss.png',
+        itemUrl: '/images/community/posters/Panzer.png',
         communityName: 'PanzerDogs',
         collectionName: 'Solana',
         memberNumber: 2400,
@@ -246,7 +246,7 @@ export const games: ItemProps[] = [
     {
         avatarUrl: '/images/community/avatars/RuggedReverants.gif',
         backUrl: '/images/community/backs/RuggedReverants.png',
-        itemUrl: '/images/community/posters/RuggedRevenants.jpg',
+        itemUrl: '/images/community/posters/Rugged.png',
         communityName: 'Rugged Revenants',
         collectionName: 'Solana',
         memberNumber: 2400,
@@ -374,6 +374,23 @@ export const games: ItemProps[] = [
         description: "DeFi, Gaming, NFTs and Metaverse reimagined in a new and all-in-one game:tractor::tractor::tractor:Join to farm, trade, compete, craft and more. Public beta is now open!",
         walletAddress: '9jKipb3AbeNNZWtaJ6vgYPPBGZg2mX8Gqp1bU1SjeRDc',
         iframeUrl: "https://play.defiland.app/",
+        websiteUrl: "https://defiland.app/",
+        twitterUrl: "https://twitter.com/DeFi_Land",
+        discordUrl: "https://discord.com/invite/defiland",
+        walletIcon: <EthereumIcon />
+    },
+    {
+        avatarUrl: '/images/community/avatars/DefiLand.png',
+        backUrl: '/images/community/backs/Subway.png',
+        itemUrl: '/images/community/posters/Subway.png',
+        communityName: 'Subway Surfers',
+        collectionName: 'None',
+        memberNumber: 2400,
+        totalSupply: 1100,
+        icon: <MemberIcon />,
+        description: "SWAG!",
+        walletAddress: '9jKipb3AbeNNZWtaJ6vgYPPBGZg2mX8Gqp1bU1SjeRDc',
+        iframeUrl: "https://www.itslearning.tk/subway-surfers/",
         websiteUrl: "https://defiland.app/",
         twitterUrl: "https://twitter.com/DeFi_Land",
         discordUrl: "https://discord.com/invite/defiland",

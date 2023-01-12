@@ -5,12 +5,12 @@ export const EXPLORE_BANNER_SLIDES: SliderType[] = [
     backgroundImage: '/images/community/backs/BG (1).png',
     content: <div>The Webaverse Genesis Pass is your toolkit for the open metaverse. The pass allows you to participate in The Upstreet, a collaborative MMO being built by Webaverse.</div>,
     button: 'Launch Now',
-    path: 'https://webaverse.com/'
+    path: 'https://webb.game/'
   },
   {
-    title: 'Portals',
-    backgroundImage: '/images/community/backs/BG (6).png',
-    content: <div>The Metaverse on Solana. Explore downtown, invite friends, chat, build, show off your NFTs — right in the browser.</div>,
+    title: 'DoubleJump',
+    backgroundImage: '/images/community/backs/DoubleJump.png',
+    content: <div>Double Jump is the first race-to-finish, platform-royale game on Solana! Race in a mad dash against other Jumpers across the world to reach the finish line first.</div>,
     button: 'Launch Now',
     path: 'https://theportal.to/'
   },
@@ -22,16 +22,16 @@ export const EXPLORE_BANNER_SLIDES: SliderType[] = [
     path: 'https://ev.io'
   },
   {
-    title: 'Decentraland',
-    backgroundImage: '/images/community/backs/BG (11).png',
-    content: <div>Decentraland is an Ethereum blockchain-powered virtual world, developed and owned by its users, who can create, experience, and monetize content and applications.</div>,
+    title: 'OnCyber',
+    backgroundImage: '/images/community/backs/Oncyber.png',
+    content: <div>A multiverse for creators, oncyber is the easiest way for artists and collectors to show their digital assets (NFTs) in fully immersive experiences (3D/VR), for free. Holding an item from any of these collections allows you to use it as a 3D exhibition space.</div>,
     button: 'Launch Now',
     path: 'https://miniroyale.io'
   },
   {
-    title: 'World Wide Web',
-    backgroundImage: '/images/community/backs/BG (5).png',
-    content: <div>Worldwide Webb is an interoperable pixel art MMORPG metaverse game giving utility to popular NFT projects.</div>,
+    title: 'Decentraland',
+    backgroundImage: '/images/community/backs/Dece.png',
+    content: <div>Decentraland is an Ethereum blockchain-powered virtual world, developed and owned by its users, who can create, experience, and monetize content and applications. Join a growing community of virtual world inhabitants.</div>,
     button: 'Launch Now',
     path: 'https://home.panzerdogs.io/'
   },

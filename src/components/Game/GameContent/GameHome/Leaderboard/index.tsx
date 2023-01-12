@@ -6,7 +6,7 @@ const Leaderboard = () => {
       <div className='text-white text-[25px] font-medium mb-2'>
         Leaderboard
       </div>
-      <img src="/images/games/leaderboard.png" width="100%" alt="Leaderboard"/>
+      <img src="/images/games/lead.png" width="100%" alt="Leaderboard"/>
     </div>
   );
 }
