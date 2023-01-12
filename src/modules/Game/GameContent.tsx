@@ -6,12 +6,6 @@ import { useRouter } from "next/router";
 
 const GameContent = () => {
   const router = useRouter();
-  const gameRightArrowClick = () => {
-    (document as any).querySelector('.game-items').scrollLeft += 200;
-  }
-  const gameLeftArrowClick = () => {
-      (document as any).querySelector('.game-items').scrollLeft -= 200;
-  }
 
   const gotoDetailPage = (id, type) => {
     router.push('/games/gamefeed/' + id + '?type=' + type);
@@ -22,7 +16,7 @@ const GameContent = () => {
       <div className='text-white text-[25px] font-medium mt-10 mb-2'>
         Libraries
       </div>
-      <div className="grid gap-6 grid-cols-6 mb-6">
+      <div className="grid gap-6 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 mb-6">
         {games.map((game, index) => (
             <div className=" col-span-1 flex flex-col border-[1.2px] border-[#272829] rounded-[20px] p-[2px]
             relative cursor-pointer hover:border-primary" key={index} onClick={() => gotoDetailPage(index, 'game')}>
@@ -35,20 +29,10 @@ const GameContent = () => {
                     {game.communityName}
                   </div>
                 </div>
-                {/* <div className='flex text-white px-3'>
-                <div className='text-[#29B080] pr-1'>
-                <Users />
-                </div>
-                {Math.floor(Math.random() * 20)}
-                </div> */}
               </div>
             </div>
         ))}
       </div>
-      {/* <Header name={'What yoru friends play'} onRightArrowClick={gameRightArrowClick} onLeftArrowClick={gameLeftArrowClick} /> */}
-      {/* <div className=' col-span-1 mb-8'>
-          <GameItems items={games.slice(2, 8)}/>
-      </div> */}
     </div>
   );
 }

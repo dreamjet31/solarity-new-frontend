@@ -10,7 +10,7 @@ const DaoEventPanel = () => {
   var rest = 0;
   return (
     <div className="bg-[#181818] rounded-[10px] mt-4">
-      <div className="relative w-[385px] h-[110px]">
+      <div className="relative sm:w-[385px] w-[360px] h-[110px]">
         <Image src={"/images/games/event.png"} className="rounded-[10px]" layout="responsive" width={385} height={110} />
         <div className="absolute bottom-2 left-4 text-[13px] text-white right-4 flex items-center justify-between">
           <div>

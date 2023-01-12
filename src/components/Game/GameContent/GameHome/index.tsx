@@ -36,7 +36,7 @@ const GameHome = () => {
       </div>
       <div>
         <Header name={'Recommended'} count={games.length} onRightArrowClick={gameRightArrowClick} onLeftArrowClick={gameLeftArrowClick} />
-        <div className=' col-span-1'>
+        <div className=' col-span-1 mb-20'>
             <GameItems items={games}/>
         </div>
       </div>
