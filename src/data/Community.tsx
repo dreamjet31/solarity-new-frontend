@@ -379,6 +379,23 @@ export const games: ItemProps[] = [
         discordUrl: "https://discord.com/invite/defiland",
         walletIcon: <EthereumIcon />
     },
+    {
+        avatarUrl: '/images/community/avatars/DefiLand.png',
+        backUrl: '/images/community/backs/Subway.png',
+        itemUrl: '/images/community/posters/Subway.png',
+        communityName: 'Subway Surfers',
+        collectionName: 'None',
+        memberNumber: 2400,
+        totalSupply: 1100,
+        icon: <MemberIcon />,
+        description: "SWAG!",
+        walletAddress: '9jKipb3AbeNNZWtaJ6vgYPPBGZg2mX8Gqp1bU1SjeRDc',
+        iframeUrl: "https://www.itslearning.tk/subway-surfers/",
+        websiteUrl: "https://defiland.app/",
+        twitterUrl: "https://twitter.com/DeFi_Land",
+        discordUrl: "https://discord.com/invite/defiland",
+        walletIcon: <EthereumIcon />
+    },
 ]
 export const stats: StatsItemProps[] = [
     {

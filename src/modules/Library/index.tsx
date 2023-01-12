@@ -71,43 +71,6 @@ console.log(activePath)
   return (
     <div className="flex flex-col w-full">
       <div className="my-[10px] text-[#F3F3F3] font-500 md:text-[24px] xs:text-[18px]">
-        Live Now
-      </div>
-      <div className={`relative w-fit`}>
-        <div className="library-tab flex flex-row h-full lg:justify-between md:justify-around sm:justify-between xs:justify-between">
-          {EventsMenu.map((item, index) => (
-            <div
-              className={`flex flex-col 
-                        custom-2xl:mr-10 mr-[20px] xl:mr-[28px] font-500 text-[16px] px-[18px] py-[6px] justify-center items-center ${
-                          activeEventsMenu == item ? "text-[#29B080]" : "text-[#929298]"
-                        } h-full cursor-pointer hover:text-[#29B080] select-none ${
-                index === 0 ? "pl-0" : ""
-              }`}
-              onClick={() => onClickEventMenu(index, item)}
-              key={index}
-            >
-              {item}
-            </div>
-          ))}
-        </div>
-      </div>
-      <div className="gap-[32px] grid custom-2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-2 xs:grid-cols-1 justify-items-center my-[16px]">
-        {eventTabIndex === 0 && eventsList ? eventsList.filter((event, index) => event.type === activeEventsMenu ).map((item, index) => (
-          <LiveEventPanel data={item} key={index} onClick={() => onClickEventItem(item)} />
-        )) : null}
-        {eventTabIndex === 1 && eventsList ? eventsList.filter((event, index) => event.type === activeEventsMenu ).map((item, index) => (
-          <LiveEventPanel data={item} key={index} onClick={() => onClickEventItem(item)} />
-        )) : null}
-        {eventTabIndex === 2 && eventsList ? eventsList.filter((event, index) => event.type === activeEventsMenu ).map((item, index) => (
-          <LiveEventPanel data={item} key={index} onClick={() => onClickEventItem(item)} />
-        )) : null}
-        {eventTabIndex === 3 && eventsList ? eventsList.filter((event, index) => event.type === activeEventsMenu ).map((item, index) => (
-          <LiveEventPanel data={item} key={index} onClick={() => onClickEventItem(item)} />
-        )) : null}
-        <EventMorePanel setCreateEventToggle={setCreateEventToggle} />
-      </div>
-      
-      <div className="my-[10px] text-[#F3F3F3] font-500 md:text-[24px] xs:text-[18px]">
         Explore Library
       </div>
       <div className={`relative w-fit`}>
