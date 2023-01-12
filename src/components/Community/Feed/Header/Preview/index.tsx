@@ -25,9 +25,9 @@ function Preview(props: PreviewProps) {
           <div className='lg:h-[450px] md:h-[450px] sm:h-[300px] xs:h-[300px] w-full'>
             <iframe src={props.iframeUrl} frameBorder="0" className="w-full h-full"></iframe>
           </div>
-          <div className=' absolute right-5 md:right-20 bottom-10'>
+          {/*<div className=' absolute right-5 md:right-20 bottom-10'>
             <GreenButton caption='Full Screen' icon={<ViewIcon />} onClick={() => dispatch(setGameModalVisibility(true))} />
-          </div>
+          </div>*/}
         </div>
       ) : (
         <div>
