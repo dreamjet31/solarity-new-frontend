@@ -34,6 +34,7 @@ function Preview(props: PreviewProps) {
 
   // When you click play button on the banner of detailed game page.
   const play = useCallback(() => {
+    alert(isMobile);
     if(isMobile) {
       dispatch(setMobileGameModal(true));
     } else {
