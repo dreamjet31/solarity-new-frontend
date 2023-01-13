@@ -56,6 +56,7 @@ function CommunityFeed() {
   const Buy = () => {
     setConfirmationDlgToggle(true);
   }
+  alert(mobileGameModalVisibility);
   if(mobileGameModalVisibility) {
     return (
       <Layout
