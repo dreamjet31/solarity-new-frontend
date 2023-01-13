@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useRouter } from 'next/router'
 import Layout from "components/Layout"
 import CommunityBanner from "modules/Community/CommunityBanner"
@@ -56,7 +56,9 @@ function CommunityFeed() {
   const Buy = () => {
     setConfirmationDlgToggle(true);
   }
-  alert(mobileGameModalVisibility);
+  useEffect(() => {
+    alert(mobileGameModalVisibility);
+  }, [mobileGameModalVisibility])
   if(mobileGameModalVisibility) {
     return (
       <Layout
