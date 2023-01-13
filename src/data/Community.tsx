@@ -382,7 +382,7 @@ export const games: ItemProps[] = [
     {
         avatarUrl: '/images/community/avatars/DefiLand.png',
         backUrl: '/images/community/backs/Subway.png',
-        itemUrl: '/images/community/posters/Subway.png',
+        itemUrl: '/images/community/posters/subway.png',
         communityName: 'Subway Surfers',
         collectionName: 'None',
         memberNumber: 2400,
