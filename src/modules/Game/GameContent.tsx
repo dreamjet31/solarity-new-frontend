@@ -1,21 +1,13 @@
-import GameItems from "components/Marketplace/NFTItems/GameItems";
-import Header from "components/Marketplace/NFTItems/Header";
 import React from "react";
-import { games } from 'data/Community';
 import { useRouter } from "next/router";
+import { games } from 'data/Community';
 import { useDispatch } from "react-redux";
-import { setSelectedGame } from "redux/slices/commonSlice";
 
 const GameContent = () => {
   const router = useRouter();
   const dispatch = useDispatch();
 
-  const gotoDetailPage = (id, type, communityName, websiteUrl, iframeUrl) => {
-    dispatch(setSelectedGame({
-      title: communityName,
-      websiteUrl: websiteUrl,
-      iframeUrl: iframeUrl,
-    }));
+  const gotoDetailPage = (id, type) => {
     router.push('/games/gamefeed/' + id + '?type=' + type);
   }
 
@@ -34,10 +26,7 @@ const GameContent = () => {
               () => {
                 gotoDetailPage(
                   index, 
-                  'game', 
-                  game.communityName,
-                  game.websiteUrl,
-                  game.iframeUrl,
+                  'game'
                 );
               }
             }

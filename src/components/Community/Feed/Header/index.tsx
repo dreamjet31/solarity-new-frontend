@@ -21,21 +21,12 @@ export interface HeaderProps {
 }
 
 function Header(props: HeaderProps) {
-  const dispatch = useDispatch();
   
   const { gameModalVisibility } = useSelector((state: RootStateOrAny) => ({
     gameModalVisibility: state.common.gameModalVisibility,
   }))
   
   const [gameBannerVisibility, setGameBannerVisibility] = useState(false);
-
-  useEffect(() => {
-    dispatch(setSelectedGame({
-      title: props.title,
-      websiteUrl: props.websiteUrl,
-      iframeUrl: props.iframeUrl,
-    }));
-  }, [])
 
   return (
     <div className='flex flex-col gap-[56px]'>

@@ -12,7 +12,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import GameModal from 'components/Community/GameModal'
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux'
-import { setGameModalVisibility } from 'redux/slices/commonSlice'
+import { setGameModalVisibility, setIsMobile } from 'redux/slices/commonSlice'
 import { setFriends, setName, setOnline, setTypingState, setUserMsg } from 'redux/slices/chatSlice'
 import ACTIONS from 'config/actions'
 import CONSTANT from 'config/constant'
@@ -26,19 +26,18 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
     setSearchString?: Function;
 }) => {
     const dispatch = useDispatch();
-    const { chatSidebarVisibility, members, typingMembers, chatKind } = useSelector((state: RootStateOrAny) => ({
+    const { chatSidebarVisibility, members, typingMembers, isMobile } = useSelector((state: RootStateOrAny) => ({
         chatSidebarVisibility: state.chat.chatSidebarVisibility,
         members: state.chat.members,
         typingMembers: state.chat.typingMembers,
-        chatKind: state.chat.chatKind,
+        isMobile: state.common.isMobile,
     }))
 
     const [mobileMenuToggler, setMobileMenuToggler] = useState(false)
-    const [isMobile, setIsMobile] = useState(false);
     const [isChatPanel, setIsChatPanel] = useState(true);
     const wallet = useWallet();
     useEffect(() => {
-        setIsMobile(checkBrowser())
+        dispatch(setIsMobile(checkBrowser()))
     }, [])
 
 
