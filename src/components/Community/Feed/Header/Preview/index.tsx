@@ -1,10 +1,11 @@
 import Image from 'next/image'
-import React, { useCallback } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { GreenButton } from '../../../../Common/Buttons';
 import { CloudIcon } from '../../../../icons/CloudIcon';
 import { ViewIcon } from '../../../../icons';
-import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { setGameModalVisibility, setMobileGameModal, setSelectedGame } from 'redux/slices/commonSlice';
+import { checkBrowser } from 'utils';
 
 export interface PreviewProps {
   avatarUrl: string;
@@ -19,9 +20,7 @@ export interface PreviewProps {
 function Preview(props: PreviewProps) {
   const dispatch = useDispatch();
 
-  const { isMobile } = useSelector((state: RootStateOrAny) => ({
-    isMobile: state.common.isMobile,
-  }))
+  const [isMobile, setIsMobile] = useState(false);
 
   const setFullScreenModal = useCallback(() => {
     dispatch(setSelectedGame({
@@ -40,6 +39,10 @@ function Preview(props: PreviewProps) {
     } else {
       props.setGameBannerVisibility(true)
     }
+  }, [isMobile])
+
+  useEffect(() => {
+    setIsMobile(checkBrowser())
   }, [])
 
   return (
