@@ -77,7 +77,7 @@ const LiveRoomList = (props: any) => {
         maxLiveRoomSectionHeight={maxLiveRoomSectionHeight}
       />
       {isMobile && (
-        <div className='mb-10'>
+        <div className='my-10'>
           <PrimaryButton caption="Create a room" onClick={createRoomModal} />
         </div>
       )}
