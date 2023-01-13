@@ -32,6 +32,7 @@ function Item(props: ItemProps) {
         dispatch(setSelectedGame({
             title: props.communityName,
             websiteUrl: props.websiteUrl,
+            iframeUrl: props.iframeUrl,
         }));
         router.push('/community/feed/' + props.id + '?type=' + props.type);
     }

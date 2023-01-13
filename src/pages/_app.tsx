@@ -132,10 +132,11 @@ function MyApp({ children }) {
           <WalletModalProvider>
             <MetaplexProvider>
               {children}
+              {console.log(store.getState().common.selectedGame.gameModalVisibility)}
               {store.getState().common.gameModalVisibility && (
                 <GameModal
                   title={store.getState().common.selectedGame.title}
-                  websiteUrl={store.getState().common.selectedGame.websiteUrl}
+                  websiteUrl={store.getState().common.selectedGame.iframeUrl}
                 />
               )}
             </MetaplexProvider>

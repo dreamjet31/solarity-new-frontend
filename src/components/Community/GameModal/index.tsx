@@ -17,7 +17,8 @@ const GameModal = (props: GameModalType) => {
     const innerWidth = (window as any).innerWidth
     const innerHeight = (window as any).innerHeight
     var defaultStatus = {};
-    if (localStorage.getItem('modal-position') == "") {
+    var localStatus = localStorage.getItem('modal-position');
+    if (localStatus == "" || !localStatus || localStatus == "{}") {
       defaultStatus = {
         width: innerHeight * 85 / 100 * 16 / 9,
         height: innerHeight * 85 / 100,
@@ -28,6 +29,7 @@ const GameModal = (props: GameModalType) => {
     } else {
       defaultStatus = JSON.parse(localStorage.getItem('modal-position'));
     }
+    console.log(defaultStatus)
     setStatus(defaultStatus);
   }, []);
 
@@ -93,7 +95,7 @@ const GameModal = (props: GameModalType) => {
             <div className="absolute top-[10px] right-[12px] cursor-pointer text-white z-[10001]" onClick={closeDlg}>
               <CloseIcon />
             </div>
-            <iframe src={"https://theportal.to/demo"} frameBorder="0" className="w-full h-full"></iframe>
+            <iframe src={props.websiteUrl} frameBorder="0" className="w-full h-full"></iframe>
           </div>
         </Rnd>
       )}

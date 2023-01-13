@@ -63,7 +63,7 @@ function GameFeed() {
         sidebarToggler={sidebarToggler}
         banner={
           <Header
-            id={game_id}
+            id={gameId}
             isPreview={!isMarketplace}
             type={type as string}
             avatarUrl={games[gameId].avatarUrl}
