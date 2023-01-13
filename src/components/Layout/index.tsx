@@ -26,11 +26,12 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
     setSearchString?: Function;
 }) => {
     const dispatch = useDispatch();
-    const { chatSidebarVisibility, members, typingMembers, isMobile } = useSelector((state: RootStateOrAny) => ({
+    const { chatSidebarVisibility, members, typingMembers, isMobile, mobileGameModalVisibility } = useSelector((state: RootStateOrAny) => ({
         chatSidebarVisibility: state.chat.chatSidebarVisibility,
         members: state.chat.members,
         typingMembers: state.chat.typingMembers,
         isMobile: state.common.isMobile,
+        mobileGameModalVisibility: state.common.mobileGameModalVisibility,
     }))
 
     const [mobileMenuToggler, setMobileMenuToggler] = useState(false)
@@ -100,7 +101,8 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
                 <Header searchString={searchString} setSearchString={setSearchString} />
                 <div className='flex w-full'>
                     <div className={`fixed left-[0px] xs:top-[80px] sm:top-[164px] xl:top-[124px] bottom-0 overflow-y-auto ${chatSidebarVisibility ? 'right-[435px]' : 'right-0'}`}>
-                        <div className={`w-full ${chatSidebarVisibility == true ? "lg:px-8" : "lg:px-32"} px-6`}>
+                        <div className={`w-full h-full ${chatSidebarVisibility == true ? "lg:px-8" : "lg:px-32"} 
+                            ${mobileGameModalVisibility ? '': 'px-6'}`}>
                             {banner}
                             {children}
                         </div>
