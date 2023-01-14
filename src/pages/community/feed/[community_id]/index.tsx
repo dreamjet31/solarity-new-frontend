@@ -5,7 +5,7 @@ import CommunityBanner from "modules/Community/CommunityBanner"
 import Feed from 'components/Community/Feed'
 import MarketplaceBanner from 'modules/Marketplace/MarketplaceBanner'
 import { RoomItemProps } from 'components/Marketplace/Rooms/Items/Item'
-import { rooms } from "data/Community"
+import { communities, games, rooms } from "data/Community"
 import Image from 'next/image'
 import MobileBackButton from "components/Game/MobileBackButton";
 import ConfirmationDlg from 'components/Marketplace/ConfirmationDlg'
@@ -17,9 +17,17 @@ function CommunityFeed() {
   const [sidebarToggler, setSidebarToggler] = useState(false)
   const router = useRouter();
   const { community_id, type } = router.query;
+  let community: any = {};
+  if (type === 'community') {
+    community = communities[parseInt(community_id as string)];
+  } else {
+    community = games[parseInt(community_id as string)];
+  }
   const dispatch = useDispatch();
 
-  const { mobileGameModalVisibility } = useSelector((state: RootStateOrAny) => (state.common));
+  const { mobileGameModalVisibility } = useSelector((state: RootStateOrAny) => ({
+    mobileGameModalVisibility: state.common.mobileGameModalVisibility,
+  }));
 
   const [isMarketplace, setIsMarketplace] = useState(false)
   const [previewImg, setPreviewImg] = useState(rooms[0].imgUrl)
@@ -69,7 +77,7 @@ function CommunityFeed() {
               dispatch(setMobileGameModal(false));
             }}/>
           </div>
-          <iframe src="https://www.itslearning.tk/subway-surfers/" frameborder="0" width="100%" height="92%"></iframe>
+          <iframe src={community.iframeUrl} frameborder="0" width="100%" height="92%"></iframe>
         </div>
       </Layout>
     );

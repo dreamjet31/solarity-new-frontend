@@ -34,7 +34,7 @@ function GameFeed() {
               dispatch(setMobileGameModal(false));
             }}/>
           </div>
-          <iframe src="https://www.itslearning.tk/subway-surfers/" frameborder="0" width="100%" height="92%"></iframe>
+          <iframe src={games[gameId].iframeUrl} frameborder="0" width="100%" height="92%"></iframe>
         </div>
       </Layout>
     );
