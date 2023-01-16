@@ -12,7 +12,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import GameModal from 'components/Community/GameModal'
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux'
-import { setGameModalVisibility } from 'redux/slices/commonSlice'
+import { setGameModalVisibility, setIsMobile } from 'redux/slices/commonSlice'
 import { setFriends, setName, setOnline, setTypingState, setUserMsg } from 'redux/slices/chatSlice'
 import ACTIONS from 'config/actions'
 import CONSTANT from 'config/constant'
@@ -26,19 +26,19 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
     setSearchString?: Function;
 }) => {
     const dispatch = useDispatch();
-    const { chatSidebarVisibility, members, typingMembers, chatKind } = useSelector((state: RootStateOrAny) => ({
+    const { chatSidebarVisibility, members, typingMembers, isMobile, mobileGameModalVisibility } = useSelector((state: RootStateOrAny) => ({
         chatSidebarVisibility: state.chat.chatSidebarVisibility,
         members: state.chat.members,
         typingMembers: state.chat.typingMembers,
-        chatKind: state.chat.chatKind,
+        isMobile: state.common.isMobile,
+        mobileGameModalVisibility: state.common.mobileGameModalVisibility,
     }))
 
     const [mobileMenuToggler, setMobileMenuToggler] = useState(false)
-    const [isMobile, setIsMobile] = useState(false);
     const [isChatPanel, setIsChatPanel] = useState(true);
     const wallet = useWallet();
     useEffect(() => {
-        setIsMobile(checkBrowser())
+        dispatch(setIsMobile(checkBrowser()))
     }, [])
 
 
@@ -101,7 +101,8 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
                 <Header searchString={searchString} setSearchString={setSearchString} />
                 <div className='flex w-full'>
                     <div className={`fixed left-[0px] xs:top-[80px] sm:top-[164px] xl:top-[124px] bottom-0 overflow-y-auto ${chatSidebarVisibility ? 'right-[435px]' : 'right-0'}`}>
-                        <div className={`w-full ${chatSidebarVisibility == true ? "lg:px-8" : "lg:px-32"} px-6`}>
+                        <div className={`w-full h-full ${chatSidebarVisibility == true ? "lg:px-8" : "lg:px-32"} 
+                            ${mobileGameModalVisibility ? '': 'px-6'}`}>
                             {banner}
                             {children}
                         </div>

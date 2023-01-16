@@ -14,10 +14,6 @@ const GameItem = (props) => {
     router.push('/games/item');
       return;
     }
-    dispatch(setSelectedGame({
-      title: props.communityName,
-      websiteUrl: props.websiteUrl,
-    }));
     router.push('/community/feed/' + props.id + '?type=' + props.type);
   }
 

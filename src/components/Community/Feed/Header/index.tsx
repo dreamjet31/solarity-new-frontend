@@ -1,13 +1,13 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
-import { setGameModalVisibility } from 'redux/slices/commonSlice';
+import { setGameModalVisibility, setSelectedGame } from 'redux/slices/commonSlice';
 import GameModal from '../../GameModal';
 import Description from './Description'
 import Preview from './Preview'
 import Stats from './Stats'
 
 export interface HeaderProps {
-  id: any;
+  id: number;
   isPreview: boolean;
   avatarUrl: string;
   backUrl: string;
@@ -21,10 +21,11 @@ export interface HeaderProps {
 }
 
 function Header(props: HeaderProps) {
-  const dispatch = useDispatch();
+  
   const { gameModalVisibility } = useSelector((state: RootStateOrAny) => ({
     gameModalVisibility: state.common.gameModalVisibility,
   }))
+  
   const [gameBannerVisibility, setGameBannerVisibility] = useState(false);
 
   return (
