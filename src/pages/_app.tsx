@@ -41,17 +41,10 @@ import "react-toastify/dist/ReactToastify.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import 'styles/wallet.css';
 import AppLoader from "components/Layout/AppLoader";
-import { checkBrowser } from "utils";
 import GameModal from "components/Community/GameModal";
+import { checkBrowser } from "utils";
 
 const endpoint = "https://ssc-dao.genesysgo.net";
-
-// const WalletProvider = dynamic(
-//   () => import("utils/contexts/ClientWalletProvider"),
-//   {
-//     ssr: false,
-//   }
-// );
 
 function MyApp({ children }) {
   const dispatch = useDispatch();
@@ -59,14 +52,6 @@ function MyApp({ children }) {
   const dimensions = useWindowDimensions();
   const wallet = useWallet();
   const { asPath } = router;
-
-  // useEffect(() => {
-  //   if (!wallet.connected && asPath !== "/" ) {
-  //     alert('Please connect wallet first')
-  //     router.push({ pathname: '/' })
-  //   }
-  // }, [wallet.connected])
-
   const [network, setNetwork] = useState(WalletAdapterNetwork.Mainnet);
 
   const endpoint = useMemo(() => clusterApiUrl(network), [network]);
@@ -74,10 +59,7 @@ function MyApp({ children }) {
   const wallets = useMemo(
     () => [
       new PhantomWalletAdapter(),
-      // new GlowWalletAdapter(),
-      // new SlopeWalletAdapter(),
       new SolflareWalletAdapter({ network }),
-      // new TorusWalletAdapter(),
       new BackpackWalletAdapter()
     ],
     [network]
@@ -135,7 +117,7 @@ function MyApp({ children }) {
               {store.getState().common.gameModalVisibility && (
                 <GameModal
                   title={store.getState().common.selectedGame.title}
-                  websiteUrl={store.getState().common.selectedGame.websiteUrl}
+                  websiteUrl={store.getState().common.selectedGame.iframeUrl}
                 />
               )}
             </MetaplexProvider>

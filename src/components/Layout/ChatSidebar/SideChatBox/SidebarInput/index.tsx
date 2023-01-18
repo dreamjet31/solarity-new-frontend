@@ -129,7 +129,6 @@ const SidebarInput = (props: SidebarInputType) => {
           url: preview[i]
         });
       }
-  
       (window as any).socket.emit(ACTIONS.SEND_MSG_EXTENSION, {
         groupType: chatKind,
         daoId: null,

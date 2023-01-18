@@ -89,7 +89,7 @@ const GameDetail = (props) => {
                             <ul className="flex flex-row">
                               {socialIcons.map(
                                 (item, index) => (
-                                  <a href={detailData[item.index]} target="_blank" key={index}>
+                                  <a href={detailData[item.index]} key={index}>
                                     <li
                                       className="h-[35px] w-[35px] bg-[#131314] rounded-[12px] border-[1px] border-[#272829] flex flex-row justify-center items-center ml-[15px] cursor-pointer hover:border-primary hover:bg-focusbackground overflow-hidden"
                                       key={index}

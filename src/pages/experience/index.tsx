@@ -12,6 +12,7 @@ import MobileExperienceBanner from "components/Experience/LiveRoom/MobileExperie
 import { addMsg, addPeer, removePeer, setMsg, setName, setRooms } from "redux/slices/chatSlice"
 import ACTIONS from "config/actions"
 import { checkBrowser } from "utils"
+import RoomInfoDlg from "components/Experience/RoomInfoDlg"
 
 const ProfileIndex = () => {
     const dispatch = useDispatch();
@@ -22,12 +23,30 @@ const ProfileIndex = () => {
     const [roomSettingDlgToggle, setRoomSettingDlgToggle] = useState([false, "join"])
     const [activeRoomId, setActiveRoomId] = useState(0)
     const [isMobile, setIsMobile] = useState(false);
+    const [selectedLiveRoom, setSelectedLiveRoom] = useState<any>({});
 
-    const { selectedRoom, createModalVisibility, joinModalVisibility } = useSelector((state: RootStateOrAny) => ({
+    const { 
+        selectedRoom, 
+        createModalVisibility, 
+        joinModalVisibility, 
+        chatSidebarVisibility, 
+        selectedIndex, 
+        rooms 
+    } = useSelector((state: RootStateOrAny) => ({
         selectedRoom: state.chat.selectedRoom,
         createModalVisibility: state.chat.createModalVisibility,
-        joinModalVisibility: state.chat.joinModalVisibility
+        joinModalVisibility: state.chat.joinModalVisibility,
+        chatSidebarVisibility: state.chat.chatSidebarVisibility,
+        selectedIndex: state.chat.selectedIndex,
+        rooms: state.chat.rooms
     }));
+
+    useEffect(() => {
+        document.getElementsByTagName('html')[0].classList.remove('a-fullscreen');
+        if (selectedIndex != -1 && rooms[selectedIndex]) {
+          setSelectedLiveRoom(rooms[selectedIndex]);
+        }
+      }, [rooms, selectedIndex])
 
     useEffect(() => {
         // When a user click f5 key, it helps to forget a user's name.
@@ -97,23 +116,41 @@ const ProfileIndex = () => {
         <Layout
             sidebarToggler={sidebarToggler}
             banner={
-                <div className="grid md:flex-row-reverse lg:grid-cols-8 xl:grid-cols-9 2xl:grid-cols-5 xs:gap-8">
-                    <div className="min-w-[265px] col-span-1 lg:col-span-3 xl:col-span-2 2xl:col-span-1">
-                        <div className=" flex flex-col h-full ">
+                <div className={`grid md:flex-row-reverse ${chatSidebarVisibility ? 
+                'lg:grid-cols-1 xl:grid-cols-9 2xl:grid-cols-5 xs:gap-8': 
+                'lg:grid-cols-8 xl:grid-cols-9 2xl:grid-cols-5 xs:gap-8'}`
+                }>
+                    <div className={`min-w-[265px] ${chatSidebarVisibility ? 
+                        'col-span-1 lg:col-span-1 xl:col-span-3 2xl:col-span-1': 
+                        'col-span-1 lg:col-span-3 xl:col-span-3 2xl:col-span-1'}`
+                    }>
+                        <div className="lg:hidden block mb-4">
+                            {!!selectedLiveRoom.title && (
+                            <RoomInfoDlg
+                                selectedLiveRoom={selectedLiveRoom}
+                                type={1}
+                            />
+                            )}
+                        </div>
+                        <div className={` flex flex-col h-full `}>
                             <LiveRoomList />
                         </div>
                     </div>
-                    <div className=" lg:col-span-5 xl:col-span-7 2xl:col-span-4">
+                    <div className={`${chatSidebarVisibility ? 
+                        'col-span-1 lg:col-span-1 xl:col-span-6 2xl:col-span-4': 
+                        'col-span-1 lg:col-span-5 xl:col-span-6 2xl:col-span-4'}`
+                    }>
                         {isMobile ? (
                             <MobileExperienceBanner />
                         ) : (
-                            <ExperienceBanner />
+                            <ExperienceBanner selectedLiveRoom={selectedLiveRoom} />
                         )}
                     </div>
                 </div>
             }
             onClick={() => setSidebarToggler(!sidebarToggler)}
         >
+            {/* Main part */}
             <Experience
                 sidebarToggler={sidebarToggler}
                 activeRoom={activeRoom}
@@ -123,6 +160,8 @@ const ProfileIndex = () => {
                 roomSettingDlgToggle={roomSettingDlgToggle}
                 setRoomSettingDlgToggle={() => setRoomSettingDlgToggle([true, "create"])}
             />
+
+            {/* Modals */}
             {createModalVisibility && (
                 <CreateRoomModal />
             )}

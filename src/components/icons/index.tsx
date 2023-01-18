@@ -27,3 +27,6 @@ export { User } from "./User";
 export { MemberIcon } from "./MemberIcon";
 export { SolanaLinkIcon } from "./SolanaLinkIcon";
 export { ViewIcon } from "./ViewIcon";
+export { Trophy } from "./Trophy";
+export { CalendarDays } from "./CalendarDays";
+export { MobileBack } from "./MobileBack";

@@ -3,21 +3,22 @@ import Image from "next/image"
 import { useRouter } from 'next/router';
 import { useDispatch } from 'react-redux';
 import { setSelectedGame } from 'redux/slices/commonSlice';
+import { Users } from 'components/icons';
 
 const GameItem = (props) => {
   const router = useRouter();
   const dispatch = useDispatch();
 
   const gotoGameDetail = () => {
-    dispatch(setSelectedGame({
-      title: props.communityName,
-      websiteUrl: props.websiteUrl,
-    }));
+    if(props.state == 1) {
+    router.push('/games/item');
+      return;
+    }
     router.push('/community/feed/' + props.id + '?type=' + props.type);
   }
 
   return (
-    <div className=" flex flex-col border-[1.2px] border-[#272829] rounded-[20px] p-[8px]
+    <div className=" flex flex-col border-[1.2px] border-[#272829] rounded-[20px] p-[2px]
                         relative cursor-pointer hover:border-primary" onClick={gotoGameDetail}>
       <div className=" rounded-[15px] overflow-hidden lg:w-[242px] md:w-[242px] sm:w-[143px] xs:w-[143px]">
         <Image src={props.itemUrl} layout="responsive" className='rounded-2xl' width={242} height={232} alt="room_image" />
@@ -28,6 +29,12 @@ const GameItem = (props) => {
             {props.communityName}
           </div>
         </div>
+        {/* <div className='flex text-white px-3'>
+          <div className='text-[#29B080] pr-1'>
+            <Users />
+          </div>
+          {Math.floor(Math.random() * 20)}
+        </div> */}
       </div>
     </div>
   )

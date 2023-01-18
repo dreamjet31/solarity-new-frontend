@@ -15,7 +15,7 @@ function CollectionInfoDlg(props: CollectionInfoDlgType) {
     }))
 
     return (
-        <div className='items-center flex flex-col justify-between md:p-[40px] xs:p-[24px] md:pb-0 xs:pb-[24px] md:h-[496px]'>
+        <div className='bg-[#1A1A1C] items-center flex flex-col justify-between md:p-[40px] xs:p-[24px] md:pb-0 xs:pb-[24px] md:h-[496px] md:border-0 border border-[#272829] rounded-[25px]'>
             <div className=''>
                 <Info title={selectedRoom.collectionName ? selectedRoom.collectionName : ""} subtitle={selectedRoom.roomName ? selectedRoom.roomName : "Pick a room"} description={selectedRoom.description ? selectedRoom.description : "Have an immediate preview of the room you choose."} />
             </div>

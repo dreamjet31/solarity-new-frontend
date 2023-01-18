@@ -49,7 +49,7 @@ const LiveRoomList = (props: any) => {
     <div className=" items-left gap-[24px] mt-[25px] h-full ">
       <LiveRoomListTitle number="25" />
       <div
-        className={`h-full pr-[10px] md:overflow-y-scroll xs:overflow-y-hidden overflow-x-visible flex flex-col items-left md:gap-[16px] xs:gap-[12px] `}
+        className={`h-full md:overflow-y-scroll xs:overflow-y-hidden overflow-x-visible flex flex-col items-left md:gap-[16px] xs:gap-[12px] `}
         id="lrl"
       >
         {rooms && rooms.map((room, index) => {
@@ -77,7 +77,7 @@ const LiveRoomList = (props: any) => {
         maxLiveRoomSectionHeight={maxLiveRoomSectionHeight}
       />
       {isMobile && (
-        <div className='mb-10'>
+        <div className='my-10'>
           <PrimaryButton caption="Create a room" onClick={createRoomModal} />
         </div>
       )}

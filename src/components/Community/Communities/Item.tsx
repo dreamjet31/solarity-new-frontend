@@ -29,10 +29,6 @@ function Item(props: ItemProps) {
     const dispatch = useDispatch();
 
     const goToFeed = () => {
-        dispatch(setSelectedGame({
-            title: props.communityName,
-            websiteUrl: props.websiteUrl,
-        }));
         router.push('/community/feed/' + props.id + '?type=' + props.type);
     }
 

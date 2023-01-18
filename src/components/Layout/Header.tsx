@@ -86,7 +86,7 @@ const Header = (props: HeaderProps) => {
         let url;
         if (!exist) {
             url = '/auth/register';
-        } else if (user.registerStep <= 5) {
+        } else if (user.registerStep <= 4) {
             url = '/auth/register';
         }
         await dispatch(
@@ -112,16 +112,6 @@ const Header = (props: HeaderProps) => {
 
         setStatus(defaultStatus);
     }, []);
-
-
-    const item_arr = HeaderMenuTitles.map(function (menu: any, index) {
-        return <HeaderMenuItem
-            key={index}
-            title={menu.name}
-            link={menu.link}
-            active={active === menu.link}
-        />
-    })
 
     const openPopup = (i) => {
         setGameLibraryToggle(true)
@@ -155,23 +145,30 @@ const Header = (props: HeaderProps) => {
                             custom-2xl:flex-row xl:flex-row lg:flex-col md:flex-col sm:flex-col
                             justify-between
                             border-b-[1px] border-semiSplitter
-                            custom-2xl:h-[92px] xl:h-[92px] lg:h-[184px] md:h-[220px] sm:h-[220px] xs:h-[220px]
+                            custom-2xl:h-[92px] xl:h-[92px] lg:h-[144px] md:h-[144px] sm:h-[144px] xs:h-[92px]
                             w-full">
                 <div className='flex'>
                     <LogoComp />
                     <div className="flex flex-row h-full
                                     lg:justify-between md:justify-around sm:justify-between xs:justify-between">
-                        {item_arr}
+                        {HeaderMenuTitles.map((menu: any, index) => (
+                            <HeaderMenuItem
+                                key={index}
+                                title={menu.name}
+                                link={menu.link}
+                                active={active === menu.link}
+                            />
+                        ))}
                     </div>
                 </div>
                 <div className='flex
-                                custom-2xl:flex-row xl:flex-row lg:flex-row md:flex-col sm:flex-col xs:flex-col
+                                custom-2xl:flex-row xl:flex-row lg:flex-col md:flex-col sm:flex-col xs:flex-col
                                 h-full self-center justify-between 
-                                custom-2xl:w-fit xl:w-fit lg:w-full md:w-full sm:w-full xs:'>
+                                custom-2xl:w-fit xl:w-fit lg:w-full md:w-full sm:w-full'>
                     {/* <SearchBox searchString={props.searchString} setSearchString={props.setSearchString} /> */}
                     <div className="flex flex-row
                                     md:justify-end sm:justify-end
-                                    md:my-[20px] sm:my-[20px]">
+                                    ">
                         {logged && profileData ? (
                             <div className='flex'>
                                 <BalanceBox openState={balanceBoxToggle} onEnter={() => setBalanceBoxToggle(true)} onLeave={() => setBalanceBoxToggle(false)} />
@@ -215,7 +212,16 @@ const Header = (props: HeaderProps) => {
                                     {
                                         isIframe ?
                                             <div className='w-full h-full overflow-hidden rounded-[25px]'>
-                                                <iframe frameBorder="0" src={selectedGame.iframe} featurepolicy="{&quot;vr&quot;: [&quot;*&quot;]}" allow="camera;microphone;vr;" allowfullscreen="true" scrolling="no" width="100%" height="100%"></iframe>
+                                                <iframe 
+                                                    frameBorder="0" 
+                                                    src={selectedGame.iframe} 
+                                                    featurepolicy="{&quot;vr&quot;: [&quot;*&quot;]}" 
+                                                    allow="camera;microphone;vr;" 
+                                                    allowfullscreen="true" 
+                                                    scrolling="no" 
+                                                    width="100%" 
+                                                    height="100%"
+                                                ></iframe>
                                             </div>
                                             :
                                             <LibraryLayout>

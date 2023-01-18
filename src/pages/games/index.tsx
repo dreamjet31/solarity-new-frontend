@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import GameBanner from 'modules/Game/GameBanner';
-import Game from 'modules/Game';
+import GameContent from 'modules/Game/GameContent';
 import Layout from "components/Layout"
 
 const GamePage = () => {
@@ -9,10 +9,10 @@ const GamePage = () => {
   return (
     <Layout
       sidebarToggler={sidebarToggler}
-      banner={<GameBanner />}
+      banner={<div></div>}
       onClick={() => setSidebarToggler(!sidebarToggler)}
     >
-      <Game />
+      <GameContent />
     </Layout>
   );
 }

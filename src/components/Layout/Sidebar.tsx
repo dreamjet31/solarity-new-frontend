@@ -53,29 +53,28 @@ const Sidebar = (props) => {
     sidebarState: state.chat.sidebarState,
   }))
 
-  const [serverChats, setServerChats] = useState([]);
-
   useEffect(() => {
     const fetchChats = async () => {
       try {
         if (profile.username == undefined) {
           return;
         }
-        const { data } = await apiCaller.get("/chats/fetchChats");
-        var tmpChats = [];
-        for (var i = 0; i < data.chats.length; i++) {
-          const person = data.chats[i].users[0].username == profile.username ? data.chats[i].users[1] : data.chats[i].users[0];
+        var { data } = await apiCaller.get("/chats/fetchChats");
+        let tmpChats = [];
+        data.chats.map((chat, index) => {
+          let person = chat.users[0].username == profile.username ? chat.users[1] : chat.users[0];
           tmpChats.push({
-            _id: data.chats[i]._id,
-            users: data.chats[i].users,
+            _id: chat._id,
+            users: chat.users,
             url: person.profileImage ? person.profileImage.link : "/images/experience/psuedo_avatars/avatar.png",
             name: person.username,
-            detail: data.chats[i].lastMsg.content,
-            time: time_ago(data.chats[i].lastMsg.createdAt),
+            detail: person.bio,
+            time: time_ago(chat.lastMsg.createdAt),
             gap: 3,
-            badge: data.chats[i].unreadCount
+            badge: chat.unreadCount
           });
-        }
+        });
+          
         dispatch(setDMChats({
           type: true,
           data: tmpChats
@@ -90,7 +89,6 @@ const Sidebar = (props) => {
   const setActiveDM = (dm) => {
     props.setIsChatPanel(true);
     var otherUserId = '';
-    console.log(profile._id, dm.users);
     if(dm.users[0].id == profile._id) {
       otherUserId = dm.users[1].id;
     } else {
@@ -114,19 +112,20 @@ const Sidebar = (props) => {
     }))
   }
 
+  const setYGGChat = () => {
+    props.setIsChatPanel(true);
+    dispatch(setMembers([profile._id, "YGGChatId"]));
+    dispatch(setChatKind(CONSTANT.YGG_CHAT))
+    dispatch(setSelectedChat({
+      id: "",
+      name: "YGG Chat",
+    }))
+  }
+
   return (
-    <div className="fixed top-[92px] right-0 bottom-0 overflow-y-auto z-[100]">
+    <div className="fixed xl:top-[92px] sm:top-[144px] xl:top-[92px] right-0 bottom-0 overflow-y-auto z-[100]">
       <div className="sm:flex xs:hidden flex-row border-l-[1px] border-semiSplitter bg-globalBgColor">
         <div className={`relative flex flex-col w-[70px] items-center`}>
-          {/* <div className="px-[25px] py-[21px] border-b-[1px] border-semiSplitter relative">
-            <div className="w-[50px] h-[50px] cursor-pointer">
-              <Image src="/favicon.png" width={40} height={40}></Image>
-            </div>
-            <ToggleShowBtn
-              toggle={props.sidebarToggler}
-              onClick={props.onClick}
-            />
-          </div> */}
           <div
             className={`w-full pt-[18px] pb-[26px] border-b-[1px] border-semiSplitter flex flex-col items-center`}
           >
@@ -145,6 +144,18 @@ const Sidebar = (props) => {
                 name={'global'}
                 expanded={true}
                 selected={chatKind == CONSTANT.GLOBAL_CHAT}
+              />
+            </div>
+            <div 
+              key={1} 
+              onClick={setYGGChat}
+            >
+              <SideAvatar
+                key={1}
+                img_url={"/images/community/img/YGG.png"}
+                name={'YGG'}
+                expanded={true}
+                selected={chatKind == CONSTANT.YGG_CHAT}
               />
             </div>
             {/* {Your_Daos.avatars.map(function (i) {
@@ -186,7 +197,7 @@ const Sidebar = (props) => {
             {DMChats.map(function (dm, index) {
               return (
                 <div 
-                  key={index + 1} 
+                  key={index + 2} 
                   onClick={() => setActiveDM(dm)}
                 >
                   <SideAvatar

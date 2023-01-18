@@ -2,7 +2,7 @@ import React from 'react'
 
 export type LabelProps = {
     name: string;
-    count: number;
+    count?: number;
 }
 
 function Label(props: LabelProps) {

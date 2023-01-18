@@ -1,10 +1,11 @@
 import Image from 'next/image'
-import React, { useEffect, useRef } from 'react'
+import React, { useCallback, useEffect, useState } from 'react'
 import { GreenButton } from '../../../../Common/Buttons';
 import { CloudIcon } from '../../../../icons/CloudIcon';
 import { ViewIcon } from '../../../../icons';
 import { useDispatch } from 'react-redux';
-import { setGameModalVisibility } from 'redux/slices/commonSlice';
+import { setGameModalVisibility, setMobileGameModal, setSelectedGame } from 'redux/slices/commonSlice';
+import { checkBrowser } from 'utils';
 
 export interface PreviewProps {
   avatarUrl: string;
@@ -18,6 +19,31 @@ export interface PreviewProps {
 
 function Preview(props: PreviewProps) {
   const dispatch = useDispatch();
+
+  const [isMobile, setIsMobile] = useState(false);
+
+  const setFullScreenModal = useCallback(() => {
+    dispatch(setSelectedGame({
+      title: props.title,
+      websiteUrl: props.iframeUrl,
+      iframeUrl: props.iframeUrl,
+    }));
+    dispatch(setGameModalVisibility(true));
+  }, [])
+
+  // When you click play button on the banner of detailed game page.
+  const play = useCallback(() => {
+    if(isMobile) {
+      dispatch(setMobileGameModal(true));
+    } else {
+      props.setGameBannerVisibility(true)
+    }
+  }, [isMobile])
+
+  useEffect(() => {
+    setIsMobile(checkBrowser())
+  }, [])
+
   return (
     <div className='relative'>
       {props.gameBannerVisibility ? (
@@ -26,7 +52,7 @@ function Preview(props: PreviewProps) {
             <iframe src={props.iframeUrl} frameBorder="0" className="w-full h-full"></iframe>
           </div>
           <div className=' absolute right-5 md:right-20 bottom-10'>
-            <GreenButton caption='Full Screen' icon={<ViewIcon />} onClick={() => dispatch(setGameModalVisibility(true))} />
+            <GreenButton caption='Full Screen' icon={<ViewIcon />} onClick={setFullScreenModal} />
           </div>
         </div>
       ) : (
@@ -51,7 +77,7 @@ function Preview(props: PreviewProps) {
             <p className=' text-lg font-light text-[#CECCCC] custom-2xl:w-[550px] xl:w-[450px] lg:w-[300px] md:w-[270px]'>{props.description}</p>
           </div>
           <div className=' absolute right-5 md:right-20 bottom-10'>
-            <GreenButton caption='Play' icon={<CloudIcon />} onClick={() => props.setGameBannerVisibility(true)} />
+            <GreenButton caption='Play' icon={<CloudIcon />} onClick={play} />
           </div>
         </div>
       )}

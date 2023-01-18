@@ -7,7 +7,7 @@ import { FloorPriceIcon } from "components/Community/Feed/Header/Stats/icons/Flo
 import { communities, games, stats } from '../../../../../data/Community'
 
 type StatsType = {
-  id: any;
+  id: number;
   type: string;
 }
 
@@ -16,14 +16,17 @@ function Stats(props: StatsType) {
   const [floorPrice, setFloorPrice] = useState(0);
 
   useEffect(() => {
+    var tmp;
     if (props.type == 'community') {
-      setCommunity(communities[parseInt(props.id)]);
+      setCommunity(communities[props.id]);
+      tmp = communities[props.id];
     } else {
-      setCommunity(games[parseInt(props.id)]);
+      setCommunity(games[props.id]);
+      tmp = games[props.id];
     }
     async function fetchNFTDetail() {
       const { data } = await axios.get(
-        `https://api-mainnet.magiceden.dev/v2/collections/${communities[parseInt(props.id)].collectionName}/stats`
+        `https://api-mainnet.magiceden.dev/v2/collections/${tmp.collectionName}/stats`
       );
 
       setFloorPrice(data.floorPrice / 1.0 / 1000000000);

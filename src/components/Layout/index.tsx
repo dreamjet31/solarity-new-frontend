@@ -12,7 +12,7 @@ import { useWallet } from '@solana/wallet-adapter-react'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import GameModal from 'components/Community/GameModal'
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux'
-import { setGameModalVisibility } from 'redux/slices/commonSlice'
+import { setGameModalVisibility, setIsMobile } from 'redux/slices/commonSlice'
 import { setFriends, setName, setOnline, setTypingState, setUserMsg } from 'redux/slices/chatSlice'
 import ACTIONS from 'config/actions'
 import CONSTANT from 'config/constant'
@@ -26,19 +26,19 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
     setSearchString?: Function;
 }) => {
     const dispatch = useDispatch();
-    const { chatSidebarVisibility, members, typingMembers, chatKind } = useSelector((state: RootStateOrAny) => ({
+    const { chatSidebarVisibility, members, typingMembers, isMobile, mobileGameModalVisibility } = useSelector((state: RootStateOrAny) => ({
         chatSidebarVisibility: state.chat.chatSidebarVisibility,
         members: state.chat.members,
         typingMembers: state.chat.typingMembers,
-        chatKind: state.chat.chatKind,
+        isMobile: state.common.isMobile,
+        mobileGameModalVisibility: state.common.mobileGameModalVisibility,
     }))
 
     const [mobileMenuToggler, setMobileMenuToggler] = useState(false)
-    const [isMobile, setIsMobile] = useState(false);
     const [isChatPanel, setIsChatPanel] = useState(true);
     const wallet = useWallet();
     useEffect(() => {
-        setIsMobile(checkBrowser())
+        dispatch(setIsMobile(checkBrowser()))
     }, [])
 
 
@@ -64,32 +64,32 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
         }
 
         if (!(window as any).socialListen) {
-        (window as any).socket.on(ACTIONS.USER_INFO_EXTENSION, (friends) => {
-            dispatch(setFriends(friends));
-        });
+            (window as any).socket.on(ACTIONS.USER_INFO_EXTENSION, (friends) => {
+                dispatch(setFriends(friends));
+            });
 
-        (window as any).socket.on(ACTIONS.ADD_USER_EXTENSION, (data) => {
-            dispatch(setOnline(data));
-        });
+            (window as any).socket.on(ACTIONS.ADD_USER_EXTENSION, (data) => {
+                dispatch(setOnline(data));
+            });
 
-        (window as any).socket.on(ACTIONS.TYPING_STATE, (data) => {
-            dispatch(
-                setTypingState({ 
-                    state: data.state, 
-                    name: data.name,
-                    chatKind: data.chatKind,
-                    members: data.members, 
-                    typingMembers: (window as any).typingMembers 
-                })
-            );
-        });
+            (window as any).socket.on(ACTIONS.TYPING_STATE, (data) => {
+                dispatch(
+                    setTypingState({ 
+                        state: data.state, 
+                        name: data.name,
+                        chatKind: data.chatKind,
+                        members: data.members, 
+                        typingMembers: (window as any).typingMembers 
+                    })
+                );
+            });
 
-        (window as any).socket.on(ACTIONS.SEND_MSG_EXTENSION, (msg) => {
-            if (!!msg) {
-                dispatch(setUserMsg(msg));
-            }
-        });
-        (window as any).socialListen = true;
+            (window as any).socket.on(ACTIONS.SEND_MSG_EXTENSION, (msg) => {
+                if (!!msg) {
+                    dispatch(setUserMsg(msg));
+                }
+            });
+            (window as any).socialListen = true;
         }
     }
 
@@ -100,8 +100,9 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
             <div className="bg-globalBgColor w-full pb-7">
                 <Header searchString={searchString} setSearchString={setSearchString} />
                 <div className='flex w-full'>
-                    <div className={`fixed left-[0px] top-[112px] bottom-0 overflow-y-auto ${chatSidebarVisibility ? 'right-[435px]' : 'right-0'}`}>
-                        <div className={`w-full custom-2xl:px-[${chatSidebarVisibility ? 30 : 100}px] xl:px-[25px] lg:px-[32px] md:px-[25px] sm:px-[20px] xs:px-[24px]`}>
+                    <div className={`fixed left-[0px] xs:top-[80px] sm:top-[164px] xl:top-[124px] bottom-0 overflow-y-auto ${chatSidebarVisibility ? 'right-[435px]' : 'right-0'}`}>
+                        <div className={`w-full h-full ${chatSidebarVisibility == true ? "lg:px-8" : "lg:px-32"} 
+                            ${mobileGameModalVisibility ? '': 'px-6'}`}>
                             {banner}
                             {children}
                         </div>

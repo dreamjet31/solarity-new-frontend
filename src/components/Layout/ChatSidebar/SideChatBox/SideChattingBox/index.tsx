@@ -56,9 +56,9 @@ const SideChattingBox = (props: SideChattingBoxType) => {
       try {
         dispatch(clearUserMsg({}));
         const { data } = await apiCaller.post("/chats/fetchMessages", { members, chatKind });
-        if(chatKind == CONSTANT.GLOBAL_CHAT) {
+        if(chatKind == CONSTANT.GLOBAL_CHAT || chatKind == CONSTANT.YGG_CHAT) {
           for (var i = 0; i < data.chat.length; i ++) {
-            dispatch(setUserMsg({
+            await dispatch(setUserMsg({
               groupType: data.chat[i].groupType,
               daoId: null,
               members: data.chat[i].members,
@@ -79,7 +79,7 @@ const SideChattingBox = (props: SideChattingBoxType) => {
 
         } else {
           for (var i = 0; i < data.chat.msgs.length; i++) {
-            dispatch(setUserMsg({
+            await dispatch(setUserMsg({
               groupType: data.chat.type,
               daoId: null,
               members: data.chat.users,

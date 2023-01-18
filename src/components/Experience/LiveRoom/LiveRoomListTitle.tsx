@@ -24,7 +24,7 @@ const LiveRoomListTitle = (props: LiveRoomListTitleType) => {
 
     return (
         <div>
-            <div className=" font-['Outfit'] font-normal text-[24px] text-[#f3f3f3] flex flex-row justify-between mb-3 ">
+            <div className=" px-1 font-['Outfit'] font-normal text-[24px] text-[#f3f3f3] flex flex-row justify-between mb-3 ">
                 <div className="flex">
                     Live rooms
                     <div className="text-[#474749] ml-[15px] ">
