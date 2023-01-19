@@ -6,18 +6,28 @@ import MoreUsersAvatar from "components/Experience/RoomInfoDlg/MoreUsersAvatar";
 import { UsersBoxData } from "data/Experience";
 import RoomMemberAvatarSmall from "components/Experience/RoomInfoDlg/RoomMemberAvatarSmall";
 
-const DaoEventPanel = () => {
+type LobbyType = {
+  title: string;
+  startDate: string;
+  reward: number;
+  unit: string;
+  avatar: string;
+  mainMember: string;
+  backgroundImage: string;
+}
+
+const DaoEventPanel = (props: LobbyType) => {
   var rest = 0;
   return (
     <div className="bg-[#181818] rounded-[10px] mt-4">
       <div className="relative sm:w-[385px] w-[360px] h-[110px]">
-        <Image src={"/images/games/event.png"} className="rounded-[10px]" layout="responsive" width={385} height={110} />
+        <Image src={props.backgroundImage} className="rounded-[10px]" layout="responsive" width={385} height={110} />
         <div className="absolute bottom-2 left-4 text-[13px] text-white right-4 flex items-center justify-between">
           <div>
             <div className="w-[25px] h-[25px] mr-2">
-              <Image src="/images/community/img/one.png" className="rounded-full" layout="responsive" width={25} height={25} />
+              <Image src={props.avatar} className="rounded-full" layout="responsive" width={25} height={25} />
             </div>
-            monkeDAO
+            {props.mainMember}
           </div>
 
           <div className="flex ml-4">
@@ -40,7 +50,7 @@ const DaoEventPanel = () => {
         <div className="flex justify-between text-[12px] font-medium gap-5">
           <div className="flex items-center">
             <div className="pt-[2px]">
-              144 AURY
+              {props.reward + " " + props.unit}
             </div>
             <div className="text-[#73DBC2] pl-1">
               <Trophy />
@@ -48,7 +58,7 @@ const DaoEventPanel = () => {
           </div>
           <div className="flex items-center">
             <div className="pt-[2px]">
-              11/22/22
+              {props.startDate}
             </div>
             <div className="text-[#73DBC2] pl-1">
               <CalendarDays />
