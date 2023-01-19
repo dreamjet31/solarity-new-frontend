@@ -1,9 +1,9 @@
 import { SliderType } from "../components/Intro/Slider"
 export const EXPLORE_BANNER_SLIDES: SliderType[] = [
   {
-    title: 'Webaverse',
-    backgroundImage: '/images/community/backs/BG (1).png',
-    content: <div>The Webaverse Genesis Pass is your toolkit for the open metaverse. The pass allows you to participate in The Upstreet, a collaborative MMO being built by Webaverse.</div>,
+    title: 'WorldWideWebb',
+    backgroundImage: '/images/community/backs/webb.jpeg',
+    content: <div>Worldwide Webb is an interoperable pixel art MMORPG metaverse game giving utility to popular NFT projects. The game uses NFTs for in-game avatars, pets, lands, NFT Items , and quests.</div>,
     button: 'Launch Now',
     path: 'https://webb.game/'
   },
@@ -15,9 +15,9 @@ export const EXPLORE_BANNER_SLIDES: SliderType[] = [
     path: 'https://theportal.to/'
   },
   {
-    title: 'ev.io',
-    backgroundImage: '/images/community/backs/BG (11).png',
-    content: <div>Ev.io is a play to earn blockchain FPS - equip a character skin, weapon and sword to start earning e (which converts to SOL) for every kill. Equip all 3 to unlock maximum earning potential.</div>,
+    title: 'AaveGotchi',
+    backgroundImage: '/images/community/backs/Aave.gif',
+    content: <div>A yield-generating NFT that doubles as a digital pet. Take care of them, and they’ll take care of you ^_^</div>,
     button: 'Launch Now',
     path: 'https://ev.io'
   },

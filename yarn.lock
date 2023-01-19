@@ -15,14 +15,14 @@
     regenerator-runtime "^0.13.11"
 
 "@babylonjs/core@^5.28.0":
-  version "5.40.1"
-  resolved "https://registry.yarnpkg.com/@babylonjs/core/-/core-5.40.1.tgz#f094392ec69e0d2688cabfba76445291d615399b"
-  integrity sha512-mCdYjBbzSrN2ZIPNQ4tkrH9DdQLMG7oLiZZihaKGi1UFLtpIBo2kVI6JwtmAg5+lNlAoKU3n+WOZoicFBolsXw==
+  version "5.41.0"
+  resolved "https://registry.yarnpkg.com/@babylonjs/core/-/core-5.41.0.tgz#ebc98f9d338d5dcbb4e81fcd3b6d515419532bca"
+  integrity sha512-PrY12n9IOql+9P/bFhEI7WTUqneTI0W9+ROKkwallqtTYku3XV7O5E7BXpdLJwrB/VufKApu6ErNoUb9Zhj9Cg==
 
 "@babylonjs/serializers@^5.28.0":
-  version "5.40.1"
-  resolved "https://registry.yarnpkg.com/@babylonjs/serializers/-/serializers-5.40.1.tgz#ca660f7f63735c9ce60fb4e264254bd489081f4f"
-  integrity sha512-NhaKXUjazR90pGKVyui9VDJXit1yn8Om22ULZFJmbsiq7DZVjGkcylxJUJcGiA7CAsNQVTDhINDPjfNI9i+CtQ==
+  version "5.41.0"
+  resolved "https://registry.yarnpkg.com/@babylonjs/serializers/-/serializers-5.41.0.tgz#14e474b78030db880d79ef3475f55ee85d2069ba"
+  integrity sha512-PcYley4WdF1Aeiiaw6c0NxO25LmZWllN3ltg1YOdud/U08JRDCJol/yqLRS7XKBInC2X+ENU2laToQswBxQhPQ==
 
 "@blocto/sdk@^0.2.21":
   version "0.2.22"
@@ -2645,9 +2645,9 @@ arweave-stream-tx@^1.1.0:
     exponential-backoff "^3.1.0"
 
 arweave@^1.10.13, arweave@^1.11.4:
-  version "1.11.8"
-  resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.11.8.tgz#09376e0c6cec40a661cbb27a306cb11c0a663cd8"
-  integrity sha512-58ODeNPIC4OjaOCl2bXjKbOFGsiVZFs+DkQg3BvQGvFWNqw1zTJ4Jp01xGUz+GbdOaDyJcCC0g3l0HwdJfFPyw==
+  version "1.12.2"
+  resolved "https://registry.yarnpkg.com/arweave/-/arweave-1.12.2.tgz#e99fb3db0529043ae0c67a89587751f8640058dd"
+  integrity sha512-gm82sbUd3AqiRxZ9hWRBnC2mRff+kCuVw1cSdMwhUmVyeSgvDxi5GkdCKHUm1tMvu59f45OcZRiL1yEIvvJY2Q==
   dependencies:
     arconnect "^0.4.2"
     asn1.js "^5.4.1"
@@ -2766,9 +2766,9 @@ axios@^0.27.2:
     form-data "^4.0.0"
 
 babylonjs-gltf2interface@^5.7.0:
-  version "5.40.1"
-  resolved "https://registry.yarnpkg.com/babylonjs-gltf2interface/-/babylonjs-gltf2interface-5.40.1.tgz#94eac49c907cd0ebca8a3821573020720eaf115f"
-  integrity sha512-q9x1/T43qHP2u8RNlp542gYNgDY9J7psvgp3dTLetIitw2OriPMeYySjmLqrAs9J4+tlgGqUuqRturOImdLVTg==
+  version "5.41.0"
+  resolved "https://registry.yarnpkg.com/babylonjs-gltf2interface/-/babylonjs-gltf2interface-5.41.0.tgz#eda5e362fa9248f4e14cfd50ad5c26c41cfb93fa"
+  integrity sha512-+aARV7Q6rxLxKnLX7aqe2klaPHzg6c5JBtsadpSAfMLL9laF3e7YqfTlPR6Zf7XxsAZGJBxU9BULLvC5R3BapA==
 
 babylonjs-serializers@5.7.0:
   version "5.7.0"
@@ -2784,9 +2784,9 @@ babylonjs@5.7.0:
   integrity sha512-eVb6IafSFBk7rtRwDkBT1Uz6g0r0MFKYj+lZpYowadyhxrf+svbJHdQGtkf00VIQXEywpHhpvxnDEYlcfEAyyQ==
 
 babylonjs@^5.7.0:
-  version "5.40.1"
-  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.40.1.tgz#2802aaf1d5581c137abf4a1a82fc20b5e5fd767f"
-  integrity sha512-BapE1yDzvE3DeOBfpcmQOe3PngC+66qCy5VDoKXHKwLZrcPg+WdYnzuwPkFOmvGUkggBD/jdvrPqU4K9wm74Iw==
+  version "5.41.0"
+  resolved "https://registry.yarnpkg.com/babylonjs/-/babylonjs-5.41.0.tgz#8c635355cd87cc67d2784087a556e8864ab9b48f"
+  integrity sha512-zdo94/Xy0DenP6vR/nTTZQKyzyF0GpnfRrzbFtloSmkhSD4sM4nfO4chaPRLcmxbHJUwGEjmjMIsukUtsw5FFg==
 
 backo2@1.0.2:
   version "1.0.2"
@@ -3205,9 +3205,9 @@ camelcase@^5.0.0:
   integrity sha512-L28STB170nwWS63UjtlEOE3dldQApaJXZkOI1uMFfzf3rRuPegHaHesyee+YxQ+W6SvRDQV6UrdOdRiR153wJg==
 
 caniuse-lite@^1.0.30001332, caniuse-lite@^1.0.30001400, caniuse-lite@^1.0.30001426:
-  version "1.0.30001441"
-  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001441.tgz#987437b266260b640a23cd18fbddb509d7f69f3e"
-  integrity sha512-OyxRR4Vof59I3yGWXws6i908EtGbMzVUi3ganaZQHmydk1iwDhRnvaPG2WaR0KcqrDFKrxVZHULT396LEPhXfg==
+  version "1.0.30001442"
+  resolved "https://registry.yarnpkg.com/caniuse-lite/-/caniuse-lite-1.0.30001442.tgz#40337f1cf3be7c637b061e2f78582dc1daec0614"
+  integrity sha512-239m03Pqy0hwxYPYR5JwOIxRJfLTWtle9FV8zosfV5pHg+/51uD4nxcUlM8+mWWGfwKtt8lJNHnD3cWw9VZ6ow==
 
 capability@^0.2.5:
   version "0.2.5"
@@ -3984,9 +3984,9 @@ engine.io-parser@~2.2.0:
     has-binary2 "~1.0.2"
 
 engine.io-parser@~5.0.3:
-  version "5.0.4"
-  resolved "https://registry.yarnpkg.com/engine.io-parser/-/engine.io-parser-5.0.4.tgz#0b13f704fa9271b3ec4f33112410d8f3f41d0fc0"
-  integrity sha512-+nVFp+5z1E3HcToEnO7ZIj3g+3k9389DvWtvJZz0T6/eOCPIyyxehFcedoYrZQrp0LgQbD9pPXhpMBKMd5QURg==
+  version "5.0.5"
+  resolved "https://registry.yarnpkg.com/engine.io-parser/-/engine.io-parser-5.0.5.tgz#c6fa52e57d8d2dc68b24754348f779aa6e44f886"
+  integrity sha512-mjEyaa4zhuuRhaSLOdjEb57X0XPP9JEsnXI4E+ivhwT0GgzUogARx4MqoY1jQyB+4Bkz3BUOmzL7t9RMKmlG3g==
 
 engine.io@~3.6.0:
   version "3.6.1"
@@ -5695,9 +5695,9 @@ node-fetch@2, node-fetch@2.6.7, node-fetch@^2.6.1:
     whatwg-url "^5.0.0"
 
 node-gyp-build@^4.2.0, node-gyp-build@^4.3.0:
-  version "4.5.0"
-  resolved "https://registry.yarnpkg.com/node-gyp-build/-/node-gyp-build-4.5.0.tgz#7a64eefa0b21112f89f58379da128ac177f20e40"
-  integrity sha512-2iGbaQBV+ITgCz76ZEjmhUKAKVf7xfY1sRl4UiKQspfZMH2h06SyhNsnSVy50cwkFQDGLyif6m/6uFXHkOZ6rg==
+  version "4.6.0"
+  resolved "https://registry.yarnpkg.com/node-gyp-build/-/node-gyp-build-4.6.0.tgz#0c52e4cbf54bbd28b709820ef7b6a3c2d6209055"
+  integrity sha512-NTZVKn9IylLwUzaKjkas1e4u2DLNcV4rdYagA4PWdPwW87Bi7z+BznyKSRwS/761tV/lzCGXplWsiaMjLqP2zQ==
 
 node-releases@^2.0.6:
   version "2.0.8"
