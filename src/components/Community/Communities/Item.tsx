@@ -44,8 +44,7 @@ function Item(props: ItemProps) {
                 <div className='text-[14px] text-[#929298] font-[500px] font-["outfit"]'>{props.memberNumber} members</div>
             </div>
             <div className='absolute top-14 left-1/2 transform -translate-x-1/2
-                        w-1/3 h-1/3
-                        '>
+                        w-1/3 h-1/3'>
                 <div className='rounded-[20px] border-[3px] border-black'>
                     <Image src={props.avatarUrl} className="rounded-[20px]" width={100} height={100} layout="responsive" />
                 </div>
