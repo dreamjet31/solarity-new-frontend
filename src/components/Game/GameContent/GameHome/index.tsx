@@ -2,11 +2,16 @@ import React from 'react';
 import Leaderboard from './Leaderboard';
 import DaoEventPanel from './DaoEventPanel';
 import GameGallery from './GameGallery';
+import GameTweets from './GameTweets';
 import GameItems from 'components/Marketplace/NFTItems/GameItems';
 import Header from 'components/Marketplace/NFTItems/Header';
 import { games } from 'data/Community';
 
-const GameHome = () => {
+type GameHomeType = {
+  id: number;
+}
+
+const GameHome = (props: GameHomeType) => {
 
   const gameRightArrowClick = () => {
     (document as any).querySelector('.game-items').scrollLeft += 200;
@@ -19,17 +24,27 @@ const GameHome = () => {
     <div className='pt-6'>
       <div className='flex custom-2xl:flex-row xl:flex-row lg:flex-row md:flex-row sm:flex-col xs:flex-col gap-6'>
         <div className='flex-auto'>
-          <GameGallery />
+          <GameGallery galleryImages={games[props.id].galleryImages}/>
+          <GameTweets />
         </div>
         <div className='custom-2xl:w-[385px] xl:w-[385px] lg:w-[385px] md:w-[385px] sm:w-full xs:w-full'>
-          <Leaderboard />
+          <Leaderboard leaderboard={games[props.id].leaderboard}/>
           <div className=''>
             <div className='text-white text-[25px] font-medium'>
               Lobbies
             </div>
             <div className=''>
-              <DaoEventPanel />
-              <DaoEventPanel />
+              {games[props.id].lobbies.map((lobby, index) => (
+                <DaoEventPanel 
+                  title={lobby.title}
+                  startDate={lobby.startDate}
+                  reward={lobby.reward}
+                  unit={lobby.unit}
+                  avatar={lobby.avatar}
+                  mainMember={lobby.mainMember}
+                  backgroundImage={lobby.backgroundImage}
+                />
+              ))}
             </div>
           </div>
         </div>

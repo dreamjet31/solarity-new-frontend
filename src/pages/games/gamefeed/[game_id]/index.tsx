@@ -59,7 +59,7 @@ function GameFeed() {
         }
         onClick={() => setSidebarToggler(!sidebarToggler)}
       >
-        <GameContent />
+        <GameContent id={gameId} />
       </Layout>
     );
   }

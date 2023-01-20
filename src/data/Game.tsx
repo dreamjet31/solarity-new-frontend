@@ -9,3 +9,10 @@ export const AVATARS_SMALL: string[] = [
   "/images/experience/room_user_avatars/room_user_avatar_8.webp",
   "/images/experience/room_user_avatars/room_user_avatar_9.webp",
 ]
+
+export const GAME_TAB_MENU: string[] = [
+  'Home',
+  'Quests',
+  'Marketplace',
+  'Guilds'
+];

@@ -22,6 +22,9 @@ export interface ItemProps {
     discordUrl?: string;
     iframeUrl?: string;
     walletIcon?: any;
+    galleryImages?: string[];
+    leaderboard?: string;
+    lobbies?: any[];
 }
 
 function Item(props: ItemProps) {
