@@ -39,7 +39,7 @@ const ExploreSection = () => {
   }
 
   return (
-    <div className="w-full">
+    <div className="w-full mb-8">
       <Header name={'From Your Community'} count={liveRooms.length} onRightArrowClick={roomRightArrowClick} onLeftArrowClick={roomLeftArrowClick} />
       <div className=' col-span-1 pb-10'>
         <LiveRoomItems items={liveRooms} />
@@ -54,22 +54,26 @@ const ExploreSection = () => {
         lg:gap-[32px] xs:gap-[16px] w-full`
       }>
         <TopRoomItem
-          title="SolGods Room owned by TMETA"
+          title="SolGods Room"
+          owner="TMETA"
           imageUrl="/images/rooms/room1.png"
           roomUrl={BaseUrl + "/tmeta/roomview?no=1"}
         />
         <TopRoomItem
-          title="Money Room owned by TMETA"
+          title="Money Room"
+          owner="TMETA"
           imageUrl="/images/rooms/room0.png"
           roomUrl={BaseUrl + "/tmeta/roomview?no=0"}
         />
         <TopRoomItem
-          title="SolGods Room owned by Super"
+          title="SolGods Room"
+          owner="Super"
           imageUrl="/images/rooms/room1.png"
           roomUrl={BaseUrl + "/super/roomview?no=1"}
         />
         <TopRoomItem
-          title="Money Room owned by Super"
+          title="Money Room"
+          owner="Super"
           imageUrl="/images/rooms/room0.png"
           roomUrl={BaseUrl + "/super/roomview?no=0"}
         />

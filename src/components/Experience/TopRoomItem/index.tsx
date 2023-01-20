@@ -7,12 +7,14 @@ import { GridAdd } from "components/icons";
 
 export type TopRoomItemProps = {
   title: string;
+  owner: string;
   imageUrl: string;
   roomUrl: string;
 };
 
 const TopRoomItem: FC<TopRoomItemProps> = ({
   title,
+  owner,
   imageUrl,
   roomUrl,
 }) => {
@@ -32,8 +34,9 @@ const TopRoomItem: FC<TopRoomItemProps> = ({
       w-full rounded-[20px] border-[1.2px] border-[#272829] hover:border-primary transition duration-300 bg-[#242424]" onClick={gotoRoom}>
       <div className="w-full"><Image src={imageUrl} width="100%" height="70%" layout="responsive" alt="room_image" /></div>
       <div className="py-[8px] px-[20px]">
-        <div className="text-[20px] text-[#F3F3F3] leading-[32px]">{title}</div>
         <div className="flex items-center justify-between text-[#29B080] text-[14px]">
+          <div className="text-[20px] text-[#F3F3F3] leading-[32px]">{title}</div>
+          <div className="text-[14px] text-[#29B080]">{owner}</div>
         </div>
       </div>
     </div>
