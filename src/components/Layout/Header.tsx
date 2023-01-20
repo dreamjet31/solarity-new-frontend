@@ -166,7 +166,7 @@ const Header = (props: HeaderProps) => {
                                 h-full self-center justify-between 
                                 custom-2xl:w-fit xl:w-fit lg:w-full md:w-full sm:w-full'>
                     {/* <SearchBox searchString={props.searchString} setSearchString={props.setSearchString} /> */}
-                    <div className="flex flex-row
+                    <div className="flex flex-row items-center
                                     md:justify-end sm:justify-end
                                     ">
                         {logged && profileData ? (
