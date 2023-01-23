@@ -37,6 +37,7 @@ const GameHome = (props: GameHomeType) => {
               {games[props.id].lobbies.map((lobby, index) => (
                 <DaoEventPanel 
                   title={lobby.title}
+                  key={index}
                   startDate={lobby.startDate}
                   reward={lobby.reward}
                   unit={lobby.unit}

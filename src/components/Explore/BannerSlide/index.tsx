@@ -22,7 +22,7 @@ const BannerSlide = (props: SliderType) => {
 
   return (
     <div className="relative min-h-[362px]">
-      <Image src={props.backgroundImage} className="min-h-[362]" layout="fill" height={362} alt={props.title} />
+      <Image src={props.backgroundImage} className="min-h-[362]" layout="fill" alt={props.title} />
       <div className={` absolute top-4 md:top-6 left-6 px-[24px] md:px-[52px] w-[300px] md:w-[513px] pt-[40px] pb-7 text-left`} style={{ backgroundColor: "rgba(13, 13, 13, 0.7)" }}>
         <h2 className="text-[25px] font-[700] text-white pb-4">{props.title}</h2>
         <p className={`text-[15px] font-[500] text-[#A29999] ${props.button ? 'pb-4' : 'pb-12'}`}>
