@@ -24,6 +24,7 @@ const GameContent = (props: GameContentType) => {
           {
             GAME_TAB_MENU.map((menu, index) => (
               <TabItem
+                key={index}
                 title={menu}
                 selectedStatus={activeIndex === index}
                 onClick={() => {

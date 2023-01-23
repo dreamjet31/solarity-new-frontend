@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { setGameModalVisibility, setSelectedGame } from 'redux/slices/commonSlice';
 import GameModal from '../../GameModal';
+import GameDivision from '../../../Game/GameDivision';
 import Description from './Description'
 import Preview from './Preview'
 import Stats from './Stats'
@@ -21,11 +22,11 @@ export interface HeaderProps {
 }
 
 function Header(props: HeaderProps) {
-  
+
   const { gameModalVisibility } = useSelector((state: RootStateOrAny) => ({
     gameModalVisibility: state.common.gameModalVisibility,
   }))
-  
+
   const [gameBannerVisibility, setGameBannerVisibility] = useState(false);
 
   return (
@@ -56,10 +57,16 @@ function Header(props: HeaderProps) {
         <div className='custom-2xl:col-span-2 xl:col-span-2 lg:col-span-2 md:col-span-1 sm:col-span-1 xs:col-span-1'>
           <Description title={props.title} description={props.description} walletAddress={props.walletAddress} icon={props.icon} />
         </div>
-        <div className='custom-2xl:block xl:hidden lg:hidden md:hidden sm:hidden xs:hidden'></div>
-        <div className='col-span-2'>
-          <Stats id={props.id} type={props.type} />
-        </div>
+        {props.type == 'game' && (
+          <div className='custom-2xl:col-span-3 xl:col-span-2 lg:col-span-2 md:col-span-1 sm:col-span-1 xs:col-span-1'>
+            <GameDivision />
+          </div>
+        )}
+        {props.type == 'community' && (
+          <div className='col-span-2'>
+            <Stats id={props.id} type={props.type} />
+          </div>
+        )}
       </div>
     </div>
   )
