@@ -41,7 +41,7 @@ function Main({ id, type, visitRoom, setIsMarketplace, activeIndex = 0, setActiv
                 </div>
             )}
             {type == 'game' && (
-                <GameContent />
+                <GameContent id={id} />
             )}
         </div>
     )
