@@ -1051,7 +1051,33 @@ export const games: ItemProps[] = [
         websiteUrl: "https://defiland.app/",
         twitterUrl: "https://twitter.com/DeFi_Land",
         discordUrl: "https://discord.com/invite/defiland",
-        walletIcon: <EthereumIcon />
+        walletIcon: <EthereumIcon />,
+        galleryImages: [
+            '/images/games/desc.png',
+            '/images/games/desc2.png',
+            '/images/games/desc3.png',
+        ],
+        leaderboard: "/images/games/lead.png",
+        lobbies: [
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            },
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            }
+        ],
     },
     {
         avatarUrl: '/images/community/avatars/DefiLand.png',
@@ -1068,7 +1094,33 @@ export const games: ItemProps[] = [
         websiteUrl: "https://defiland.app/",
         twitterUrl: "https://twitter.com/DeFi_Land",
         discordUrl: "https://discord.com/invite/defiland",
-        walletIcon: <EthereumIcon />
+        walletIcon: <EthereumIcon />,
+        galleryImages: [
+            '/images/games/desc.png',
+            '/images/games/desc2.png',
+            '/images/games/desc3.png',
+        ],
+        leaderboard: "/images/games/lead.png",
+        lobbies: [
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            },
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            }
+        ],
     },
     {
         avatarUrl: '/images/community/avatars/DefiLand.png',
@@ -1102,7 +1154,33 @@ export const games: ItemProps[] = [
         websiteUrl: "https://defiland.app/",
         twitterUrl: "https://twitter.com/DeFi_Land",
         discordUrl: "https://discord.com/invite/defiland",
-        walletIcon: <EthereumIcon />
+        walletIcon: <EthereumIcon />,
+        galleryImages: [
+            '/images/games/desc.png',
+            '/images/games/desc2.png',
+            '/images/games/desc3.png',
+        ],
+        leaderboard: "/images/games/lead.png",
+        lobbies: [
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            },
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            }
+        ],
     },
     {
         avatarUrl: '/images/community/avatars/DefiLand.png',
@@ -1119,7 +1197,76 @@ export const games: ItemProps[] = [
         websiteUrl: "https://defiland.app/",
         twitterUrl: "https://twitter.com/DeFi_Land",
         discordUrl: "https://discord.com/invite/defiland",
-        walletIcon: <EthereumIcon />
+        walletIcon: <EthereumIcon />,
+        galleryImages: [
+            '/images/games/desc.png',
+            '/images/games/desc2.png',
+            '/images/games/desc3.png',
+        ],
+        leaderboard: "/images/games/lead.png",
+        lobbies: [
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            },
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            }
+        ],
+    },
+    {
+        avatarUrl: '/images/community/avatars/DefiLand.png',
+        backUrl: '/images/community/backs/wordle_banner.png',
+        itemUrl: '/images/community/posters/woodoku.png',
+        communityName: 'Woodoku',
+        collectionName: 'None',
+        memberNumber: 2400,
+        totalSupply: 1100,
+        icon: <MemberIcon />,
+        description: "SWAG!",
+        walletAddress: '9jKipb3AbeNNZWtaJ6vgYPPBGZg2mX8Gqp1bU1SjeRDc',
+        iframeUrl: "https://html5.gamedistribution.com/9ed0d4b243484a6cb2456068085e0aa2/?gd_sdk_referrer_url=https%3A%2F%2Fgeometrydash.io%2Fwoodoku",
+        websiteUrl: "https://defiland.app/",
+        twitterUrl: "https://twitter.com/DeFi_Land",
+        discordUrl: "https://discord.com/invite/defiland",
+        walletIcon: <EthereumIcon />,
+        galleryImages: [
+            '/images/games/desc.png',
+            '/images/games/desc2.png',
+            '/images/games/desc3.png',
+        ],
+        leaderboard: "/images/games/lead.png",
+        lobbies: [
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            },
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            }
+        ],
     },
 ]
 export const stats: StatsItemProps[] = [
