@@ -3,7 +3,7 @@ import React from 'react';
 
 const GameDivision = () => {
   return (
-    <div className='flex gap-6 float-right'>
+    <div className='block md:flex gap-6 float-right'>
       <div className='flex mb-4 gap-4'>
         <div className='text-[16px] text-white flex items-center'>
           TYPE

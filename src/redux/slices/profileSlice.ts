@@ -154,13 +154,13 @@ export const placeBid = createAsyncThunk(
     let returnValue = null;
     try {
       const { roomInfo, signed, connection } = data;
+      console.log(data);
 
       const {
         data: { state },
       } = await apiCaller.post("/profile/checkRoom", {
-        roomNo: roomInfo.roomNo,
+        roomNo: roomInfo.no,
       });
-
       if (state == true) {
         // uncomment below
         errorFunction("This room is already available.");
@@ -180,7 +180,7 @@ export const placeBid = createAsyncThunk(
         // subTitle: roomInfo.subTitle,
         imageUrl: roomInfo.imgUrl,
         currentBid: roomInfo.price,
-        roomNo: roomInfo.roomNo,
+        roomNo: roomInfo.no,
       });
       successFunction();
       returnValue = profile;
