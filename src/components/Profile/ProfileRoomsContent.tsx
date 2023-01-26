@@ -33,7 +33,7 @@ const ProfileRoomsContent = (props) => {
             {ownRooms.length == 0 ? <NoGalleryCollection text="The user has no rooms" /> :
                 (
                     ownRooms.map((i) => {
-                        return <RoomAvatar title={i.title} imgSrc={i.srcUrl} no={i.no} onClose={() => { }} />
+                        return <RoomAvatar user={props.user} title={i.title} imgSrc={i.srcUrl} no={i.no} onClose={() => { }} />
                     })
                 )}
         </div>

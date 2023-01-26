@@ -8,6 +8,7 @@ import { connectWallet } from "utils/walletHelpers";
 import { connect } from "socket.io-client";
 import { extractError } from "utils";
 import { title } from "process";
+import { number } from "yup";
 
 const initialState = {
   data: {},
@@ -138,6 +139,46 @@ export const getRewardAction = createAsyncThunk(
   }
 );
 
+export const activeRoom = createAsyncThunk(
+  "profile/activeRoom",
+  async({
+    data,
+    successFunction,
+    errorFunction,
+    finalFunction,
+  }: {
+    data: {
+      roomNo: number;
+      profile: any;
+    };
+    successFunction: () => void;
+    errorFunction: (error: string) => void;
+    finalFunction: () => void;
+  }) => {
+    let { roomNo } = data;
+    let returnValue = null;
+
+    try {
+      if(roomNo) {
+        const {
+          data: { profile },
+        } = await apiCaller.post("/profile/setActiveRoom", {
+          roomNo: roomNo,
+        });
+        returnValue = profile;
+        successFunction();
+      } else {
+        returnValue = false;
+      }
+    } catch (error) {
+      errorFunction(error.message);
+      returnValue = false;
+    }
+    finalFunction();
+    return returnValue;
+  }
+);
+
 export const placeBid = createAsyncThunk(
   "profile/placeBid",
   async ({
@@ -154,7 +195,6 @@ export const placeBid = createAsyncThunk(
     let returnValue = null;
     try {
       const { roomInfo, signed, connection } = data;
-      console.log(data);
 
       const {
         data: { state },
@@ -446,10 +486,10 @@ export const changeActiveRoom = createAsyncThunk(
   "profile/changeActiveRoom",
   async ({
     roomNo,
-    next,
+    finalFunction,
   }: {
     roomNo: number;
-    next?: () => void;
+    finalFunction: Function;
   }) => {
     let returnValue = null;
     try {
@@ -462,7 +502,7 @@ export const changeActiveRoom = createAsyncThunk(
       showErrorToast(extractError(err));
       returnValue = false;
     }
-    if (next) next();
+    finalFunction();
     return returnValue;
   }
 );
