@@ -221,6 +221,92 @@ export const games: ItemProps[] = [
     },
     {
         avatarUrl: '/images/community/avatars/Oncyber.png',
+        backUrl: '/images/community/backs/ALR.png',
+        itemUrl: '/images/community/posters/ALR.jpeg',
+        communityName: 'ALR',
+        collectionName: 'Ethereum',
+        memberNumber: 8000,
+        totalSupply: 37000,
+        icon: <MemberIcon />,
+        description: "A multiverse for creators, oncyber is the easiest way for artists and collectors to show their digital assets (NFTs) in fully immersive experiences (3D/VR), for free. Holding an item from any of these collections allows you to use it as a 3D exhibition space for your digital assets oncyber.io/create",
+        walletAddress: '9jKipb3AbeNNZWtaJ6vgYPPBGZg2mX8Gqp1bU1SjeRDc',
+        iframeUrl: "https://game-alr-test.herokuapp.com/",
+        websiteUrl: "http://oncyber.io/",
+        twitterUrl: "https://www.twitter.com/oncyber",
+        discordUrl: "#",
+        walletIcon: <SolanaLinkIcon />,
+        galleryImages: [
+            '/images/games/ALR1.webp',
+            '/images/games/ALR2.webp',
+            '/images/games/ALR3.webp',
+        ],
+        leaderboard: "/images/games/lead.png",
+        lobbies: [
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            },
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            }
+        ],
+    },
+    {
+        avatarUrl: '/images/community/avatars/Oncyber.png',
+        backUrl: '/images/community/backs/mixmob.png',
+        itemUrl: '/images/community/posters/mixmob.jpeg',
+        communityName: 'MixMob',
+        collectionName: 'Ethereum',
+        memberNumber: 8000,
+        totalSupply: 37000,
+        icon: <MemberIcon />,
+        description: "A multiverse for creators, oncyber is the easiest way for artists and collectors to show their digital assets (NFTs) in fully immersive experiences (3D/VR), for free. Holding an item from any of these collections allows you to use it as a 3D exhibition space for your digital assets oncyber.io/create",
+        walletAddress: '9jKipb3AbeNNZWtaJ6vgYPPBGZg2mX8Gqp1bU1SjeRDc',
+        iframeUrl: "https://oncyber.io/6529om/",
+        websiteUrl: "http://oncyber.io/",
+        twitterUrl: "https://www.twitter.com/oncyber",
+        discordUrl: "#",
+        walletIcon: <SolanaLinkIcon />,
+        galleryImages: [
+            '/images/games/desc.png',
+            '/images/games/desc2.png',
+            '/images/games/desc3.png',
+        ],
+        leaderboard: "/images/games/lead.png",
+        lobbies: [
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            },
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            }
+        ],
+    },
+    {
+        avatarUrl: '/images/community/avatars/Oncyber.png',
         backUrl: '/images/community/backs/Oncyber.png',
         itemUrl: '/images/community/posters/Oncyber.png',
         communityName: 'OnCyber',
@@ -649,7 +735,7 @@ export const games: ItemProps[] = [
             }
         ],
     },
-    {
+    {  
         avatarUrl: '/images/community/avatars/Picture (8).png',
         backUrl: '/images/community/backs/BG (6).png',
         itemUrl: '/images/community/posters/Portals.png',
@@ -1138,6 +1224,32 @@ export const games: ItemProps[] = [
         twitterUrl: "https://twitter.com/DeFi_Land",
         discordUrl: "https://discord.com/invite/defiland",
         walletIcon: <EthereumIcon />
+        galleryImages: [
+            '/images/games/desc.png',
+            '/images/games/desc2.png',
+            '/images/games/desc3.png',
+        ],
+        leaderboard: "/images/games/lead.png",
+        lobbies: [
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            },
+            {
+                title: "Aurory Hatch Event",
+                startDate: "11/22/22",
+                reward: 144,
+                unit: "AURY",
+                avatar: "/images/community/img/one.png",
+                mainMember: "monkeDAO",
+                backgroundImage:"/images/games/event.png"
+            }
+        ],
     },
     {
         avatarUrl: '/images/community/avatars/DefiLand.png',
