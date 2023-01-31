@@ -1223,7 +1223,7 @@ export const games: ItemProps[] = [
         websiteUrl: "https://defiland.app/",
         twitterUrl: "https://twitter.com/DeFi_Land",
         discordUrl: "https://discord.com/invite/defiland",
-        walletIcon: <EthereumIcon />
+        walletIcon: <EthereumIcon />,
         galleryImages: [
             '/images/games/desc.png',
             '/images/games/desc2.png',
