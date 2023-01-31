@@ -126,10 +126,10 @@ const ProfileIndex = () => {
                     }>
                         <div className="lg:hidden block mb-4">
                             {!!selectedLiveRoom.title && (
-                            <RoomInfoDlg
-                                selectedLiveRoom={selectedLiveRoom}
-                                type={1}
-                            />
+                                <RoomInfoDlg
+                                    selectedLiveRoom={selectedLiveRoom}
+                                    type={1}
+                                />
                             )}
                         </div>
                         <div className={` flex flex-col h-full `}>

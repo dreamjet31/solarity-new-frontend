@@ -349,7 +349,8 @@ const MainScr = () => {
         setUsersBoxActive={setUsersBoxActive}
         isMobile={isMobile}
       />
-      <div className=" min-w-[20%] absolute md:bottom-[32px] xs:bottom-[78px] md:right-[32px] xs:right-[0px] w-[426px] md:top-[108px] xs:top-[0px] md:w-fit xs:w-full md:rounded-[24px] xs:rounded-[0px] ">
+      <div className={` ${leftSideActive === "chatting" ? "block"
+          : "hidden" } min-w-[20%] absolute md:bottom-[32px] xs:bottom-[78px] md:right-[32px] xs:right-[0px] w-[426px] md:top-[108px] xs:top-[0px] md:w-fit xs:w-full md:rounded-[24px] xs:rounded-[0px] `}>
         <ChattingBox
           setLeftSideActive={(any) => setLeftSideActive(any)}
           leftSideActive={leftSideActive}
