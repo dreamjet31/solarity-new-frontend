@@ -8,7 +8,7 @@ import Preview from './Preview'
 import Stats from './Stats'
 
 export interface HeaderProps {
-  id: number;
+  id?: number;
   isPreview: boolean;
   avatarUrl: string;
   backUrl: string;
@@ -57,7 +57,13 @@ function Header(props: HeaderProps) {
 
       <div className='grid custom-2xl:grid-cols-5 xl:grid-cols-4 xl:gap-12 gap-0 lg:grid-cols-2 md:grid-cols-1 sm:grid-cols-1 xs:grid-cols-1'>
         <div className='custom-2xl:col-span-2 xl:col-span-2 lg:col-span-2 md:col-span-1 sm:col-span-1 xs:col-span-1'>
-          <Description title={props.title} description={props.description} walletAddress={props.walletAddress} icon={props.icon} />
+          <Description 
+            type={props.type}
+            title={props.title} 
+            description={props.description} 
+            walletAddress={props.walletAddress} 
+            icon={props.icon} 
+          />
         </div>
         {props.type == 'game' && (
           <div className='custom-2xl:col-span-3 xl:col-span-2 lg:col-span-2 md:col-span-1 sm:col-span-1 xs:col-span-1'>

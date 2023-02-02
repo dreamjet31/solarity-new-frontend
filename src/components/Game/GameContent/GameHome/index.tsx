@@ -8,7 +8,7 @@ import Header from 'components/Marketplace/NFTItems/Header';
 import { games } from 'data/Community';
 
 type GameHomeType = {
-  id: number;
+  game: any;
 }
 
 const GameHome = (props: GameHomeType) => {
@@ -24,17 +24,17 @@ const GameHome = (props: GameHomeType) => {
     <div className='pt-6'>
       <div className='flex custom-2xl:flex-row xl:flex-row lg:flex-row md:flex-row sm:flex-col xs:flex-col gap-6'>
         <div className='flex-auto'>
-          <GameGallery galleryImages={games[props.id].galleryImages}/>
+          <GameGallery galleryImages={props.game.galleryImages}/>
           <GameTweets />
         </div>
         <div className='custom-2xl:w-[385px] xl:w-[385px] lg:w-[385px] md:w-[385px] sm:w-full xs:w-full'>
-          <Leaderboard leaderboard={games[props.id].leaderboard}/>
+          {/* <Leaderboard leaderboard={game.leaderboard}/> */}
           <div className=''>
-            <div className='text-white text-[25px] font-medium'>
+            {/* <div className='text-white text-[25px] font-medium'>
               Lobbies
-            </div>
-            <div className=''>
-              {games[props.id].lobbies.map((lobby, index) => (
+            </div> */}
+            {/* <div className=''>
+              {game.lobbies.map((lobby, index) => (
                 <DaoEventPanel 
                   title={lobby.title}
                   key={index}
@@ -46,7 +46,7 @@ const GameHome = (props: GameHomeType) => {
                   backgroundImage={lobby.backgroundImage}
                 />
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

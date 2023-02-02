@@ -29,7 +29,7 @@ const GameContent = (props: GameContentType) => {
             onClick={
               () => {
                 gotoDetailPage(
-                  index, 
+                  game._id, 
                   'game'
                 );
               }
@@ -38,8 +38,8 @@ const GameContent = (props: GameContentType) => {
             <div className=" rounded-[15px] overflow-hidden w-full">
               <img src={game.itemImage} className='rounded-2xl' width="100%" height={232} alt="room_image" />
             </div>
-            <div className='flex md:flex-row xs:flex-col-reverse justify-between gap-[6px] mt-[20px]'>
-              <div className='font-[500] text-[14px] ml-[12px] text-center'>
+            <div className='flex md:flex-row xs:flex-col-reverse gap-[6px] my-[10px]'>
+              <div className='font-[500] text-[14px] ml-[12px] text-center w-full'>
                 <div className="font-['Outfit'] text-[#929298]">
                   {game.title}
                 </div>

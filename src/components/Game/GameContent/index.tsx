@@ -4,7 +4,7 @@ import React, { useState } from 'react';
 import GameHome from './GameHome';
 
 type GameContentType = {
-  id: number;
+  game: any;
 }
 
 const GameContent = (props: GameContentType) => {
@@ -36,7 +36,7 @@ const GameContent = (props: GameContentType) => {
         </div>
       </div>
       {activeIndex === 0 && (
-        <GameHome id={props.id} />
+        <GameHome game={props.game} />
       )}
       {activeIndex === 1 && (
         <div>Quests Part</div>

@@ -12,10 +12,9 @@ const GamePage = () => {
   const games = useAsyncMemo(async () => {
     try {
       const {
-        data: { data }
+        data: { games }
       } = await apiCaller.get(`/games`);
-      console.log(data);
-      return data;
+      return games;
     } catch (error) {
       console.error('Something went wrong.');
       return [];
