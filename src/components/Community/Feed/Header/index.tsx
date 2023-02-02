@@ -33,6 +33,7 @@ function Header(props: HeaderProps) {
     <div className='flex flex-col gap-[56px]'>
       {props.isPreview &&
         <Preview
+          type={props.type}
           avatarUrl={props.avatarUrl}
           iframeUrl={props.iframeUrl}
           gameBannerVisibility={gameBannerVisibility}
@@ -43,6 +44,7 @@ function Header(props: HeaderProps) {
         />}
       {!props.isPreview && <div className='md:hidden lg:hidden sm:block xs:block'>
         <Preview
+          type={props.type}
           avatarUrl={props.avatarUrl}
           iframeUrl={props.iframeUrl}
           backUrl={props.backUrl}
