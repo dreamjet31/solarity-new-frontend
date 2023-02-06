@@ -4,14 +4,13 @@ import WalletBalanceIcon from "./WalletBalanceIcon"
 import { getWalletBalances } from "hooks";
 import { useEffect, useState } from "react";
 
-const BannerDescriptionWallet = ({ sidebarToggler, solanaAddress, ethereumAddress }) => {
+const BannerDescriptionWallet = ({ sidebarToggler, solanaAddress, ethereumAddress, score }) => {
   const { coins, tokens, loading, error } = getWalletBalances({
     solanaAddress,
     ethereumAddress,
   });
 
   const [totalBalance, setTotalBalance] = useState(0);
-
   useEffect(() => {
     var balance = 0;
     for (var i = 0; i < coins.length; i++) {
@@ -64,9 +63,17 @@ const BannerDescriptionWallet = ({ sidebarToggler, solanaAddress, ethereumAddres
             <TotalBalanceIcon />
           </div>
         </div>
+        <WalletBalanceIcon
+            key={0}
+            kind={"XP"}
+            balance={score}
+            badge={'/images/wallets/xp_logo.png'}
+            address={"Solarity"}
+            onClick={() => { }}
+        />
         {coins.map((coin, index) => (
           <WalletBalanceIcon
-            key={index}
+            key={index + 1}
             kind={coin.symbol}
             balance={coin.balance}
             badge={TOEKN_ICONS[coin.symbol]}
@@ -76,7 +83,7 @@ const BannerDescriptionWallet = ({ sidebarToggler, solanaAddress, ethereumAddres
         ))}
         {tokens.map((token, index) => (
           <WalletBalanceIcon
-            key={index + coins.length}
+            key={index + coins.length + 1}
             kind={token.symbol}
             balance={token.balance}
             badge={TOEKN_ICONS[token.symbol]}

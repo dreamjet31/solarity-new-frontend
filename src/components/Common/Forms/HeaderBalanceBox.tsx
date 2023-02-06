@@ -45,8 +45,14 @@ const BalanceBox = (props) => {
                             top-[50px] opacity-0 left-[-12px] h-[0px] w-full bg-[#131314]
                             border-[#1d1f1f] border-[2px] rounded-[12px] text-white z-[1000] group-hover:h-auto group-hover:opacity-100 overflow-hidden
                             `} >
+                <div className="rounded-[10px] hover:bg-[#1d1d1f] bg-transparent px-[10px] py-[8px] w-full flex flex-row py-[6px] font-500 text-[#f3f3f3] group-hover:flex hidden hover:text-primary" key={0}>
+                    {profileData.score}
+                    <div className="text-[#929298] ml-[5px] ">
+                        {"XP"}
+                    </div>
+                </div>
                 {coins.map((coin, index) => (
-                    <div className="rounded-[10px] hover:bg-[#1d1d1f] bg-transparent px-[10px] py-[8px] w-full flex flex-row py-[6px] font-500 text-[#f3f3f3] group-hover:flex hidden hover:text-primary" key={index}>
+                    <div className="rounded-[10px] hover:bg-[#1d1d1f] bg-transparent px-[10px] py-[8px] w-full flex flex-row py-[6px] font-500 text-[#f3f3f3] group-hover:flex hidden hover:text-primary" key={index + 1}>
                         {coin.balance}
                         <div className="text-[#929298] ml-[5px] ">
                             {coin.symbol}
@@ -54,7 +60,7 @@ const BalanceBox = (props) => {
                     </div>
                 ))}
                 {tokens.map((token, index) => (
-                    <div className="rounded-[10px] hover:bg-[#1d1d1f] bg-transparent px-[10px] py-[8px] w-full flex flex-row py-[6px] font-500 text-[#f3f3f3] group-hover:flex hidden hover:text-primary" key={index}>
+                    <div className="rounded-[10px] hover:bg-[#1d1d1f] bg-transparent px-[10px] py-[8px] w-full flex flex-row py-[6px] font-500 text-[#f3f3f3] group-hover:flex hidden hover:text-primary" key={index + coins.length + 1}>
                         {token.balance}
                         <div className="text-[#929298] ml-[5px] ">
                             {token.symbol}
