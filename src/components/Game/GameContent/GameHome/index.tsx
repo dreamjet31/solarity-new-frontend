@@ -6,6 +6,7 @@ import GameTweets from './GameTweets';
 import GameItems from 'components/Marketplace/NFTItems/GameItems';
 import Header from 'components/Marketplace/NFTItems/Header';
 import { games } from 'data/Community';
+import Quests from './Quests';
 
 type GameHomeType = {
   game: any;
@@ -29,6 +30,7 @@ const GameHome = (props: GameHomeType) => {
         </div>
         <div className='custom-2xl:w-[385px] xl:w-[385px] lg:w-[385px] md:w-[385px] sm:w-full xs:w-full'>
           {/* <Leaderboard leaderboard={game.leaderboard}/> */}
+          <Quests quests={props.game.quests} />
           <div className=''>
             {/* <div className='text-white text-[25px] font-medium'>
               Lobbies
