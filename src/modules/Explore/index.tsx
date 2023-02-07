@@ -2,15 +2,29 @@ import Header from "components/Marketplace/NFTItems/Header";
 import LiveRoomItems from "components/Marketplace/NFTItems/LiveRoomItems";
 import GameItems from "components/Marketplace/NFTItems/GameItems";
 import { LIVE_ROOMS_EXPLORE } from "data/Explore";
-import { games } from 'data/Community';
 import React, { useEffect } from "react"
 import { RootStateOrAny, useSelector } from "react-redux";
 import ACTIONS from "config/actions";
+import { apiCaller } from "utils/fetcher";
+import { useAsyncMemo } from "use-async-memo";
 
 const Explore = () => {
     const { rooms } = useSelector((state: RootStateOrAny) => ({
         rooms: state.chat.rooms
     }))
+
+    const games = useAsyncMemo(async () => {
+        try {
+        const {
+            data: { games }
+        } = await apiCaller.get(`/games`);
+        return games;
+        } catch (error) {
+        console.error('Something went wrong.');
+        return [];
+        }
+    }, []);
+    
 
     useEffect(() => {
         setTimeout(() => {
@@ -38,9 +52,9 @@ const Explore = () => {
             <div className=' col-span-1'>
                 <LiveRoomItems items={rooms} />
             </div>
-            <Header name={'Jump Back In'} count={games.length} onRightArrowClick={gameRightArrowClick} onLeftArrowClick={gameLeftArrowClick} />
+            <Header name={'Jump Back In'} count={(games || []).length} onRightArrowClick={gameRightArrowClick} onLeftArrowClick={gameLeftArrowClick} />
             <div className=' col-span-1'>
-                <GameItems items={games} />
+                <GameItems items={games || []}/>
             </div>
         </div>
     )

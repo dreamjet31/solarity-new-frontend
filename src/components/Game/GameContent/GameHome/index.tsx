@@ -5,7 +5,6 @@ import GameGallery from './GameGallery';
 import GameTweets from './GameTweets';
 import GameItems from 'components/Marketplace/NFTItems/GameItems';
 import Header from 'components/Marketplace/NFTItems/Header';
-import { games } from 'data/Community';
 import Quests from './Quests';
 import { useAsyncMemo } from 'use-async-memo';
 import { apiCaller } from 'utils/fetcher';
