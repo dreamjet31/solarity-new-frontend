@@ -55,7 +55,6 @@ function GameFeed() {
   //   );
   // } else {
     if(game) {
-      console.log(game);
       return (
         <Layout
           sidebarToggler={sidebarToggler}
