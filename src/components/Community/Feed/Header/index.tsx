@@ -34,6 +34,7 @@ function Header(props: HeaderProps) {
       {props.isPreview &&
         <Preview
           type={props.type}
+          id={props.id}
           avatarUrl={props.avatarUrl}
           iframeUrl={props.iframeUrl}
           gameBannerVisibility={gameBannerVisibility}
@@ -45,6 +46,7 @@ function Header(props: HeaderProps) {
       {!props.isPreview && <div className='md:hidden lg:hidden sm:block xs:block'>
         <Preview
           type={props.type}
+          id={props.id}
           avatarUrl={props.avatarUrl}
           iframeUrl={props.iframeUrl}
           backUrl={props.backUrl}

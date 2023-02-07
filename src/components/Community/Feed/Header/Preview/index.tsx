@@ -3,11 +3,15 @@ import React, { useCallback, useEffect, useState } from 'react'
 import { GreenButton } from '../../../../Common/Buttons';
 import { CloudIcon } from '../../../../icons/CloudIcon';
 import { ViewIcon } from '../../../../icons';
-import { useDispatch } from 'react-redux';
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux';
 import { setGameModalVisibility, setMobileGameModal, setSelectedGame } from 'redux/slices/commonSlice';
 import { checkBrowser } from 'utils';
+import ACTIONS from 'config/actions';
+import { apiCaller } from 'utils/fetcher';
+import { setProfile } from 'redux/slices/profileSlice';
 
 export interface PreviewProps {
+  id?: string;
   type?: string;
   avatarUrl: string;
   backUrl: string;
@@ -20,6 +24,9 @@ export interface PreviewProps {
 
 function Preview(props: PreviewProps) {
   const dispatch = useDispatch();
+  const { profile } = useSelector((state: RootStateOrAny) => ({
+    profile: state.profile.data,
+  }))
 
   const [isMobile, setIsMobile] = useState(false);
 
@@ -33,16 +40,41 @@ function Preview(props: PreviewProps) {
   }, [])
 
   // When you click play button on the banner of detailed game page.
-  const play = useCallback(() => {
+  const play = useCallback(async () => {
     if(isMobile) {
       dispatch(setMobileGameModal(true));
     } else {
       props.setGameBannerVisibility(true)
     }
+    if(!!profile.username) {
+      const {
+        data: { profile },
+      } = await apiCaller.post("/profile/setGameState", {
+        gameId: props.id,
+        type: false,
+      });
+    } else {
+      alert('please log in and play to get XP')
+    }
   }, [isMobile])
 
   useEffect(() => {
     setIsMobile(checkBrowser())
+  }, [])
+
+  useEffect(() => {
+    return () => {
+      const sendGameState = async () => {
+        const {
+          data: { profile },
+        } = await apiCaller.post("/profile/setGameState", {
+          gameId: props.id,
+          type: true,
+        });
+        dispatch(setProfile(profile));
+      }
+      sendGameState();
+    }
   }, [])
 
   return (
@@ -52,9 +84,9 @@ function Preview(props: PreviewProps) {
           <div className='lg:h-[450px] md:h-[450px] sm:h-[300px] xs:h-[300px] w-full'>
             <iframe src={props.iframeUrl} frameBorder="0" className="w-full h-full"></iframe>
           </div>
-          <div className=' absolute right-5 md:right-20 bottom-10'>
+          {/* <div className=' absolute right-5 md:right-20 bottom-10'>
             <GreenButton caption='Full Screen' icon={<ViewIcon />} onClick={setFullScreenModal} />
-          </div>
+          </div> */}
         </div>
       ) : (
         <div>

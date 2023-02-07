@@ -55,6 +55,7 @@ function GameFeed() {
   //   );
   // } else {
     if(game) {
+      console.log(game);
       return (
         <Layout
           sidebarToggler={sidebarToggler}
@@ -62,8 +63,9 @@ function GameFeed() {
             <Header
               isPreview={!isMarketplace}
               type={type as string}
+              id={game._id}
               websiteUrl={game.websiteUrl}
-              iframeUrl={game.iframeUrl ? game.iframeUrl: ""}
+              iframeUrl={game.gameUrl ? game.gameUrl: ""}
               avatarUrl={game.avatarImage}
               backUrl={game.bannerImage}
               title={game.title}

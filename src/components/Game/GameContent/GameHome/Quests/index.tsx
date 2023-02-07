@@ -12,6 +12,7 @@ const Quests = (props) => {
           name={quest.name}
           detail={quest.detail}
           score={quest.score}
+          achievers={quest.achievers}
         />
       ))}
 

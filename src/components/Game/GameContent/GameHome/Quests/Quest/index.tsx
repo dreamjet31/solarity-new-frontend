@@ -1,13 +1,18 @@
 import React from "react";
 import ProfileFeedSharedBadge from 'components/Profile/ProfileFeedSharedBadge';
+import { RootStateOrAny, useSelector } from "react-redux";
 
 type QuestType = {
   name: string;
   detail: string;
   score: number;
+  achievers: any[];
 }
 
 const Quest = (props: QuestType) => {
+    const {profile} = useSelector((state: RootStateOrAny) => ({
+        profile: state.profile.data,
+    }))
   return (
     <div className="relative p-8 flex flex-row justify-start bg-[#181818] rounded-[20px] mb-[32px] break-all md:flex-nowrap xs:flex-wrap">
 
@@ -17,7 +22,13 @@ const Quest = (props: QuestType) => {
 
         <div className="absolute top-[10px] right-[40px]">
             <div className="profileFeedName font-400 text-primary md:text-[16px] xs:text-[16px] leading-[200%]">
-                XP: {props.score}
+                {
+                    props.achievers.findIndex(s => s.user == profile._id) == -1 ? (
+                        <span>XP: {props.score}</span>
+                    ) : (
+                        <span>You got {props.score} XP.</span>
+                    )
+                }
             </div>  
         </div>
 
