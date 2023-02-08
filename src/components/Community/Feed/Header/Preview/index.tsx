@@ -9,6 +9,7 @@ import { checkBrowser } from 'utils';
 import ACTIONS from 'config/actions';
 import { apiCaller } from 'utils/fetcher';
 import { setProfile } from 'redux/slices/profileSlice';
+import { toast } from 'react-toastify';
 
 export interface PreviewProps {
   id?: string;
@@ -48,13 +49,25 @@ function Preview(props: PreviewProps) {
     }
     if(!!profile.username) {
       const {
-        data: { profile },
+        data: { newProfile, state },
       } = await apiCaller.post("/profile/setGameState", {
         gameId: props.id,
         type: false,
       });
-    } else {
-      alert('please log in and play to get XP')
+      if(state == 1) {
+        toast.success("You got 100 XP by finishing mission 1", {
+          position: "bottom-right",
+          autoClose: 5000,
+          hideProgressBar: false,
+          closeOnClick: true,
+          pauseOnHover: true,
+          draggable: true,
+          progress: undefined,
+        });
+      }
+      dispatch(setProfile(newProfile));
+      } else {
+        alert('please log in and play to get XP')
     }
   }, [isMobile])
 
@@ -66,12 +79,23 @@ function Preview(props: PreviewProps) {
     return () => {
       const sendGameState = async () => {
         const {
-          data: { profile },
+          data: { newProfile, state },
         } = await apiCaller.post("/profile/setGameState", {
           gameId: props.id,
           type: true,
         });
-        dispatch(setProfile(profile));
+        if(state == 2) {
+          toast.success("You got 100 XP by finishing mission 2", {
+            position: "bottom-right",
+            autoClose: 5000,
+            hideProgressBar: false,
+            closeOnClick: true,
+            pauseOnHover: true,
+            draggable: true,
+            progress: undefined,
+          });
+        }
+        dispatch(setProfile(newProfile));
       }
       sendGameState();
     }

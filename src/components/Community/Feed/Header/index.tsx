@@ -8,7 +8,7 @@ import Preview from './Preview'
 import Stats from './Stats'
 
 export interface HeaderProps {
-  id?: number;
+  id?: string;
   isPreview: boolean;
   avatarUrl: string;
   backUrl: string;
