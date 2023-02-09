@@ -71,16 +71,20 @@ const BannerDescriptionWallet = ({ sidebarToggler, solanaAddress, ethereumAddres
             address={"Solarity"}
             onClick={() => { }}
         />
-        {coins.map((coin, index) => (
-          <WalletBalanceIcon
-            key={index + 1}
-            kind={coin.symbol}
-            balance={coin.balance}
-            badge={TOEKN_ICONS[coin.symbol]}
-            address={coin.coinAddress.slice(0, 4)}
-            onClick={() => { }}
-          />
-        ))}
+        {coins.map((coin, index) => {
+          if(coin.symbol != "MBC") {
+            return (
+              <WalletBalanceIcon
+                key={index + 1}
+                kind={coin.symbol}
+                balance={coin.balance}
+                badge={TOEKN_ICONS[coin.symbol]}
+                address={coin.coinAddress.slice(0, 4)}
+                onClick={() => { }}
+              />
+            )
+          }
+        })}
         {tokens.map((token, index) => (
           <WalletBalanceIcon
             key={index + coins.length + 1}

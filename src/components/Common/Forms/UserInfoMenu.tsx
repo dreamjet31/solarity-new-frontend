@@ -39,14 +39,11 @@ const UserInfoMenu = (props) => {
       <Link href={`/${profileData.username}/profile`}>
         <a>
           {
-            profileData.profileImage && profileData.profileImage.link && (
-              <div className="h-[40px]">
-                <img src={profileData.profileImage.link} width={40} height={40} className="rounded-xl flex items-center" />
+            profileData.profileImage && profileData.profileImage.link ? (
+              <div className="min-h-[40px]">
+                <img src={profileData.profileImage.link} width={40} style={{height: "40px"}} className="rounded-xl flex items-center" />
               </div>
-            )
-          }
-          {
-            !profileData.profileImage || !profileData.profileImage.link && (
+            ) : (
               <DummyAvatarSmall />
             )
           }
