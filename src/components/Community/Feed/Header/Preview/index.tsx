@@ -47,16 +47,26 @@ function Preview(props: PreviewProps) {
     } else {
       props.setGameBannerVisibility(true)
     }
-    if(!!profile.username) {
-      const {
-        data: { newProfile, state },
-      } = await apiCaller.post("/profile/setGameState", {
-        gameId: props.id,
-        type: false,
+    if(!profile.username) {
+      toast.warning("Please try to log in and play to earn XP.", {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
       });
-      if(state == 1) {
-        toast.success("You got 100 XP by finishing mission 1", {
-          position: "bottom-right",
+    }
+    const {
+      data: { newProfile, state },
+    } = await apiCaller.post("/profile/setGameState", {
+      gameId: props.id,
+      type: false,
+    });
+    if(state == 1) {
+      toast.success("You got 100 XP by finishing mission 1", {
+          position: "top-right",
           autoClose: 5000,
           hideProgressBar: false,
           closeOnClick: true,
@@ -64,12 +74,9 @@ function Preview(props: PreviewProps) {
           draggable: true,
           progress: undefined,
         });
-      }
-      dispatch(setProfile(newProfile));
-      } else {
-        alert('please log in and play to get XP')
     }
-  }, [isMobile])
+    dispatch(setProfile(newProfile));
+    }, [isMobile])
 
   useEffect(() => {
     setIsMobile(checkBrowser())

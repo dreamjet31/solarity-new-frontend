@@ -41,7 +41,7 @@ const UserInfoMenu = (props) => {
           {
             profileData.profileImage && profileData.profileImage.link && (
               <div className="h-[40px]">
-                <Image src={profileData.profileImage.link} width={40} height={40} className="rounded-xl flex items-center" />
+                <img src={profileData.profileImage.link} width={40} height={40} className="rounded-xl flex items-center" />
               </div>
             )
           }
