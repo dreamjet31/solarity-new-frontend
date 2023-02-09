@@ -6,7 +6,7 @@ import { setSelectedGame } from 'redux/slices/commonSlice';
 
 export interface ItemProps {
     id?: number;
-    itemUrl: string;
+    itemUrl?: string;
     avatarUrl: string;
     backUrl: string;
     communityName: string;
@@ -39,7 +39,7 @@ function Item(props: ItemProps) {
         <div onClick={goToFeed} className='relative border-[#272829] border-[1.2px] flex flex-col justify-center rounded-[20px] hover:border-primary hover:cursor-pointer'>
             <Image className=' rounded-t-[20px]' src={props.backUrl} layout='responsive' height={114} width={258} />
             <div className='mt-[48px] text-[18px] font-["outfit"] text-[#F3F3F3] font-[500] text-center'>{props.communityName}</div>
-            <div className='mt-[10px] pb-[24px] flex justify-center gap-[8px]'>
+            <div className='mt-[10px] pb-[24px] flex justify-center gap-[8px] items-center'>
                 {props.icon}
                 <div className='text-[14px] text-[#929298] font-[500px] font-["outfit"]'>{props.memberNumber} members</div>
             </div>
