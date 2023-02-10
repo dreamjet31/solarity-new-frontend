@@ -17,7 +17,7 @@ const GameContent = (props: GameContentType) => {
 
   return (
     <div>
-      <div className='text-white text-[25px] font-medium mt-10 mb-2'>
+      <div className='text-white text-[25px] font-medium mt-5 mb-2'>
         Libraries
       </div>
       <div className="grid gap-6 2xl:grid-cols-6 xl:grid-cols-5 lg:grid-cols-4 md:grid-cols-3 grid-cols-2 mb-6">

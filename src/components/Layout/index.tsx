@@ -97,7 +97,7 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
         <div className="bg-globalBgColor flex sm:flex-row xs:flex-col w-full relative">
             <MobileTopBar mobileMenuToggler={mobileMenuToggler} onClick={() => setMobileMenuToggler(!mobileMenuToggler)} />
             <MobileMenu searchString={searchString} setSearchString={setSearchString} mobileMenuToggler={mobileMenuToggler} onClick={() => setMobileMenuToggler(!mobileMenuToggler)} />
-            <div className="bg-globalBgColor w-full pb-7">
+            <div className="bg-globalBgColor w-full">
                 <Header searchString={searchString} setSearchString={setSearchString} />
                 <div className='flex w-full'>
                     <div className={`fixed left-[0px] xs:top-[80px] sm:top-[164px] xl:top-[124px] bottom-0 overflow-y-auto ${chatSidebarVisibility ? 'right-[435px]' : 'right-0'}`}>

@@ -14,11 +14,13 @@ import CreateEventModal from 'components/Library/CreateEventModal'
 import { RootStateOrAny, useDispatch, useSelector } from 'react-redux'
 import { ToggleChatBtn } from './Sidebar'
 import LogoComp from 'components/Common/Layout/LogoComp';
-import { setChatSidebarVisibility } from 'redux/slices/chatSlice'
+import { setChatSidebarVisibility, setDMChats } from 'redux/slices/chatSlice'
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui'
 import { useWallet } from '@solana/wallet-adapter-react'
 import { apiCaller } from 'utils/fetcher'
 import { login } from 'redux/slices/authSlice'
+import { setAlarm } from 'redux/slices/profileSlice'
+import { time_ago } from 'utils'
 
 interface HeaderProps {
     searchString?: string;
@@ -32,10 +34,12 @@ const Header = (props: HeaderProps) => {
     const { asPath } = useRouter();
     const pathSegments = asPath.split("/");
     const currentPath = pathSegments[pathSegments.length - 1]
-    const { logged, profileData, chatSidebarVisibility } = useSelector((state: RootStateOrAny) => ({
+    const { logged, profileData, chatSidebarVisibility, chatLogs, sidebarState } = useSelector((state: RootStateOrAny) => ({
         logged: state.auth.logged,
         profileData: state.profile.data,
         chatSidebarVisibility: state.chat.chatSidebarVisibility,
+        chatLogs: state.chat.chatLogs,
+        sidebarState: state.chat.sidebarState,
     }))
 
     const enabledResizing = {
@@ -71,6 +75,42 @@ const Header = (props: HeaderProps) => {
             loginUser(publicKey, type, wallet);
         }
     }, [connected]);
+
+    useEffect(() => {
+        const fetchChats = async () => {
+          try {
+            if (profileData.username == undefined) {
+              return;
+            }
+            var { data } = await apiCaller.get("/chats/fetchChats");
+            let tmpChats = [];
+            var alarm = 0;
+            data.chats.map((chat, index) => {
+              let person = chat.users[0].username == profileData.username ? chat.users[1] : chat.users[0];
+              alarm += chat.unreadCount ? chat.unreadCount: 0;
+              tmpChats.push({
+                _id: chat._id,
+                users: chat.users,
+                url: person.profileImage ? person.profileImage.link : "/images/experience/psuedo_avatars/avatar.png",
+                name: person.username,
+                detail: person.bio,
+                time: time_ago(chat.lastMsg.createdAt),
+                gap: 3,
+                badge: chat.unreadCount
+              });
+            });
+            dispatch(setAlarm(alarm));
+    
+            dispatch(setDMChats({
+              type: true,
+              data: tmpChats
+            }));
+          } catch (error) {
+            console.error('Something went wrong.')
+          }
+        }
+        fetchChats();
+      }, [profileData, chatLogs, chatLogs.length, sidebarState])
 
     const loginUser = async (address, type, provider) => {
         localStorage.setItem('publickey', address);

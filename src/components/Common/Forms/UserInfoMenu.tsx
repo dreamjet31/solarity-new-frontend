@@ -19,8 +19,9 @@ const MenuItem = ({ children }) => {
 const UserInfoMenu = (props) => {
   const dispatch = useDispatch();
   const { disconnect } = useWallet();
-  const { profileData } = useSelector((state: RootStateOrAny) => ({
+  const { profileData, alarm } = useSelector((state: RootStateOrAny) => ({
     profileData: state.profile.data,
+    alarm: state.profile.alarm
   }));
 
   const logoutFunc = async () => {
@@ -30,11 +31,14 @@ const UserInfoMenu = (props) => {
 
   return (
     <div className="select-none flex flex-row items-center border-l-semiSplitter border-l-[1px] h-full ">
-      <div className="custom-2xl:px-[20px] xl:px-[10px] lg:px-[20px] md:px-[20px] xs:px-[20px]
-                            cursor-pointer">
-        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="#3F3F43" strokeWidth={2}>
+      <div className="custom-2xl:mx-[20px] xl:mx-[10px] lg:mx-[20px] md:mx-[20px] xs:mx-[20px]
+                            cursor-pointer relative">
+        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke={alarm != 0 ? "#29B080": "#3F3F43"} strokeWidth={2}>
           <path strokeLinecap="round" strokeLinejoin="round" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
         </svg>
+        {alarm != 0 && (
+              <div className='absolute top-[-2px] right-[-4px] rounded-full py-[2px] px-[4px] bg-[#29B080] text-[11px] leading-[11px]'>{alarm}</div>
+          )}
       </div>
       <Link href={`/${profileData.username}/profile`}>
         <a>

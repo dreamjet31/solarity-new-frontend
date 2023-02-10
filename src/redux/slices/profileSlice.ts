@@ -17,7 +17,8 @@ const initialState = {
   activeRoomId: "",
   activeRoomNo: -1,
   visitFlag: 0,
-  step: 1
+  step: 1,
+  alarm: 0,
 };
 
 export const undoSetupStep = createAsyncThunk(
@@ -540,6 +541,9 @@ export const profileSlice = createSlice({
     },
     setVisitFlag(state, action: PayloadAction<number>) {
       state.visitFlag = action.payload;
+    },
+    setAlarm(state, action: PayloadAction<number>) {
+      state.alarm = action.payload;
     }
   },
   extraReducers: (builder) => {
@@ -616,6 +620,6 @@ export const profileSlice = createSlice({
   },
 });
 
-export const { setProfile, loadNFTs, setActiveRoomNo, setVisitFlag } = profileSlice.actions;
+export const { setProfile, loadNFTs, setActiveRoomNo, setVisitFlag, setAlarm } = profileSlice.actions;
 
 export default profileSlice.reducer;

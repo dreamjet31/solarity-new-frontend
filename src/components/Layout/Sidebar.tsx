@@ -14,6 +14,7 @@ import CONSTANT from "config/constant";
 import { clearUserMsg } from "redux/slices/chatSlice";
 import { setMsg } from "redux/slices/chatSlice";
 import { setDMChats } from "../../redux/slices/chatSlice";
+import { setAlarm } from "redux/slices/profileSlice";
 
 const ToggleShowBtn = (props) => {
   return (
@@ -43,48 +44,13 @@ export const ToggleChatBtn = (props) => {
 
 const Sidebar = (props) => {
   const dispatch = useDispatch();
-  const { profile, dms, selectedChat, chatLogs, chatKind, DMChats, sidebarState } = useSelector((state: RootStateOrAny) => ({
+  const { profile, dms, selectedChat, chatKind, DMChats } = useSelector((state: RootStateOrAny) => ({
     profile: state.profile.data,
     dms: state.chat.dms,
     selectedChat: state.chat.selectedChat,
-    chatLogs: state.chat.chatLogs,
     chatKind: state.chat.chatKind,
     DMChats: state.chat.DMChats,
-    sidebarState: state.chat.sidebarState,
   }))
-
-  useEffect(() => {
-    const fetchChats = async () => {
-      try {
-        if (profile.username == undefined) {
-          return;
-        }
-        var { data } = await apiCaller.get("/chats/fetchChats");
-        let tmpChats = [];
-        data.chats.map((chat, index) => {
-          let person = chat.users[0].username == profile.username ? chat.users[1] : chat.users[0];
-          tmpChats.push({
-            _id: chat._id,
-            users: chat.users,
-            url: person.profileImage ? person.profileImage.link : "/images/experience/psuedo_avatars/avatar.png",
-            name: person.username,
-            detail: person.bio,
-            time: time_ago(chat.lastMsg.createdAt),
-            gap: 3,
-            badge: chat.unreadCount
-          });
-        });
-          
-        dispatch(setDMChats({
-          type: true,
-          data: tmpChats
-        }));
-      } catch (error) {
-        console.error('Something went wrong.')
-      }
-    }
-    fetchChats();
-  }, [profile, chatLogs, chatLogs.length, sidebarState])
 
   const setActiveDM = (dm) => {
     props.setIsChatPanel(true);
