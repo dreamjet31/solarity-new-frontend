@@ -32,7 +32,8 @@ module.exports = {
         'darkGreen': "#162724",
         // kisikbo5 wrote this
         'globalBgColor': '#131314',
-        'semiSplitter' : '#1d1f1f'
+        'semiSplitter' : '#1d1f1f',
+        'panelBgColor': '#181818'
         // end of kisikbo5
       },
       backgroundImage: {

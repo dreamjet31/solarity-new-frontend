@@ -20,6 +20,10 @@ export const HeaderMenuTitles = [
     {
         name: 'Games',
         link: 'games'
+    },
+    {
+        name: 'Quests',
+        link: 'quests'
     }
     // 'Quests',
     // 'Library',

@@ -7,6 +7,10 @@
     -moz-outline-color: var(--focus-color);
 }
 
+.linearGradient {
+    background: linear-gradient(180deg, rgba(20, 61, 46, 0) 0%, #000905 71.35%);
+}
+
 *:focus {
     outline: none;
     -webkit-outline: none;
