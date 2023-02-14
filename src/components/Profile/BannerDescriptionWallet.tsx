@@ -71,7 +71,7 @@ const BannerDescriptionWallet = ({ sidebarToggler, solanaAddress, ethereumAddres
             address={"Solarity"}
             onClick={() => { }}
         />
-        {coins.map((coin, index) => {
+        {coins.map((coin, index) => {console.log(coin.symbol);
           if(coin.symbol != "MBC") {
             return (
               <WalletBalanceIcon
