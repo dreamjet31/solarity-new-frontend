@@ -7,7 +7,7 @@ type SubTitleType = {
 
 const SubTitle = (props: SubTitleType) => {
   return (
-    <div className={`text-white text-[25px] font-medium mb-2 ${props.styles}`}>
+    <div className={`text-white text-[25px] font-medium mb-4 ${props.styles}`}>
       {props.title}
     </div>
   );

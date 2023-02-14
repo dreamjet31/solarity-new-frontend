@@ -4,6 +4,7 @@ import { minifyString } from "utils";
 import { PrimaryButton } from "../Buttons";
 
 export type QuestPanelType = {
+  index?: number;
   active?: boolean;
   title: any;
   subTitle: any;
@@ -19,13 +20,13 @@ export type QuestPanelType = {
 
 const QuestPanel = (props: QuestPanelType) => {
   return (
-    <div className={`w-[200px] rounded-[20px] bg-panelBgColor ${props.active ? 'border-2 border-[#6C9C6E]': ''}`}>
+    <div className={`w-[200px] rounded-[20px] bg-panelBgColor ${props.active ? 'border-2 border-[#6C9C6E]': ''}`} key={props.index}>
       <div className="relative">
         <img src={props.thumbnail} className="rounded-[20px]" width={200} height={90} alt="thumbnail" />
         <div className="absolute top-[50px] bottom-0 left-0 right-0 rounded-[10px] linearGradient"></div>
         <div className="absolute left-[12px] bottom-[4px] right-[12px] h-[38px] flex ">
           {!props.isAvatar ? (
-            <img src={props.avatar} className="border-[3px] h-[32px] border-globalBgColor rounded-[12px]" width={32} height={32} alt={"icon"}/>
+            <img src={props.avatar} className="border-[3px] h-[32px] border-globalBgColor rounded-[12px]" width={32} height={32} alt={"avatar"}/>
           ): (
             <div></div>
           )}
@@ -36,8 +37,8 @@ const QuestPanel = (props: QuestPanelType) => {
       </div>
       <div className="px-[20px] py-[8px] mb-2">  
         <div className="text-[#F3F3F3] text-[14px] mb-4">
-          {props.subTitle} : 
-          <span className="text-[#929298]">{minifyString(props.description, 26)}</span>
+          {props.subTitle}:&nbsp; 
+          <span className="text-[#929298]">{minifyString(props.description, 25)}</span>
         </div>
         <div className="flex w-full justify-between">
           <div className="flex items-center gap-2">
