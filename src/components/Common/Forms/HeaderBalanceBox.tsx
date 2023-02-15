@@ -61,14 +61,18 @@ const BalanceBox = (props) => {
                         </div>
                     </div>
                 ))}
-                {tokens.map((token, index) => (
-                    <div className="rounded-[10px] hover:bg-[#1d1d1f] bg-transparent px-[10px] py-[8px] w-full flex flex-row py-[6px] font-500 text-[#f3f3f3] group-hover:flex hidden hover:text-primary" key={index + coins.length + 1}>
-                        {token.balance}
-                        <div className="text-[#929298] ml-[5px] ">
-                            {token.symbol}
-                        </div>
-                    </div>
-                ))}
+                {tokens.map((token, index) => {
+                    if(token.symbol != "MBC") {
+                        return (
+                            <div className="rounded-[10px] hover:bg-[#1d1d1f] bg-transparent px-[10px] py-[8px] w-full flex flex-row py-[6px] font-500 text-[#f3f3f3] group-hover:flex hidden hover:text-primary" key={index + coins.length + 1}>
+                                {token.balance}
+                                <div className="text-[#929298] ml-[5px] ">
+                                    {token.symbol}
+                                </div>
+                            </div>
+                        )
+                    }
+                })}
             </div>
         </div>
     )
