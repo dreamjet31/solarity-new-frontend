@@ -71,7 +71,6 @@ const BannerDescriptionWallet = ({ sidebarToggler, solanaAddress, ethereumAddres
             address={"Solarity"}
             onClick={() => { }}
         />
-        {console.log(coins)}
         {coins.map((coin, index) => {
           if(coin.symbol != "MBC") {
             return (
@@ -86,16 +85,18 @@ const BannerDescriptionWallet = ({ sidebarToggler, solanaAddress, ethereumAddres
             )
           }
         })}
-        {tokens.map((token, index) => (
-          <WalletBalanceIcon
-            key={index + coins.length + 1}
-            kind={token.symbol}
-            balance={token.balance}
-            badge={TOEKN_ICONS[token.symbol]}
-            address={token.tokenAddress.slice(0, 4)}
-            onClick={() => { }}
-          />
-        ))}
+        {tokens.map((token, index) => {
+          if(token.symbol != "MBC") {
+            return (<WalletBalanceIcon
+              key={index + coins.length + 1}
+              kind={token.symbol}
+              balance={token.balance}
+              badge={TOEKN_ICONS[token.symbol]}
+              address={token.tokenAddress.slice(0, 4)}
+              onClick={() => { }}
+            />);
+          }
+        })}
 
       </div>
       <div className="absolute right-[-3px] text-white top-[33px] lg:hidden md:block">
