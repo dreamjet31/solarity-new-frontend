@@ -2,11 +2,13 @@ import React, { useEffect, useMemo } from "react"
 import { SubTitle } from "components/Common/Titles";
 import { QuestPanel, QuestGlobalPanel } from "components/Common/Panels";
 import { SOLARITY_QUESTS, SOLARITY_GLOBAL_QUESTS } from 'data/Quest';
-import { RootStateOrAny, useSelector } from "react-redux";
+import { RootStateOrAny, useDispatch, useSelector } from "react-redux";
 import { useAsyncMemo } from "use-async-memo";
 import { apiCaller } from "utils/fetcher";
-
+import { useRouter } from 'next/router';
 const Quests = ({sidebarToggler}) => {
+
+    const router = useRouter();
 
     const games = useAsyncMemo(async () => {
         try {
@@ -19,6 +21,10 @@ const Quests = ({sidebarToggler}) => {
           return [];
         }
       }, []);
+
+      const sendLink = (game) => {
+        router.push('/games/gamefeed/' + game._id + '?type=' + 'game')
+      }
 
     return (
         <div className='my-[16px]'>
@@ -44,7 +50,7 @@ const Quests = ({sidebarToggler}) => {
                                 icon={"/images/wallets/xp.png"}
                                 amount={quest.score}
                                 index={index1 * 4 + index2}
-                                onClick={() => {}}
+                                onClick={() => {sendLink(game)}}
                             />
                         ))}
                     </div>
