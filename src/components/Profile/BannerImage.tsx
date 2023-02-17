@@ -4,7 +4,7 @@ import NoRoomBannerImage from "components/Profile/NoRoomBannerImage"
 
 
 import Image from "next/image"
-import { useEffect, useMemo, useState } from "react"
+import React, { useEffect, useMemo, useState } from "react"
 import { RootStateOrAny, useDispatch, useSelector } from "react-redux"
 import { setVisitFlag } from "redux/slices/profileSlice"
 import useWindowDimensions from "utils/layout"
@@ -55,23 +55,28 @@ const BannerImage = ({ user }) => {
                         </div>
                     ): (
                         <div className="rounded-[25px] sm:mt-[0px] xs:mt-[24px] overflow-hidden w-full">
-                            {width > 640 ?
-                                <Image
-                                    src={"/images/profile/Profile_banner_Konstantin1982.webp"}
-                                    layout="responsive"
-                                    width={1708}
-                                    height={450}
-                                    alt="Banner Image"
-                                />
-                                :
-                                <Image
-                                    src={"/images/profile/mobile_banner.webp"}
-                                    layout="responsive"
-                                    width={327}
-                                    height={300}
-                                    alt="Banner Image"
-                                />
-                            }
+                            <div className="relative -mt-5 h-[400px] w-full rounded-2xl">
+                                <div 
+                                    className="w-full h-[400px] rounded-2xl relative" 
+                                    style={{background: "rgba(255, 255, 255, 0.2)"}}
+                                >
+                                    <div 
+                                        className="absolute flex bottom-5 p-[5px] right-10 rounded-full cursor-pointer" 
+                                        style={{background: "rgba(255, 255, 255, 0.15)", backdropFilter: "blur(30px)"}}
+                                    >
+                                        <div className="w-7 h-7 bg-white rounded-full">
+                                            <img 
+                                                src="/images/profile/lock.png" 
+                                                className="m-auto pt-[5px]" 
+                                                alt="locked" 
+                                                width="13" 
+                                                height="17"
+                                            />
+                                        </div>
+                                        <span className="ml-2 text-sm mr-4 pt-[5px]">Unlock</span>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     )}
                 </div>
