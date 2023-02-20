@@ -40,6 +40,7 @@ import "font-awesome/css/font-awesome.min.css";
 import "react-toastify/dist/ReactToastify.css";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import 'styles/wallet.css';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 import AppLoader from "components/Layout/AppLoader";
 import GameModal from "components/Community/GameModal";
 import { checkBrowser } from "utils";

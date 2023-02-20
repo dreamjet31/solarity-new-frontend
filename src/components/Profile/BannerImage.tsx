@@ -57,7 +57,7 @@ const BannerImage = ({ user }) => {
                         <div className="rounded-[25px] sm:mt-[0px] xs:mt-[24px] overflow-hidden w-full">
                             <div className="relative -mt-5 h-[400px] w-full rounded-2xl">
                                 <div 
-                                    className="w-full h-[400px] rounded-2xl relative" 
+                                    className="w-full h-[400px] rounded-2xl relative"
                                     style={{background: "rgba(255, 255, 255, 0.2)"}}
                                 >
                                     <div 

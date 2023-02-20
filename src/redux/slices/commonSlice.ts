@@ -6,6 +6,7 @@ export interface CommonState {
   selectedGame: any;
   gameModalVisibility: boolean;
   mobileGameModalVisibility: boolean;
+  notificationModalVisibility: boolean;
 }
 
 const initialState: CommonState = {
@@ -14,6 +15,7 @@ const initialState: CommonState = {
   selectedGame: {},
   gameModalVisibility: false,
   mobileGameModalVisibility: false,
+  notificationModalVisibility: false,
 };
 
 export const commonSlice = createSlice({
@@ -38,11 +40,14 @@ export const commonSlice = createSlice({
     setMobileGameModal(state, action: PayloadAction<boolean>) {
       state.mobileGameModalVisibility = action.payload;
     },
+    setNotificationModalVisibility(state, action: PayloadAction<boolean>) {
+      state.notificationModalVisibility = action.payload;
+    },
   },
 });
 
 export const {
-  actions: { startLoadingApp, stopLoadingApp, setIsMobile, setMobileGameModal, setSelectedGame, setGameModalVisibility },
+  actions: { startLoadingApp, stopLoadingApp, setIsMobile, setMobileGameModal, setSelectedGame, setGameModalVisibility, setNotificationModalVisibility },
 } = commonSlice;
 
 export default commonSlice.reducer;

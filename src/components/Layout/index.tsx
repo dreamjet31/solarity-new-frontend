@@ -16,6 +16,7 @@ import { setGameModalVisibility, setIsMobile } from 'redux/slices/commonSlice'
 import { setFriends, setName, setOnline, setTypingState, setUserMsg } from 'redux/slices/chatSlice'
 import ACTIONS from 'config/actions'
 import CONSTANT from 'config/constant'
+import { NotificationModal } from 'components/Common/Modals'
 
 const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSearchString }: {
     children: any,
@@ -26,11 +27,12 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
     setSearchString?: Function;
 }) => {
     const dispatch = useDispatch();
-    const { chatSidebarVisibility, members, typingMembers, isMobile, mobileGameModalVisibility } = useSelector((state: RootStateOrAny) => ({
+    const { chatSidebarVisibility, notificationModalVisibility, members, typingMembers, isMobile, mobileGameModalVisibility } = useSelector((state: RootStateOrAny) => ({
         chatSidebarVisibility: state.chat.chatSidebarVisibility,
         members: state.chat.members,
         typingMembers: state.chat.typingMembers,
         isMobile: state.common.isMobile,
+        notificationModalVisibility: state.common.notificationModalVisibility,
         mobileGameModalVisibility: state.common.mobileGameModalVisibility,
     }))
 
@@ -120,6 +122,9 @@ const Layout = ({ children, banner, onClick, sidebarToggler, searchString, setSe
                     )}
                 </div>
             </div>
+            {notificationModalVisibility && (
+                <NotificationModal />
+            )}
             {isMobile && (
                 <MobileNavbar />
             )}

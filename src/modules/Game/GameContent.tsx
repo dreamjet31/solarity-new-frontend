@@ -2,6 +2,7 @@ import React from "react";
 import { useRouter } from "next/router";
 import { games } from 'data/Community';
 import { useDispatch } from "react-redux";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 
 type GameContentType = {
   games: any[];
@@ -36,7 +37,14 @@ const GameContent = (props: GameContentType) => {
             }
           >
             <div className=" rounded-[15px] overflow-hidden w-full">
-              <img src={game.itemImage} className='rounded-2xl' width="100%" height={232} alt="room_image" />
+              <LazyLoadImage
+                alt={'game Image'}
+                effect="blur"
+                src={game.itemImage} 
+                className='rounded-2xl'
+                width="100%"
+                height={232}
+              />
             </div>
             <div className='flex md:flex-row xs:flex-col-reverse gap-[6px] my-[10px]'>
               <div className='font-[500] text-[14px] ml-[12px] text-center w-full'>
