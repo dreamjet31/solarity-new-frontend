@@ -62,7 +62,7 @@ const ProfileFeedContent = ({ sidebarToggler }) => {
                 </div>
             </div>
 
-            <div className="flex flex-col  mb-[30px]
+            {/* <div className="flex flex-col  mb-[30px]
                                 custom-2xl:mt-[104px] xl:mt-[104px] sm:mt-[20px]
                                 custom-2xl:w-[25%] xl:w-[25%] sm:w-[100%]
                                 pt-[24px] pb-[32px] px-[32px] rounded-[20px] bg-[#19191a] h-fit">
@@ -84,7 +84,7 @@ const ProfileFeedContent = ({ sidebarToggler }) => {
                         )
                     })
                 }
-            </div>
+            </div> */}
         </div>
     )
 }
