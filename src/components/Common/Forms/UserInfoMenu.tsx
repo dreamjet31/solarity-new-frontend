@@ -65,7 +65,7 @@ const UserInfoMenu = (props) => {
           </div>
           <div className="relative h-[14px] mr-2">
             <div className="absolute bottom-0 left-1 w-full bg-gray-200 rounded-full h-[9px] bg-[#282828]">
-              <div className="bg-[#73DBC2] text-[7px] font-medium h-[9px] text-blue-100 text-center p-0.5 leading-none rounded-full" style={{width: "45%"}}> 45%</div>
+              <div className="bg-[#73DBC2] text-[7px] font-medium h-[9px] text-blue-100 text-center p-0.5 leading-none rounded-full" style={{width: "80%"}}> 80/100</div>
             </div>
             <div className="absolute top-0 left-0">
               <img src="/images/wallets/score.png" width={17} height={16} />
