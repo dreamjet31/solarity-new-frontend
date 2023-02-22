@@ -59,7 +59,20 @@ const UserInfoMenu = (props) => {
         </a>
       </Link>
       <div className="group relative ml-[14px] py-[15px] text-[#929298] text-[14px] font-500 cursor-pointer flex items-center" onMouseEnter={props.onEnter} onMouseLeave={props.onLeave}>
-        {setValue(profileData.username)}
+        <div className="">
+          <div>
+            {setValue(profileData.username)}
+          </div>
+          <div className="relative h-[14px] mr-2">
+            <div className="absolute bottom-0 left-1 w-full bg-gray-200 rounded-full h-[9px] bg-[#282828]">
+              <div className="bg-[#73DBC2] text-[7px] font-medium h-[9px] text-blue-100 text-center p-0.5 leading-none rounded-full" style={{width: "45%"}}> 45%</div>
+            </div>
+            <div className="absolute top-0 left-0">
+              <img src="/images/wallets/score.png" width={17} height={16} />
+              <div className="text-[9px] text-white mt-[-12px] ml-[6px]">4</div>
+            </div>
+          </div>
+        </div>
         <div className="ml-[8px]">
           {props.openState ? <UpArrow /> : <DownArrow />}
         </div>
