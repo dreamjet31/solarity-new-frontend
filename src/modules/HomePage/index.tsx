@@ -87,15 +87,11 @@ export const HomePage = () => {
         <BannerImage isMobile={false} />
       </div>
       <div className="grid grid-cols-1 sm:grid-cols-2 mt-[20px] items-baseline px-[10px] sm:pl-0">
-        <div>
+        <div className="w-full col-span-2">
           <BannerText />
-          <div className="flex flex-row justify-start items-center gap-6">
-            <WalletMultiButton />
-            <button className="text-white text-[22px]" onClick={() => router.push({ pathname: '/explore' })}>Skip</button>
-          </div>
         </div>
       </div>
-      <div className="hidden sm:block absolute top-0 right-0 -z-10">
+      <div className="hidden sm:block absolute top-0 right-[-500px] -z-10">
         <BannerImage isMobile={true} />
       </div>
     </>
