@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { AnimationOnScroll } from 'react-animation-on-scroll';
 import { ButtonLabel } from "components/Common/Buttons";
 
-import { BannericonImg1, BannericonImg2, BannericonImg3 } from "components/Common/Images";
+import { BannericonImg1, BannericonImg2, BannericonImg3, BannericonImg4 } from "components/Common/Images";
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import { useRouter } from "next/router";
 
@@ -40,7 +40,7 @@ export const BannerText = () => {
                   <span className="leading-[60px] text-[#B3B3B7] pl-6">Access to quests</span> 
               </div>
               <div className="flex items-center mb-[24px]">
-                  <ButtonLabel icon={BannericonImg3} />
+                  <ButtonLabel icon={BannericonImg4} />
                   <span className="leading-[60px] text-[#B3B3B7] pl-6">Free Mint</span> 
               </div>
               <div className="flex flex-row justify-start items-center gap-6">
@@ -70,7 +70,7 @@ export const BannerText = () => {
                   <span className="leading-[60px] text-[#B3B3B7] pl-6">More quest earnings, 0 gdex fees</span> 
               </div>
               <div className="flex items-center mb-[24px]">
-                  <ButtonLabel icon={BannericonImg3} />
+                  <ButtonLabel icon={BannericonImg4} />
                   <span className="leading-[60px] text-[#B3B3B7] pl-6">3 Sol</span> 
               </div>
               <div className="flex flex-row justify-start items-center gap-6">
