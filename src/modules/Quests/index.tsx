@@ -32,6 +32,7 @@ const Quests = ({sidebarToggler}) => {
             <div className="flex gap-8 mb-8">
                 {SOLARITY_QUESTS.map((quest, index) => (    
                     <QuestPanel
+                        key={index}
                         {...quest}
                         index={index}
                         onClick={() => {}}
@@ -44,6 +45,7 @@ const Quests = ({sidebarToggler}) => {
                     <div className="flex mb-8 gap-8">
                         {game.quests.map((quest, index2) => (
                             <QuestGlobalPanel
+                                key={index2}
                                 title={quest.name}
                                 description={quest.detail}
                                 avatar={game.avatarImage}

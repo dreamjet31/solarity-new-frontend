@@ -187,6 +187,12 @@ const EditStyle = (props) => {
             </div>
           </div>
         </div>
+        <div className="">
+          <select name="mint">
+            <option value="0" selected>Free</option>
+            <option value="Premium">Premium</option>
+          </select>
+        </div>
       </div>
       <div className="w-full px-5 py-5 lg:px-5 lg:py-5 flex-auto flex items-end">
         <div className="inline-block w-[20%] pr-2">
