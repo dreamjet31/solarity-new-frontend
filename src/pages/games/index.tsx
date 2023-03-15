@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { useAsyncMemo } from 'use-async-memo';
+import { useAsyncMemo } from "use-async-memo";
 
-import GameBanner from 'modules/Game/GameBanner';
-import GameContent from 'modules/Game/GameContent';
+import GameBanner from "modules/Game/GameBanner";
+import GameContent from "modules/Game/GameContent";
 import Layout from "components/Layout";
 import { apiCaller } from "utils/fetcher";
 
@@ -12,11 +12,11 @@ const GamePage = () => {
   const games = useAsyncMemo(async () => {
     try {
       const {
-        data: { games }
+        data: { games },
       } = await apiCaller.get(`/games`);
       return games;
     } catch (error) {
-      console.error('Something went wrong.');
+      console.error("Something went wrong.");
       return [];
     }
   }, []);
@@ -30,6 +30,6 @@ const GamePage = () => {
       <GameContent games={games || []} />
     </Layout>
   );
-}
+};
 
 export default GamePage;

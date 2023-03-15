@@ -91,7 +91,13 @@ const EditStyle = (props) => {
           <div className="border-[1px] border-white rounded-[12px] p-[2px] cursor-pointer peer">
             <div
               className="w-[60px] h-[30px] sm:w-[80px] sm:h-[40px] rounded-[10px]"
-              style={{ backgroundColor: `${userInfo.passportStyle.logo}` }}
+              style={{
+                backgroundColor: `${
+                  userInfo &&
+                  userInfo.passportStyle &&
+                  userInfo.passportStyle.logo
+                }`,
+              }}
             ></div>
           </div>
           <div className="hidden peer-hover:block absolute hover:block right-0 bottom-[37px] sm:right-[-64px] sm:bottom-[47px] z-10">
@@ -189,7 +195,9 @@ const EditStyle = (props) => {
         </div>
         <div className="">
           <select name="mint">
-            <option value="0" selected>Free</option>
+            <option value="0" selected>
+              Free
+            </option>
             <option value="Premium">Premium</option>
           </select>
         </div>
