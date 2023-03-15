@@ -1,11 +1,11 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 
-import GameDetail from "modules/Library/GameDetail"
-import Layout from "components/Layout"
+import GameDetail from 'modules/Library/GameDetail'
+import Layout from 'components/Layout'
 
 const LibraryIndex = () => {
-    const [sidebarToggler, setSidebarToggler] = useState(false);
-    
+    const [sidebarToggler, setSidebarToggler] = useState(false)
+
     return (
         <Layout
             sidebarToggler={sidebarToggler}

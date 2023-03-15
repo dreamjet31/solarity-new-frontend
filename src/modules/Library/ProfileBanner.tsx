@@ -1,12 +1,12 @@
-import {useRouter} from "next/router"
+import { useRouter } from 'next/router'
 import BannerImage from '../../components/Profile/BannerImage'
 import BannerDescription from '../../components/Profile/BannerDescription'
 
-const ProfileBanner = ({sidebarToggler}) => {
+const ProfileBanner = ({ sidebarToggler }) => {
     const { asPath } = useRouter()
     let uName = asPath.replace(/\/profile$/, '')
-    uName = uName.replace(/\//,'')
-    
+    uName = uName.replace(/\//, '')
+
     return (
         <div className="w-full">
             <BannerImage uName={uName} />

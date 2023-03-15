@@ -1,43 +1,38 @@
-import { NormalButton } from "components/Common/Buttons"
-import SocialIcon from "components/Common/SocialIcon"
-import NoRoomBannerImage from "components/Profile/NoRoomBannerImage"
+import { NormalButton } from 'components/Common/Buttons'
+import SocialIcon from 'components/Common/SocialIcon'
+import NoRoomBannerImage from 'components/Profile/NoRoomBannerImage'
 
-
-import Image from "next/image"
-import React, { useEffect, useMemo, useState } from "react"
-import { RootStateOrAny, useDispatch, useSelector } from "react-redux"
-import { setVisitFlag } from "redux/slices/profileSlice"
-import useWindowDimensions from "utils/layout"
-import VisitorNoRoomBannerImage from "./VisitorNoRoomBannerImage"
-
-
+import Image from 'next/image'
+import React, { useEffect, useMemo, useState } from 'react'
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux'
+import { setVisitFlag } from 'redux/slices/profileSlice'
+import useWindowDimensions from 'utils/layout'
+import VisitorNoRoomBannerImage from './VisitorNoRoomBannerImage'
 
 const BannerImage = ({ user }) => {
+    const dispatch = useDispatch()
 
-    const dispatch = useDispatch();
-
-    const { width, height } = useWindowDimensions();
-    const [shareMenuToggle, setShareMenuToggle] = useState(false);
-    const [activeRoom, setActiveRoom] = useState(-1);
-    const [isIframe, setIsIframe] = useState(false);
-    const [path, setPath] = useState("");
+    const { width, height } = useWindowDimensions()
+    const [shareMenuToggle, setShareMenuToggle] = useState(false)
+    const [activeRoom, setActiveRoom] = useState(-1)
+    const [isIframe, setIsIframe] = useState(false)
+    const [path, setPath] = useState('')
 
     useEffect(() => {
-        if(user) {
+        if (user) {
             user.rooms.forEach((room, index) => {
-                if(room.active == true) {
-                    setActiveRoom(index);
+                if (room.active == true) {
+                    setActiveRoom(index)
                 }
-            });
+            })
         }
     }, [user])
 
     const expandRoom = (selectedRoom) => {
-        dispatch(setVisitFlag(1));
-        setPath(`/profile/roomview?no=${selectedRoom.roomNo}`);
-        setIsIframe(true);
+        dispatch(setVisitFlag(1))
+        setPath(`/profile/roomview?no=${selectedRoom.roomNo}`)
+        setIsIframe(true)
     }
-
 
     return (
         <div className="w-full relative">
@@ -46,34 +41,46 @@ const BannerImage = ({ user }) => {
                     {activeRoom != -1 ? (
                         <div className="rounded-[25px] sm:mt-[0px] xs:mt-[24px] overflow-hidden w-full">
                             <Image
-                                src={user.rooms[activeRoom].imageUrl != "" ? user.rooms[activeRoom].imageUrl: "/images/profile/Profile_banner_Konstantin1982.webp"}
+                                src={
+                                    user.rooms[activeRoom].imageUrl != ''
+                                        ? user.rooms[activeRoom].imageUrl
+                                        : '/images/profile/Profile_banner_Konstantin1982.webp'
+                                }
                                 layout="responsive"
                                 width={1708}
                                 height={450}
                                 alt="Banner Image"
                             />
                         </div>
-                    ): (
+                    ) : (
                         <div className="rounded-[25px] sm:mt-[0px] xs:mt-[24px] overflow-hidden w-full">
                             <div className="relative -mt-5 h-[400px] w-full rounded-2xl">
-                                <div 
+                                <div
                                     className="w-full h-[400px] rounded-2xl relative"
-                                    style={{background: "rgba(255, 255, 255, 0.2)"}}
+                                    style={{
+                                        background: 'rgba(255, 255, 255, 0.2)',
+                                    }}
                                 >
-                                    <div 
-                                        className="absolute flex bottom-5 p-[5px] right-10 rounded-full cursor-pointer" 
-                                        style={{background: "rgba(255, 255, 255, 0.15)", backdropFilter: "blur(30px)"}}
+                                    <div
+                                        className="absolute flex bottom-5 p-[5px] right-10 rounded-full cursor-pointer"
+                                        style={{
+                                            background:
+                                                'rgba(255, 255, 255, 0.15)',
+                                            backdropFilter: 'blur(30px)',
+                                        }}
                                     >
                                         <div className="w-7 h-7 bg-white rounded-full">
-                                            <img 
-                                                src="/images/profile/lock.png" 
-                                                className="m-auto pt-[5px]" 
-                                                alt="locked" 
-                                                width="13" 
+                                            <img
+                                                src="/images/profile/lock.png"
+                                                className="m-auto pt-[5px]"
+                                                alt="locked"
+                                                width="13"
                                                 height="17"
                                             />
                                         </div>
-                                        <span className="ml-2 text-sm mr-4 pt-[5px]">Unlock</span>
+                                        <span className="ml-2 text-sm mr-4 pt-[5px]">
+                                            Unlock
+                                        </span>
                                     </div>
                                 </div>
                             </div>
@@ -82,34 +89,54 @@ const BannerImage = ({ user }) => {
                 </div>
             )}
             {isIframe && (
-                <div className='w-full h-[300px] md:h-[450px]'>
-                    <iframe src={path} frameBorder="0" className="w-full h-full rounded-[25px]"></iframe>
+                <div className="w-full h-[300px] md:h-[450px]">
+                    <iframe
+                        src={path}
+                        frameBorder="0"
+                        className="w-full h-full rounded-[25px]"
+                    ></iframe>
                 </div>
             )}
-            <div className="absolute flex sm:justify-start xs:justify-center w-full
+            <div
+                className="absolute flex sm:justify-start xs:justify-center w-full
                             custom-2xl:bottom-[-32px] custom-2xl:left-[0px]
                             xl:bottom-[-30px] xl:left-[0px]
                             md:bottom-[-30px] md:left-[0px]
                             sm:bottom-[-30px] sm:left-[0px]
-                            xs:bottom-[-30px] xs:left-[0px]">
-                <div className="relative custom-2xl:w-[136px] xl:w-[120px] md:w-[110px] sm:w-[100px] xs:w-[100px] 
+                            xs:bottom-[-30px] xs:left-[0px]"
+            >
+                <div
+                    className="relative custom-2xl:w-[136px] xl:w-[120px] md:w-[110px] sm:w-[100px] xs:w-[100px] 
                                 custom-2xl:rounded-[45px] xl:rounded-[40px] lg:rounded-[40px] md:rounded-[40px] sm:rounded-[35px] xs:rounded-[35px]
-                                border-[3px] border-globalBgColor">
+                                border-[3px] border-globalBgColor"
+                >
                     <Image
-                        src={user.profileImage && user.profileImage.link ? user.profileImage.link : "/images/profile/temp/Avatar_Konstantin1982.webp"}
+                        src={
+                            user.profileImage && user.profileImage.link
+                                ? user.profileImage.link
+                                : '/images/profile/temp/Avatar_Konstantin1982.webp'
+                        }
                         className="rounded-[40px]"
                         layout="responsive"
                         width={136}
                         height={136}
                         alt="user avatar"
                     />
-                    <div className="absolute
+                    <div
+                        className="absolute
                                 custom-2xl:right-[0px] custom-2xl:bottom-[0px] custom-2xl:w-[28px]
                                 xl:right-[0px] xl:bottom-[0px] xl:w-[26px]
                                 md:right-[0px] md:bottom-[0px] md:w-[24px]
                                 sm:right-[0px] sm:bottom-[0px] sm:w-[24px]
-                                xs:right-[0px] xs:bottom-[0px] xs:w-[24px]">
-                        <Image src={"/images/profile/temp/Verified.png"} layout="responsive" width={28} height={28} alt="verified badge" />
+                                xs:right-[0px] xs:bottom-[0px] xs:w-[24px]"
+                    >
+                        <Image
+                            src={'/images/profile/temp/Verified.png'}
+                            layout="responsive"
+                            width={28}
+                            height={28}
+                            alt="verified badge"
+                        />
                     </div>
                 </div>
             </div>
@@ -122,11 +149,37 @@ const BannerImage = ({ user }) => {
                                     select-none`}> */}
                     <div className={`absolute top-[24px] right-[10px] `}>
                         {/* <SocialIcon onClick={() => setShareMenuToggle(!shareMenuToggle)}> */}
-                        <SocialIcon onClick={() => expandRoom(user.rooms[activeRoom])} >
-                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M7.58203 6.41712L12.3654 1.63379" stroke="#F3F3F3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M12.8312 3.96699V1.16699H10.0312" stroke="#F3F3F3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                                <path d="M6.41797 1.16699H5.2513C2.33464 1.16699 1.16797 2.33366 1.16797 5.25032V8.75032C1.16797 11.667 2.33464 12.8337 5.2513 12.8337H8.7513C11.668 12.8337 12.8346 11.667 12.8346 8.75032V7.58366" stroke="#F3F3F3" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                        <SocialIcon
+                            onClick={() => expandRoom(user.rooms[activeRoom])}
+                        >
+                            <svg
+                                width="14"
+                                height="14"
+                                viewBox="0 0 14 14"
+                                fill="none"
+                                xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                    d="M7.58203 6.41712L12.3654 1.63379"
+                                    stroke="#F3F3F3"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                                <path
+                                    d="M12.8312 3.96699V1.16699H10.0312"
+                                    stroke="#F3F3F3"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
+                                <path
+                                    d="M6.41797 1.16699H5.2513C2.33464 1.16699 1.16797 2.33366 1.16797 5.25032V8.75032C1.16797 11.667 2.33464 12.8337 5.2513 12.8337H8.7513C11.668 12.8337 12.8346 11.667 12.8346 8.75032V7.58366"
+                                    stroke="#F3F3F3"
+                                    strokeWidth="1.5"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                />
                             </svg>
                         </SocialIcon>
                         {/* <div className={`absolute top-[58px] sm:left-[-135px] xs:left-[0px] w-[183px] h-[184px]
@@ -159,7 +212,6 @@ const BannerImage = ({ user }) => {
                     </div> */}
                 </div>
             )}
-
         </div>
     )
 }

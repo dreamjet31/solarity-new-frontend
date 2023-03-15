@@ -1,10 +1,10 @@
 export type BadgeDataType = {
-    icon : string,
-    name : string,
-    active : boolean,
+    icon: string
+    name: string
+    active: boolean
 }
 
 export type PassportThemeType = {
-    title: string,
+    title: string
     image: string
 }

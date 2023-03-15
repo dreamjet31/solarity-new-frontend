@@ -1,10 +1,5 @@
-
 const GameLibrary = () => {
-    return (
-        <div>
-            Game Library
-        </div>
-    )
+    return <div>Game Library</div>
 }
 
 export default GameLibrary

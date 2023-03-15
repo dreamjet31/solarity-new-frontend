@@ -1,2 +1,2 @@
-export { default as WalletAddress } from './WalletAddress';
-export { default as StepTitle } from './StepTitle';
+export { default as WalletAddress } from './WalletAddress'
+export { default as StepTitle } from './StepTitle'

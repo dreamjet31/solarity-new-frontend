@@ -1,3 +1,3 @@
-export * from "./DiscordLink";
-export * from "./TwitterLink";
-export * from "./GithubLink";
+export * from './DiscordLink'
+export * from './TwitterLink'
+export * from './GithubLink'

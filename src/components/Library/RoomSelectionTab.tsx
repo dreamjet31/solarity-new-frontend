@@ -1,22 +1,22 @@
-import { RoomTitleInput } from "components/Common/Forms"
-import { RoomListData } from "data/GameLibrary"
-import { useRouter } from "next/router"
-import { useEffect, useState } from "react"
-import { RootStateOrAny, useDispatch, useSelector } from "react-redux"
-import { changeInfo } from "redux/slices/eventSlice"
-import RoomList from "./RoomList"
+import { RoomTitleInput } from 'components/Common/Forms'
+import { RoomListData } from 'data/GameLibrary'
+import { useRouter } from 'next/router'
+import { useEffect, useState } from 'react'
+import { RootStateOrAny, useDispatch, useSelector } from 'react-redux'
+import { changeInfo } from 'redux/slices/eventSlice'
+import RoomList from './RoomList'
 
 const RoomSelectionTab = (props) => {
     const dispatch = useDispatch()
-    const router = useRouter();
+    const router = useRouter()
     const { eventInfo, step, selectedRoom } = useSelector(
         (state: RootStateOrAny) => ({
             eventInfo: state.event.eventInfo,
             step: state.event.step,
-            selectedRoom: state.chat.selectedRoom
+            selectedRoom: state.chat.selectedRoom,
         })
-    );
-    const [activeRoom, setActiveRoom] = useState(null);
+    )
+    const [activeRoom, setActiveRoom] = useState(null)
 
     useEffect(() => {
         setActiveRoom(eventInfo.room)
@@ -26,9 +26,9 @@ const RoomSelectionTab = (props) => {
         if (activeRoom) {
             const payload = {
                 value: activeRoom,
-                type: "room"
+                type: 'room',
             }
-            dispatch(changeInfo({ payload: payload }));
+            dispatch(changeInfo({ payload: payload }))
         }
     }, [activeRoom])
 
@@ -48,7 +48,7 @@ const RoomSelectionTab = (props) => {
                                 index={index}
                                 selected={activeRoom === item}
                             />
-                        );
+                        )
                     })}
                 </div>
                 <div className=" absolute bottom-[-5px] right-[0px] h-[20px] w-full bg-gradient-to-t from-[#131314] to-transparent"></div>

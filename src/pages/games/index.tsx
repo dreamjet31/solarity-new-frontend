@@ -1,35 +1,35 @@
-import React, { useEffect, useState } from "react";
-import { useAsyncMemo } from 'use-async-memo';
+import React, { useEffect, useState } from 'react'
+import { useAsyncMemo } from 'use-async-memo'
 
-import GameBanner from 'modules/Game/GameBanner';
-import GameContent from 'modules/Game/GameContent';
-import Layout from "components/Layout";
-import { apiCaller } from "utils/fetcher";
+import GameBanner from 'modules/Game/GameBanner'
+import GameContent from 'modules/Game/GameContent'
+import Layout from 'components/Layout'
+import { apiCaller } from 'utils/fetcher'
 
 const GamePage = () => {
-  const [sidebarToggler, setSidebarToggler] = useState(false);
+    const [sidebarToggler, setSidebarToggler] = useState(false)
 
-  const games = useAsyncMemo(async () => {
-    try {
-      const {
-        data: { games }
-      } = await apiCaller.get(`/games`);
-      return games;
-    } catch (error) {
-      console.error('Something went wrong.');
-      return [];
-    }
-  }, []);
+    const games = useAsyncMemo(async () => {
+        try {
+            const {
+                data: { games },
+            } = await apiCaller.get(`/games`)
+            return games
+        } catch (error) {
+            console.error('Something went wrong.')
+            return []
+        }
+    }, [])
 
-  return (
-    <Layout
-      sidebarToggler={sidebarToggler}
-      banner={<div></div>}
-      onClick={() => setSidebarToggler(!sidebarToggler)}
-    >
-      <GameContent games={games || []} />
-    </Layout>
-  );
+    return (
+        <Layout
+            sidebarToggler={sidebarToggler}
+            banner={<div></div>}
+            onClick={() => setSidebarToggler(!sidebarToggler)}
+        >
+            <GameContent games={games || []} />
+        </Layout>
+    )
 }
 
-export default GamePage;
+export default GamePage

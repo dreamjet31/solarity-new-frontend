@@ -118,7 +118,8 @@
     fill: #999;
 }
 
-.wallet-adapter-modal-collapse-button.wallet-adapter-modal-collapse-button-active svg {
+.wallet-adapter-modal-collapse-button.wallet-adapter-modal-collapse-button-active
+    svg {
     transform: rotate(180deg);
     transition: transform ease-in 150ms;
 }
@@ -250,7 +251,7 @@
 .wallet-adapter-modal-list .wallet-adapter-button span {
     margin-left: auto;
     font-size: 14px;
-    opacity: .6;
+    opacity: 0.6;
 }
 
 .wallet-adapter-modal-list-more {

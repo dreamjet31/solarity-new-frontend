@@ -1,25 +1,25 @@
-import React, { useEffect, useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
 
-import { PrimaryButton, SmallButton } from "components/Common/Buttons";
-import { setCreateModalVisibility } from 'redux/slices/chatSlice';
-import { checkBrowser } from 'utils';
+import { PrimaryButton, SmallButton } from 'components/Common/Buttons'
+import { setCreateModalVisibility } from 'redux/slices/chatSlice'
+import { checkBrowser } from 'utils'
 
 type LiveRoomListTitleType = {
     number: any
 }
 
 const LiveRoomListTitle = (props: LiveRoomListTitleType) => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch()
 
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(false)
 
     const createRoomModal = () => {
         dispatch(setCreateModalVisibility(true))
     }
 
     useEffect(() => {
-        setIsMobile(checkBrowser());
+        setIsMobile(checkBrowser())
     }, [])
 
     return (

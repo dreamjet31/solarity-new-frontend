@@ -1,7 +1,7 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 
-import Quests from "modules/Quests"
-import Layout from "components/Layout"
+import Quests from 'modules/Quests'
+import Layout from 'components/Layout'
 
 const QuestPage = () => {
     const [sidebarToggler, setSidebarToggler] = useState(false)

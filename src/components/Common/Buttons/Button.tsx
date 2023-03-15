@@ -1,16 +1,16 @@
-import 'font-awesome/css/font-awesome.min.css';
+import 'font-awesome/css/font-awesome.min.css'
 
 export interface ButtonProps {
-  caption: string;
-  icon?: string;
-  bordered?: boolean;
-  onClick: any;
+    caption: string
+    icon?: string
+    bordered?: boolean
+    onClick: any
 }
 
 const Button = (props: ButtonProps) => {
-  return (
-    <button
-      className={`
+    return (
+        <button
+            className={`
         solarity-button 
         font-medium
         text-white 
@@ -25,17 +25,17 @@ const Button = (props: ButtonProps) => {
         inline-flex 
         items-center 
         justify-center 
-        ${props.bordered ?
-          'text-lightprimary border-lightprimary border-2' :
-          'bg-primary hover:bg-lightprimary'
-        }`
-      }
-      onClick={props.onClick}
-    >
-      {props.icon ? <i className="fa fa-chrome fa-lg pr-[10px]"></i> : ""}
-      <span>{props.caption}</span>
-    </button>
-  );
-};
+        ${
+            props.bordered
+                ? 'text-lightprimary border-lightprimary border-2'
+                : 'bg-primary hover:bg-lightprimary'
+        }`}
+            onClick={props.onClick}
+        >
+            {props.icon ? <i className="fa fa-chrome fa-lg pr-[10px]"></i> : ''}
+            <span>{props.caption}</span>
+        </button>
+    )
+}
 
-export default Button;
+export default Button

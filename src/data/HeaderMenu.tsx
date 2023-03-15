@@ -1,30 +1,30 @@
-import { Home, Inbox, User, Users, WinBar } from "components/icons";
+import { Home, Inbox, User, Users, WinBar } from 'components/icons'
 
 export const HeaderMenuTitles = [
     {
         name: 'Explore',
-        link: 'explore'
+        link: 'explore',
     },
     {
         name: 'Marketplace',
-        link: 'marketplace'
+        link: 'marketplace',
     },
     {
         name: 'Communities',
-        link: 'community'
+        link: 'community',
     },
     {
         name: 'Live now',
-        link: 'experience'
+        link: 'experience',
     },
     {
         name: 'Games',
-        link: 'games'
+        link: 'games',
     },
     {
         name: 'Quests',
-        link: 'quests'
-    }
+        link: 'quests',
+    },
     // 'Quests',
     // 'Library',
     // 'Popup',
@@ -34,26 +34,26 @@ export const MENU_ITEMS = [
     {
         name: 'home',
         content: <Home />,
-        path: ''
+        path: '',
     },
     {
         name: 'users',
         content: <Users />,
-        path: 'experience'
+        path: 'experience',
     },
     {
         name: 'inbox',
         content: <Inbox />,
-        'path': "social"
+        path: 'social',
     },
     {
         name: 'winbar',
         content: <WinBar />,
-        path: 'marketplace'
+        path: 'marketplace',
     },
     {
         name: 'user',
         content: <User />,
-        path: ''
-    }
-];
+        path: '',
+    },
+]

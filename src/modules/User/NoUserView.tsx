@@ -1,8 +1,8 @@
-import React from "react";
+import React from 'react'
 
 // work here later
 const NoUserView = () => {
-  return <div>No user exists with the provided username </div>;
-};
+    return <div>No user exists with the provided username </div>
+}
 
-export default NoUserView;
+export default NoUserView

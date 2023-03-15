@@ -1,12 +1,12 @@
-import React, { useState } from "react"
+import React, { useState } from 'react'
 
-import CommunityModule from "modules/Community"
-import Layout from "components/Layout"
+import CommunityModule from 'modules/Community'
+import Layout from 'components/Layout'
 
 const Community = () => {
     const [sidebarToggler, setSidebarToggler] = useState(false)
 
-    return (    
+    return (
         <Layout
             sidebarToggler={sidebarToggler}
             banner={<></>}

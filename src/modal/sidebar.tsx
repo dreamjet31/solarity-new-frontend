@@ -1,4 +1,4 @@
 export type DaosType = {
-    title : string,
-    avatars : any[]
+    title: string
+    avatars: any[]
 }

@@ -1,27 +1,35 @@
-import DAORoleButton from "components/Common/Buttons/DAORoleButton"
-import FeedCategoryButton from "components/Common/Buttons/FeedCategoryButton"
-import useWindowDimensions from "components/Common/useWindowDimensions"
-import { LeftArrow, RightArrow } from "components/icons"
-import { FeedCategoryCaptions, FeedData } from "data/Profile"
-import { Top_Daos } from "data/Sidebar"
-import { useState } from "react"
-import CommonDAOavatar from "./CommonDAOavatar"
-import ProfileFeed from "./ProfileFeed"
+import DAORoleButton from 'components/Common/Buttons/DAORoleButton'
+import FeedCategoryButton from 'components/Common/Buttons/FeedCategoryButton'
+import useWindowDimensions from 'components/Common/useWindowDimensions'
+import { LeftArrow, RightArrow } from 'components/icons'
+import { FeedCategoryCaptions, FeedData } from 'data/Profile'
+import { Top_Daos } from 'data/Sidebar'
+import { useState } from 'react'
+import CommonDAOavatar from './CommonDAOavatar'
+import ProfileFeed from './ProfileFeed'
 
 const ProfileFeedContent = ({ sidebarToggler }) => {
-
     const rightScroll = () => {
-        document.querySelector(".profile-feed-category").scrollLeft += 80;
-    };
+        document.querySelector('.profile-feed-category').scrollLeft += 80
+    }
 
     const leftScroll = () => {
-        document.querySelector(".profile-feed-category").scrollLeft -= 80;
-    };
+        document.querySelector('.profile-feed-category').scrollLeft -= 80
+    }
 
     const [activeIndex, setActiveIndex] = useState(0)
 
     const { height, width } = useWindowDimensions()
-    var max = width > 1850 ? 6 : width > 1480 ? 5 : width > 1280 ? 4 : width > 640 ? 6 : 5
+    var max =
+        width > 1850
+            ? 6
+            : width > 1480
+            ? 5
+            : width > 1280
+            ? 4
+            : width > 640
+            ? 6
+            : 5
     var j = 0
     const top_daos_avatars = Top_Daos.avatars.map(function (i, j) {
         if (j === max) return
@@ -31,34 +39,65 @@ const ProfileFeedContent = ({ sidebarToggler }) => {
     })
 
     return (
-        <div className="flex
+        <div
+            className="flex
                             custom-2xl:flex-row xl:flex-row sm:flex-col xs:flex-col
-                            justify-between ">
+                            justify-between "
+        >
             <div className="flex flex-col custom-2xl:w-[72%] xl:w-[72%] sm:w-[100%]">
                 <div className="relative w-fit">
-                    <div className={`profile-feed-category flex flex-row relative my-[31px] lg:w-fit ${sidebarToggler ? "sm:w-[59vw]" : "md:w-fit sm:w-[80vw]"}  xs:w-[87vw]
-                                        overflow-x-scroll`}>
+                    <div
+                        className={`profile-feed-category flex flex-row relative my-[31px] lg:w-fit ${
+                            sidebarToggler
+                                ? 'sm:w-[59vw]'
+                                : 'md:w-fit sm:w-[80vw]'
+                        }  xs:w-[87vw]
+                                        overflow-x-scroll`}
+                    >
                         {[0, 1, 2, 3].map((i, index) => (
-                            <FeedCategoryButton isActive={activeIndex === i} key={index} caption={FeedCategoryCaptions[i]} onClick={() => setActiveIndex(i)} />
+                            <FeedCategoryButton
+                                isActive={activeIndex === i}
+                                key={index}
+                                caption={FeedCategoryCaptions[i]}
+                                onClick={() => setActiveIndex(i)}
+                            />
                         ))}
                     </div>
                     <div className="absolute right-[-3px] text-white top-[10px] sm:hidden xs:block">
-                        <button onClick={rightScroll} className="bg-gradient-to-l from-[rgba(19,19,20,1)] via-[rgba(19,19,20,0.8)] to-[rgba(19,19,20,0)] pl-[35px] h-[73px]"><RightArrow /></button>
+                        <button
+                            onClick={rightScroll}
+                            className="bg-gradient-to-l from-[rgba(19,19,20,1)] via-[rgba(19,19,20,0.8)] to-[rgba(19,19,20,0)] pl-[35px] h-[73px]"
+                        >
+                            <RightArrow />
+                        </button>
                     </div>
 
                     <div className="absolute left-[-3px] text-white top-[10px] sm:hidden xs:block">
-                        <button onClick={leftScroll} className="bg-gradient-to-r from-[rgba(19,19,20,1)] via-[rgba(19,19,20,0.8)] to-[rgba(19,19,20,0)] pr-[35px] h-[73px]"><LeftArrow /></button>
+                        <button
+                            onClick={leftScroll}
+                            className="bg-gradient-to-r from-[rgba(19,19,20,1)] via-[rgba(19,19,20,0.8)] to-[rgba(19,19,20,0)] pr-[35px] h-[73px]"
+                        >
+                            <LeftArrow />
+                        </button>
                     </div>
                 </div>
                 <div className="flex flex-col">
-                    {
-                        FeedData.map((i, index) => (
-                            <ProfileFeed badgeUrl={i.badgeUrl} key={index} avatarUrl={i.avatarUrl} domainName={i.domainName} date={i.date} content={i.content}
-                                imageUrl={i.imageUrl ? i.imageUrl : null} retweets={i.retweets ? i.retweets : null}
-                                twWithQuotes={i.twWithQuotes ? i.twWithQuotes : null} likes={i.likes ? i.likes : null} />
-                        )
-                        )
-                    }
+                    {FeedData.map((i, index) => (
+                        <ProfileFeed
+                            badgeUrl={i.badgeUrl}
+                            key={index}
+                            avatarUrl={i.avatarUrl}
+                            domainName={i.domainName}
+                            date={i.date}
+                            content={i.content}
+                            imageUrl={i.imageUrl ? i.imageUrl : null}
+                            retweets={i.retweets ? i.retweets : null}
+                            twWithQuotes={
+                                i.twWithQuotes ? i.twWithQuotes : null
+                            }
+                            likes={i.likes ? i.likes : null}
+                        />
+                    ))}
                 </div>
             </div>
 
