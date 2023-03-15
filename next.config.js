@@ -27,7 +27,7 @@ const withTM = require("next-transpile-modules")([
   // "@solana/wallet-adapter-tokenpocket",
   // "@solana/wallet-adapter-torus",
   "three",
-  "@react-three/drei"
+  "@react-three/drei",
 ]);
 
 const plugins = [
@@ -64,16 +64,18 @@ const nextConfig = {
       config.resolve.alias = {
         ...config.resolve.alias,
         "react/jsx-dev-runtime": "react/jsx-dev-runtime.js",
-        "react/jsx-runtime": "react/jsx-runtime.js"
-      }
+        "react/jsx-runtime": "react/jsx-runtime.js",
+      };
       // FIX this
       // Disable minimize to make it work with Candy Machine template
       // minimization brakes Public Key names
       config.optimization.minimize = false;
     }
-    config.plugins.push(new webpack.IgnorePlugin({
-      resourceRegExp: /^electron$/
-    }));
+    config.plugins.push(
+      new webpack.IgnorePlugin({
+        resourceRegExp: /^electron$/,
+      })
+    );
     return config;
   },
 };

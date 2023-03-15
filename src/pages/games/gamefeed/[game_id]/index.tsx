@@ -1,5 +1,5 @@
-import React, { useState } from 'react'
-import { useRouter } from 'next/router'
+import React, { useState } from "react";
+import { useRouter } from "next/router";
 
 import GameContent from 'components/Game/GameContent'
 import Header from 'components/Community/Feed/Header'
