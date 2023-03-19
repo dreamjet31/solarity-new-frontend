@@ -4,7 +4,7 @@
     "dev": "next dev -p 3000",
     "build": "next build && next export",
     "start": "next start",
-    "format": " prettier --write 'src/**/*.ts' && prettier --write 'src/**/*.tsx' prettier --write 'src/**/*.css'"
+    "format": " prettier --write 'src/**/*.ts' && prettier --write 'src/**/*.tsx' && prettier --write 'src/**/*.css' && prettier --write 'src/**/*.scss'"
   },
   "dependencies": {
     "@babylonjs/core": "^5.28.0",

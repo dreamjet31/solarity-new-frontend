@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { useRouter } from "next/router";
+import React, { useState } from 'react'
+import { useRouter } from 'next/router'
 
 import GameContent from 'components/Game/GameContent'
 import Header from 'components/Community/Feed/Header'
@@ -38,23 +38,30 @@ function GameFeed() {
     const [isMarketplace, setIsMarketplace] = useState(false)
 
     if (game) {
-        if(mobileGameModalVisibility) {
-          return (
-            <Layout
-              sidebarToggler={sidebarToggler}
-              banner={<div></div>}
-              onClick={() => setSidebarToggler(!sidebarToggler)}
-            >
-              <div className='w-full h-full relative'>
-                <div className='absolute top-[50px] right-[0px]'>
-                  <MobileBackButton onClick={() => {
-                    dispatch(setMobileGameModal(false));
-                  }}/>
-                </div>
-                <iframe src={game.gameUrl || ''} frameborder="0" width="100%" height="92%"></iframe>
-              </div>
-            </Layout>
-          );
+        if (mobileGameModalVisibility) {
+            return (
+                <Layout
+                    sidebarToggler={sidebarToggler}
+                    banner={<div></div>}
+                    onClick={() => setSidebarToggler(!sidebarToggler)}
+                >
+                    <div className="w-full h-full relative">
+                        <div className="absolute top-[50px] right-[0px]">
+                            <MobileBackButton
+                                onClick={() => {
+                                    dispatch(setMobileGameModal(false))
+                                }}
+                            />
+                        </div>
+                        <iframe
+                            src={game.gameUrl || ''}
+                            frameborder="0"
+                            width="100%"
+                            height="92%"
+                        ></iframe>
+                    </div>
+                </Layout>
+            )
         } else {
             return (
                 <Layout

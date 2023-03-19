@@ -17,7 +17,7 @@ const GameContent = (props: GameContentType) => {
     }
 
     return (
-        <div className='mx-2'>
+        <div className="mx-2">
             <div className="text-white text-[25px] font-medium mt-5 mb-2">
                 Libraries
             </div>
@@ -38,7 +38,7 @@ const GameContent = (props: GameContentType) => {
                                 src={game.itemImage}
                                 className="rounded-2xl"
                                 width="100%"
-                                height={"100%"}
+                                height={'100%'}
                             />
                         </div>
                         <div className="flex md:flex-row xs:flex-col-reverse gap-[6px] my-[10px]">

@@ -1,6 +1,9 @@
 import { QuestPanelType } from '../components/Common/Panels/QuestPanel'
 import { QuestGlobalPanelType } from '../components/Common/Panels/QuestGlobalPanel'
-import { SolarityPass } from 'components/Common/GrayPanel/GreyPanel'
+import {
+    SolarityPass,
+    SolarityPassNumber,
+} from 'components/Common/GrayPanel/GreyPanel'
 
 export const SOLARITY_QUESTS: QuestPanelType[] = [
     {
@@ -93,35 +96,90 @@ export const SOLARITY_PASS: SolarityPass[] = [
         xp: '100',
         xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
         mark: '/images/quests/solarity-pass/mark.svg',
+        is_lock: false,
+    },
+    {
+        avatar: '/images/quests/solarity-pass/2.svg',
+        xp: '50',
+        xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
+        mark: '/images/quests/solarity-pass/mark.svg',
+        is_lock: false,
+    },
+    {
+        avatar: '/images/quests/solarity-pass/3.svg',
+        xp: '100',
+        xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
+        mark: '/images/quests/solarity-pass/mark.svg',
+        is_lock: false,
+    },
+    {
+        avatar: '/images/quests/solarity-pass/4.svg',
+        xp: '100',
+        xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
+        mark: '/images/quests/solarity-pass/mark.svg',
+        is_lock: false,
+    },
+    {
+        avatar: '/images/quests/solarity-pass/5.svg',
+        xp: '100',
+        xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
+        mark: '/images/quests/solarity-pass/mark-lock.svg',
+        is_lock: true,
     },
     {
         avatar: '/images/quests/solarity-pass/1.svg',
         xp: '100',
         xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
-        mark: '/images/quests/solarity-pass/mark.svg',
+        mark: '/images/quests/solarity-pass/mark-lock.svg',
+        is_lock: true,
     },
     {
-        avatar: '/images/quests/solarity-pass/1.svg',
+        avatar: '/images/quests/solarity-pass/5.svg',
         xp: '100',
         xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
-        mark: '/images/quests/solarity-pass/mark.svg',
+        mark: '/images/quests/solarity-pass/mark-lock.svg',
+        is_lock: true,
     },
     {
-        avatar: '/images/quests/solarity-pass/1.svg',
+        avatar: '/images/quests/solarity-pass/5.svg',
         xp: '100',
         xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
-        mark: '/images/quests/solarity-pass/mark.svg',
+        mark: '/images/quests/solarity-pass/mark-lock.svg',
+        is_lock: true,
+    },
+]
+
+export const SOLARITY_PASS_NUMS: SolarityPassNumber[] = [
+    {
+        number: 1,
+        passed: true,
     },
     {
-        avatar: '/images/quests/solarity-pass/1.svg',
-        xp: '100',
-        xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
-        mark: '/images/quests/solarity-pass/mark.svg',
+        number: 2,
+        passed: true,
     },
     {
-        avatar: '/images/quests/solarity-pass/1.svg',
-        xp: '100',
-        xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
-        mark: '/images/quests/solarity-pass/mark.svg',
+        number: 3,
+        passed: true,
+    },
+    {
+        number: 4,
+        passed: false,
+    },
+    {
+        number: 5,
+        passed: false,
+    },
+    {
+        number: 6,
+        passed: false,
+    },
+    {
+        number: 7,
+        passed: false,
+    },
+    {
+        number: 8,
+        passed: false,
     },
 ]

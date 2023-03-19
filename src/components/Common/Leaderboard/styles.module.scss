@@ -1,0 +1,277 @@
+.container {
+    width: 323px;
+    height: 518px;
+    left: 1210px;
+    top: 2px;
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    color: white;
+}
+
+.leader_title {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 120%;
+    /* or 19px */
+
+    margin-left: 25px;
+    color: #b3b3b7;
+}
+
+.main_box {
+    width: 323px;
+    height: 480px;
+
+    background: #181818;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+}
+
+.box_header {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    align-self: center;
+    padding: 5px;
+    gap: 10px;
+    width: 283px;
+    height: 50px;
+    background: #272829;
+    border-radius: 46px;
+}
+
+.box_header_item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px 14px 11px;
+    gap: 10px;
+
+    width: 95px;
+    height: 40px;
+
+    background: #272829;
+    border: 1.2px solid #272829;
+    border-radius: 40px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 1;
+    flex-grow: 0;
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    /* identical to box height, or 21px */
+
+    font-feature-settings: 'ss03' on, 'kern' off;
+
+    color: #929298;
+}
+
+.box_header_item_selected {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 8px 14px 11px;
+    gap: 10px;
+
+    width: 69px;
+    height: 40px;
+
+    background: #162724;
+    border: 1.2px solid #29b080;
+    border-radius: 40px;
+
+    /* Inside auto layout */
+
+    flex: none;
+    order: 0;
+    flex-grow: 0;
+
+    /* Body/S Medium */
+
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 150%;
+    /* identical to box height, or 21px */
+
+    font-feature-settings: 'ss03' on, 'kern' off;
+
+    color: #29b080;
+}
+
+.box_winners {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 180px;
+}
+
+.box_winner_1 {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+.box_winner_1_img {
+    position: absolute;
+    z-index: 2;
+    margin-top: 30px;
+}
+
+.box_winner_1_back {
+    position: absolute;
+    clip-path: polygon(0% 0%, 100% 0%, 50% 60%);
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+    background: linear-gradient(#181818, #29b080);
+}
+
+.box_winner_2 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+
+.box_winner_3 {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+
+.current_rank {
+    display: flex;
+    flex-direction: column;
+    height: 170px;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+}
+
+.box_winner_rank {
+    text-align: center;
+    color: white;
+    width: 100%;
+    margin-top: 15px;
+}
+
+.box_winner_name {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 120%;
+    text-align: center;
+    color: #929298;
+    width: 100%;
+    margin-top: 5px;
+}
+
+.box_winner_name_1 {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 120%;
+    text-align: center;
+    color: #929298;
+    width: 100%;
+    margin-top: 5px;
+    bottom: 0px;
+    position: absolute;
+}
+
+.current_rank_item {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 10px;
+    gap: 10px;
+
+    width: 267px;
+    height: 54px;
+
+    background: rgba(41, 176, 128, 0.05);
+    border-radius: 10px;
+    margin-top: 10px;
+}
+
+.current_rank_item_col1 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    align-self: center;
+}
+
+.current_rank_item_col1 span {
+    font-size: 12px;
+}
+
+.current_rank_item_col3 {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.current_rank_item_col3_header {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 600;
+    font-size: 13px;
+    line-height: 120%;
+    color: white;
+}
+
+.current_rank_item_col3_body {
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 120%;
+    color: #b3b3b7;
+    margin-top: 5px;
+}
+
+.current_rank_item_col4 {
+    align-self: center;
+    font-family: 'Outfit';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 12px;
+    line-height: 120%;
+
+    color: #29b080;
+}
+
+.up_green {
+    clip-path: polygon(50% 0%, 100% 100%, 0% 100%);
+    width: 10px;
+    height: 5px;
+    z-index: 1;
+    background: #23e12a;
+}

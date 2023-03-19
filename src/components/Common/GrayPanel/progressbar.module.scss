@@ -1,0 +1,42 @@
+.Childdiv {
+    height: 100%;
+    background-color: #29b080;
+    clip-path: polygon(0% 0%, 100% 0%, 92% 100%, 0% 100%);
+    border-bottom-left-radius: 40px;
+    border-top-left-radius: 40px;
+}
+
+.Parentdiv {
+    height: 36px;
+    width: 150px;
+    background-color: #363c3f;
+    border-radius: 40;
+    margin: 50;
+    position: relative;
+    border-radius: 40px;
+}
+
+.progress_icon {
+    position: absolute;
+    background-image: url('/images/quests/solarity-pass/progress-icon.svg');
+    right: -20px;
+    bottom: -15px;
+    height: 70px;
+    width: 60px;
+    background-repeat: no-repeat;
+    z-index: 10;
+}
+
+.progress_text {
+    padding: 10;
+    color: 'black';
+    font-weight: 400;
+    font-size: 14px;
+    text-align: center;
+    width: 100%;
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}

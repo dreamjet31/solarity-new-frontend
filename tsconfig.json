@@ -27,7 +27,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "**/*.js"  ],
+    "**/*.js", "src/components/Common/GrayPanel/progressbar.module.scss"  ],
   "exclude": [
     "node_modules",
     "build",

@@ -10,6 +10,7 @@ import { RootStateOrAny, useDispatch, useSelector } from 'react-redux'
 import { useAsyncMemo } from 'use-async-memo'
 import { apiCaller } from 'utils/fetcher'
 import { useRouter } from 'next/router'
+import Leaderboard from 'components/Common/Leaderboard/Leaderboard'
 
 const Quests = ({ sidebarToggler }) => {
     const router = useRouter()
@@ -32,19 +33,33 @@ const Quests = ({ sidebarToggler }) => {
 
     return (
         <div className="my-[16px]">
-            <GreyPanel></GreyPanel>
-            <SubTitle title="Solarity Quests" />
-            <div className="flex gap-8 mb-8">
-                {SOLARITY_QUESTS.map((quest, index) => (
-                    <QuestPanel
-                        key={index}
-                        {...quest}
-                        index={index}
-                        onClick={() => {}}
-                    />
-                ))}
+            <GreyPanel />
+            <div className="flex flex-row">
+                <div className="flex flex-col">
+                    <SubTitle title="Solarity Quests" />
+                    <div className="flex flex-row">
+                        <div className="flex gap-8 mb-8">
+                            {SOLARITY_QUESTS.map((quest, index) => (
+                                <QuestPanel
+                                    key={index}
+                                    {...quest}
+                                    index={index}
+                                    onClick={() => {}}
+                                />
+                            ))}
+                        </div>
+                    </div>
+                </div>
+                <div className="flex flex-1"></div>
+                <div className="flex flex-col">
+                    <SubTitle title="All Quests" />
+
+                    <Leaderboard />
+                </div>
             </div>
+
             <SubTitle title="All Quests" />
+
             <div className="">
                 {games &&
                     games.map((game, index1) => (

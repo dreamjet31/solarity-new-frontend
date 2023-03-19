@@ -1,20 +1,155 @@
 .col1 {
     width: 220px;
-    height: 140px;
+    height: auto;
     left: 164px;
     top: 249px;
-    background-color: aqua;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
 }
+
 .col2 {
-    background-color: yellow;
     width: 100%;
     display: flex;
     flex-direction: column;
- 
 }
-.col3 {
-    width: 300px;
-    left: 164px;
-    background-color: aqua;
 
+.col2_item {
+    display: flex;
+    flex-direction: column;
+    background: rgba(54, 60, 63, 0.7);
+    border-radius: 20px;
+    box-sizing: border-box;
+    border: 5px rgba(43, 45, 46, 0.87) solid;
+}
+
+.col2_lock {
+    position: absolute;
+    right: 0px;
+    bottom: 0px;
+    height: 57px;
+    width: 49px;
+}
+
+.col2_mark {
+    position: absolute;
+    right: 7px;
+    bottom: 8px;
+    height: 18px;
+    width: 18px;
+}
+
+.col2_nums {
+    display: flex;
+    position: relative;
+    height: 40px;
+    width: 100%;
+    justify-content: center;
+    align-content: center;
+}
+
+.progress_container {
+    position: relative;
+    background-color: #363c3f;
+    display: flex;
+    align-items: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.progresss {
+    display: flex;
+    position: absolute;
+    width: 100%;
+    background-color: #363c3f;
+    clip-path: polygon(85px 0%, 100% 0%, 100% 100%, 85px 100%);
+}
+
+.col2_progress {
+    position: relative;
+    height: 20px;
+    width: 100%;
+    z-index: 1;
+    background-color: #29b080;
+    clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+}
+
+.progress_item {
+    height: 20px;
+    width: 100%;
+    z-index: 1;
+    background-color: #29b080;
+}
+
+.progress_item_start_active {
+    height: 20px;
+    width: 100%;
+    z-index: 1;
+    background-color: #29b080;
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+}
+
+.progress_item_active {
+    height: 20px;
+    width: 100%;
+    z-index: 1;
+    background-color: #29b080;
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 100%);
+}
+
+.progress_item_end {
+    height: 20px;
+    width: 100%;
+    z-index: 1;
+    background-color: #29b080;
+    clip-path: polygon(0% 0%, 50% 0%, 50% 100%, 0% 100%);
+}
+
+.progress_item_inactive {
+    height: 20px;
+    width: 100%;
+    z-index: 1;
+    background-color: #363c3f;
+}
+
+.col2_progress_passed {
+    position: relative;
+    height: 20px;
+    width: 100%;
+    z-index: 1;
+    background-color: #29b080;
+    clip-path: polygon(50% 0%, 200% 0%, 100% 100%, 50% 100%);
+}
+
+.col3 {
+    width: 340px;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    position: relative;
+}
+
+.blure {
+    position: absolute;
+    width: 237px;
+    height: 400px;
+
+    background: rgba(60, 60, 60, 0.8);
+    backdrop-filter: blur(4px);
+    /* Note: backdrop-filter has minimal browser support */
+
+    border-radius: 24px;
+    z-index: 20;
+}
+
+.rounded_lock {
+    position: absolute;
+    height: 150px;
+    width: 150px;
+    z-index: 21;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
