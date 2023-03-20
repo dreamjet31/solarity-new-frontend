@@ -38,7 +38,7 @@ const Quests = ({ sidebarToggler }) => {
                 <div className="flex flex-col">
                     <SubTitle title="Solarity Quests" />
                     <div className="flex flex-row">
-                        <div className="flex gap-8 mb-8">
+                        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 custom-2xl:grid-cols-5 gap-8 mb-8">
                             {SOLARITY_QUESTS.map((quest, index) => (
                                 <QuestPanel
                                     key={index}

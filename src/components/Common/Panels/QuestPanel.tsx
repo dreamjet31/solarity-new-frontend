@@ -21,7 +21,7 @@ export type QuestPanelType = {
 const QuestPanel = (props: QuestPanelType) => {
     return (
         <div
-            className={`w-[200px] rounded-[20px] bg-panelBgColor ${
+            className={`w-[200px] col-span-1 rounded-[20px] bg-panelBgColor ${
                 props.active ? 'border-2 border-[#6C9C6E]' : ''
             }`}
             key={props.index}
