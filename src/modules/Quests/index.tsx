@@ -34,7 +34,7 @@ const Quests = ({ sidebarToggler }) => {
     return (
         <div className="my-[16px]">
             <GreyPanel />
-            <div className="flex flex-row">
+            <div className="flex flex-row mt-10 ">
                 <div className="flex flex-col">
                     <SubTitle title="Solarity Quests" />
                     <div className="flex flex-row">
@@ -49,37 +49,36 @@ const Quests = ({ sidebarToggler }) => {
                             ))}
                         </div>
                     </div>
+
+                    <SubTitle title="All Quests" />
+
+                    <div className="flex flex-row flex-wrap">
+                        {games &&
+                            games.map((game, index1) => (
+                                <div className="flex flex-wrap mb-8 gap-8">
+                                    {game.quests.map((quest, index2) => (
+                                        <QuestGlobalPanel
+                                            key={index2}
+                                            title={quest.name}
+                                            description={quest.detail}
+                                            avatar={game.avatarImage}
+                                            icon={'/images/wallets/xp.png'}
+                                            amount={quest.score}
+                                            index={index1 * 4 + index2}
+                                            onClick={() => {
+                                                sendLink(game)
+                                            }}
+                                        />
+                                    ))}
+                                </div>
+                            ))}
+                    </div>
                 </div>
                 <div className="flex flex-1"></div>
                 <div className="flex flex-col">
-                    <SubTitle title="All Quests" />
-
+                    <SubTitle title="Leaderboard" />
                     <Leaderboard />
                 </div>
-            </div>
-
-            <SubTitle title="All Quests" />
-
-            <div className="">
-                {games &&
-                    games.map((game, index1) => (
-                        <div className="flex mb-8 gap-8">
-                            {game.quests.map((quest, index2) => (
-                                <QuestGlobalPanel
-                                    key={index2}
-                                    title={quest.name}
-                                    description={quest.detail}
-                                    avatar={game.avatarImage}
-                                    icon={'/images/wallets/xp.png'}
-                                    amount={quest.score}
-                                    index={index1 * 4 + index2}
-                                    onClick={() => {
-                                        sendLink(game)
-                                    }}
-                                />
-                            ))}
-                        </div>
-                    ))}
             </div>
         </div>
     )

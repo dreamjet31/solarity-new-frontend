@@ -9,6 +9,7 @@ export type SolarityPass = {
     xp: string
     xp_icon: string
     mark: string
+    type: number
     is_lock: boolean
 }
 export type SolarityPassNumber = {
@@ -92,12 +93,16 @@ const GrayPanel = () => {
                         <div className="flex flex-row justify-around ">
                             {SOLARITY_PASS.map((i, index) => (
                                 <div
-                                    className={styles.col2_item}
+                                    className={
+                                        i.type == 1
+                                            ? styles.col2_item
+                                            : i.type == 2
+                                            ? styles.col2_item_type2
+                                            : i.type == 3
+                                            ? styles.col2_item_type3
+                                            : styles.col2_item_type4
+                                    }
                                     key={index}
-                                    style={{
-                                        width: '110px',
-                                        margin: '20px',
-                                    }}
                                 >
                                     <div className="relative ">
                                         <div className="p-2">
@@ -127,7 +132,7 @@ const GrayPanel = () => {
                                     </div>
 
                                     <div className="flex flex-row justify-center content-center h-6 mt-2 mb-2">
-                                        <div className="mr-1">
+                                        <div className={styles.col2_item_img}>
                                             <Image
                                                 src={i.xp_icon}
                                                 width="22px"
@@ -135,7 +140,7 @@ const GrayPanel = () => {
                                             />
                                         </div>
 
-                                        <span className="text-white">
+                                        <span className={styles.col2_item_text}>
                                             {i.xp} xp
                                         </span>
                                     </div>
@@ -186,14 +191,7 @@ const GrayPanel = () => {
 
                         <div className="flex flex-row justify-around ">
                             {SOLARITY_PASS.map((i, index) => (
-                                <div
-                                    className={styles.col2_item}
-                                    key={index}
-                                    style={{
-                                        width: '110px',
-                                        margin: '20px',
-                                    }}
-                                >
+                                <div className={styles.col2_item} key={index}>
                                     <div className="relative ">
                                         <div className="p-2">
                                             <Image
@@ -222,7 +220,7 @@ const GrayPanel = () => {
                                     </div>
 
                                     <div className="flex flex-row justify-center content-center h-6 mt-2 mb-2">
-                                        <div className="mr-1">
+                                        <div className={styles.col2_item_img}>
                                             <Image
                                                 src={i.xp_icon}
                                                 width="22px"
@@ -230,7 +228,7 @@ const GrayPanel = () => {
                                             />
                                         </div>
 
-                                        <span className="text-white">
+                                        <span className={styles.col2_item_text}>
                                             {i.xp} xp
                                         </span>
                                     </div>
@@ -242,8 +240,8 @@ const GrayPanel = () => {
                     <div className={styles.col3}>
                         <Image
                             src="/images/quests/solarity-pass/col3-back0.svg"
-                            width="237px"
-                            height="388px"
+                            layout="fill"
+                            className={styles.col3_image}
                         />
                         <div className={styles.blure}></div>
                         <div className={styles.rounded_lock}>

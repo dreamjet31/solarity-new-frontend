@@ -1,20 +1,46 @@
 import Image from 'next/image'
+import { useState } from 'react'
 import { SubTitle } from '../Titles'
 import styles from './styles.module.scss'
 
 export const Leaderboard = () => {
+    const [selectedTab, setSelectedTab] = useState<number>(1)
+
     return (
         <>
             <div className={styles.container}>
                 <div className={styles.main_box}>
                     <div className={styles.box_header}>
-                        <span className={styles.box_header_item_selected}>
+                        <span
+                            onClick={() => setSelectedTab(1)}
+                            className={
+                                selectedTab == 1
+                                    ? styles.box_header_item_selected
+                                    : styles.box_header_item
+                            }
+                        >
                             Today
                         </span>
-                        <span className={styles.box_header_item}>
+                        <span
+                            onClick={() => setSelectedTab(2)}
+                            className={
+                                selectedTab == 2
+                                    ? styles.box_header_item_selected
+                                    : styles.box_header_item
+                            }
+                        >
                             This Week
                         </span>
-                        <span className={styles.box_header_item}>All Time</span>
+                        <span
+                            onClick={() => setSelectedTab(3)}
+                            className={
+                                selectedTab == 3
+                                    ? styles.box_header_item_selected
+                                    : styles.box_header_item
+                            }
+                        >
+                            All Time
+                        </span>
                     </div>
                     <div className={styles.box_winners}>
                         <div className={styles.box_winner_2}>
@@ -92,7 +118,39 @@ export const Leaderboard = () => {
                                 143P
                             </div>
                         </div>
-                        <div className={styles.current_rank_item}></div>
+                        <div className={styles.current_rank_item}>
+                            <div className={styles.current_rank_item_col1}>
+                                <span className="text-white">4th</span>
+                                <div className={styles.up_green}></div>
+                            </div>
+
+                            <div className="ml-2">
+                                <Image
+                                    src="/images/quests/solarity-pass/leader_profile.svg"
+                                    width="32px"
+                                    height="32px"
+                                />
+                            </div>
+                            <div className={styles.current_rank_item_col3}>
+                                <span
+                                    className={
+                                        styles.current_rank_item_col3_header
+                                    }
+                                >
+                                    Jenifer
+                                </span>
+                                <span
+                                    className={
+                                        styles.current_rank_item_col3_body
+                                    }
+                                >
+                                    @Jen3
+                                </span>
+                            </div>
+                            <div className={styles.current_rank_item_col4}>
+                                143P
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

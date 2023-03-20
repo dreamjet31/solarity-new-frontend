@@ -97,6 +97,7 @@ export const SOLARITY_PASS: SolarityPass[] = [
         xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
         mark: '/images/quests/solarity-pass/mark.svg',
         is_lock: false,
+        type: 1,
     },
     {
         avatar: '/images/quests/solarity-pass/2.svg',
@@ -104,6 +105,7 @@ export const SOLARITY_PASS: SolarityPass[] = [
         xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
         mark: '/images/quests/solarity-pass/mark.svg',
         is_lock: false,
+        type: 1,
     },
     {
         avatar: '/images/quests/solarity-pass/3.svg',
@@ -111,6 +113,7 @@ export const SOLARITY_PASS: SolarityPass[] = [
         xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
         mark: '/images/quests/solarity-pass/mark.svg',
         is_lock: false,
+        type: 1,
     },
     {
         avatar: '/images/quests/solarity-pass/4.svg',
@@ -118,6 +121,7 @@ export const SOLARITY_PASS: SolarityPass[] = [
         xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
         mark: '/images/quests/solarity-pass/mark.svg',
         is_lock: false,
+        type: 2,
     },
     {
         avatar: '/images/quests/solarity-pass/5.svg',
@@ -125,6 +129,7 @@ export const SOLARITY_PASS: SolarityPass[] = [
         xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
         mark: '/images/quests/solarity-pass/mark-lock.svg',
         is_lock: true,
+        type: 2,
     },
     {
         avatar: '/images/quests/solarity-pass/1.svg',
@@ -132,6 +137,7 @@ export const SOLARITY_PASS: SolarityPass[] = [
         xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
         mark: '/images/quests/solarity-pass/mark-lock.svg',
         is_lock: true,
+        type: 3,
     },
     {
         avatar: '/images/quests/solarity-pass/5.svg',
@@ -139,6 +145,7 @@ export const SOLARITY_PASS: SolarityPass[] = [
         xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
         mark: '/images/quests/solarity-pass/mark-lock.svg',
         is_lock: true,
+        type: 4,
     },
     {
         avatar: '/images/quests/solarity-pass/5.svg',
@@ -146,6 +153,7 @@ export const SOLARITY_PASS: SolarityPass[] = [
         xp_icon: '/images/quests/solarity-pass/xp-icon.svg',
         mark: '/images/quests/solarity-pass/mark-lock.svg',
         is_lock: true,
+        type: 4,
     },
 ]
 
