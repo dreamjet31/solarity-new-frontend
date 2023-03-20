@@ -140,8 +140,8 @@ const Layout = ({
                         <div
                             className={`w-full h-full ${
                                 chatSidebarVisibility == true
-                                    ? 'lg:px-8'
-                                    : 'lg:px-32'
+                                    ? 'custom-2xl:px-8'
+                                    : 'custom-2xl:px-28'
                             } 
                             ${mobileGameModalVisibility ? '' : 'px-6'}`}
                         >

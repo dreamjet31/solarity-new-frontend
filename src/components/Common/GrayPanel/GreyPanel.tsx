@@ -69,7 +69,7 @@ const GrayPanel = () => {
             <div className="flex flex-col">
                 <div className="flex flex-row content-center h-100">
                     <div className={styles.col1}>
-                        <div className="mt-6">
+                        <div className="">
                             <Image
                                 src="/images/quests/solarity-pass/col1-row1.svg"
                                 width="180px"
@@ -131,12 +131,12 @@ const GrayPanel = () => {
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-row justify-center content-center h-6 mt-2 mb-2">
+                                    <div className="flex justify-center items-center h-6 mt-2 mb-2">
                                         <div className={styles.col2_item_img}>
                                             <Image
                                                 src={i.xp_icon}
-                                                width="22px"
-                                                height="22px"
+                                                width="18px"
+                                                height="18px"
                                             />
                                         </div>
 
@@ -219,18 +219,18 @@ const GrayPanel = () => {
                                         </div>
                                     </div>
 
-                                    <div className="flex flex-row justify-center content-center h-6 mt-2 mb-2">
+                                    <div className="flex justify-center items-center h-6 mt-2 mb-2">
                                         <div className={styles.col2_item_img}>
                                             <Image
                                                 src={i.xp_icon}
-                                                width="22px"
-                                                height="22px"
+                                                width="18px"
+                                                height="18px"
                                             />
                                         </div>
 
-                                        <span className={styles.col2_item_text}>
+                                        <div className={styles.col2_item_text}>
                                             {i.xp} xp
-                                        </span>
+                                        </div>
                                     </div>
                                 </div>
                             ))}
