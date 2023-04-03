@@ -18,7 +18,7 @@ export type QuestGlobalPanelType = {
 const QuestGlobalPanel = (props: QuestGlobalPanelType) => {
     return (
         <div
-            className={`w-[264px] rounded-[20px] bg-panelBgColor px-[24px] pt-[44px] pb-[24px] relative `}
+            className={`w-[264px] rounded-[20px] bg-panelBgColor px-[24px] pt-[44px] pb-[24px] relative mb-8 `}
             key={props.index}
         >
             <div className="absolute left-[24px] top-[-12px]">

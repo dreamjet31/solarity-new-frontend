@@ -52,26 +52,25 @@ const Quests = ({ sidebarToggler }) => {
 
                     <SubTitle title="All Quests" />
 
-                    <div className="flex flex-row flex-wrap">
+                    <div className="flex flex-wrap gap-8">
                         {games &&
-                            games.map((game, index1) => (
-                                <div className="flex flex-wrap mb-8 gap-8">
-                                    {game.quests.map((quest, index2) => (
-                                        <QuestGlobalPanel
-                                            key={index2}
-                                            title={quest.name}
-                                            description={quest.detail}
-                                            avatar={game.avatarImage}
-                                            icon={'/images/wallets/xp.png'}
-                                            amount={quest.score}
-                                            index={index1 * 4 + index2}
-                                            onClick={() => {
-                                                sendLink(game)
-                                            }}
-                                        />
-                                    ))}
-                                </div>
-                            ))}
+                            games.map((game, index1) => {
+                                return game.quests.map((quest, index2) => (
+                                    <QuestGlobalPanel
+                                        key={index1 * 4 + index2}
+                                        title={quest.name}
+                                        description={quest.detail}
+                                        avatar={game.avatarImage}
+                                        icon={'/images/wallets/xp.png'}
+                                        amount={quest.score}
+                                        index={index1 * 4 + index2}
+                                        onClick={() => {
+                                            sendLink(game)
+                                        }}
+                                    />
+                                ))
+                            })
+                        }
                     </div>
                 </div>
                 <div className="flex flex-1"></div>

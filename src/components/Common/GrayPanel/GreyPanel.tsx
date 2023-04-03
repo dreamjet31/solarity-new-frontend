@@ -182,6 +182,7 @@ const GrayPanel = () => {
                             <div className={styles.progresss}>
                                 {SOLARITY_PASS_NUMS.map((i, index) => (
                                     <ProgressItem
+                                        key={index}
                                         index={index}
                                         solarityPassNumber={i}
                                     />
